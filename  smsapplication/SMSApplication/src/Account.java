@@ -13,4 +13,8 @@ public class Account {
 	void deleteAccount(){};
 	void modifyAccount(){};
 	void checkBalanceAmountlnAccount(){};
+	
+	void testaccount(){
+		System.out.println("Inside account");
+	}
 }
