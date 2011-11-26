@@ -8,4 +8,8 @@ public class Profile {
 	void createProfile(){};
 	void deleteProfile() {};
 	void upateProfile() {};
+	
+	void testprofile(){
+		System.out.println("Inside profile");
+	}
 }
