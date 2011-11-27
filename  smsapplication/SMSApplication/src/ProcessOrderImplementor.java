@@ -1,6 +1,8 @@
 
-public interface ProcessOrderImplementor {
+public abstract class ProcessOrderImplementor {
 
-	//processPartialOrder(buyOrderID,sellOrderID,buyLot,sellLot,buyMatch,sellMatch);
-	//processCompleteOrder(buyOrderID,sellOrderID);
+	abstract public boolean processPartialOrder(int buyOrderID, int sellOrderID,int buyLot,int  sellLot,int  buyMatch,int sellMatch);
+	
+	abstract public boolean processCompleteOrder(int buyOrderID, int sellOrderID);
+
 }

@@ -19,7 +19,7 @@ public class StockType extends Stock{
 	@Override
 	public void display() {
 		// TODO Auto-generated method stub
-		
+		//Display the stock type as per the stock in a particular order
 	}
 
 	

@@ -1,8 +1,21 @@
 
-public class OrderImplementor2 {
+public class OrderImplementor2 extends MatchedType{
 
-	//void processPartialOrder(buyOrderID, sellOrderID, buyLot, sellLot, buyMatch, sellMatch);
-	//void processCompleteOrder(buyOrderID, sellOrderID);
+	private int _buyOrderID,_sellOrderID;
+	public OrderImplementor2(ProcessOrderImplementor imp,int buyOrderID,int sellOrderID)
+	{
+		super(imp);
+		_buyOrderID=buyOrderID;
+		_sellOrderID=sellOrderID;
+		
+	}
+	
+	
+	
+	@Override
+	public void processOrder() {
+		processCompleteOrder(_buyOrderID,_sellOrderID);
+	}
 
 	
 	
