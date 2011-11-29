@@ -19,9 +19,15 @@ public abstract class OrderTMAAbstractClass
 		{
 			System.out.println("Incorrect Order Type!");
 		}
+		
 		if(orderType.equalsIgnoreCase("stock"))
 		{
-			
+			processOrder(order);
+		}
+		
+		if(orderType.equalsIgnoreCase("mutualfund"))
+		{
+			processOrder(order);
 		}
 		
 	}
@@ -61,30 +67,20 @@ public abstract class OrderTMAAbstractClass
 	protected String checkOrderType(Order order)
 	{	
 		String strReturn = "false";
-		strReturn = order.getOrderType();
+		if (order.getOrderType().equalsIgnoreCase("mutualfund"))
+		{
+			strReturn = "MutualFund";
+			return strReturn;
+		}
 		
+		if(order.getOrderType().equalsIgnoreCase("stock"))
+		{
+			strReturn = "Stock";
+			return strReturn;
+		}
 		return strReturn;
-		
 	}
 	
-	abstract void processorder(Order order);
-	
-	
-	/*	int orderID=0;
-		int brokerID=0;
-		int exchangeID=0;
-		int flag=0;*/
-		
-		//void implementOdr(Order order);
-		//void checkBalance(balanceAmountInAccount);
-	//	void appendBrokerID(orderID);
-	//	void appendExchangeID(brokerID);
-	//	void appendOrderHistoryID(exchangeID);
-	//	void checkOrderType();
-	//	void processOrder(Order order);
-
-	
-	
-	
+	abstract void processOrder(Order order);
 	
 }
