@@ -16,32 +16,34 @@ public class TestFacadeClient {
 	}
 	public void callOperation(){
 		int choice = 0;
-		System.out.println("Enter your choice : ");
-		System.out.println("1. Access Profile");
-		System.out.println("2. Access Account");
-		System.out.println("3. Manage Order");
+		Portfolio portfolio = new Portfolio(investor);
 		
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		String option;
-		try {
-			option = br.readLine();
-			if(option.equals("1")) choice=1;
-			if(option.equals("2")) choice=2;
-			if(option.equals("3")) choice=3;
-			
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			
-		}
-		
-		
-	
-		
-		Portfolio portfolio = new Portfolio(choice,investor);
-		portfolio.processRequestType();
-
+			while(true) {
+				System.out.println("Enter your choice : ");
+				System.out.println("1. Access Profile");
+				System.out.println("2. Access Account");
+				System.out.println("3. Manage Order");
+				System.out.println("4. Exit");
+				
+				BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+				String option;
+				
+				try {
+					option = br.readLine();
+					if(option.equals("1")) choice=1;
+					if(option.equals("2")) choice=2;
+					if(option.equals("3")) choice=3;
+					if(option.equals("4")) break;
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					
+				}
+				
+				portfolio.processRequestType(choice);
+			}
 	}
+	
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
 

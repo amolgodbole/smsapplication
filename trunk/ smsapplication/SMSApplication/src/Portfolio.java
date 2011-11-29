@@ -8,18 +8,20 @@ public class Portfolio {
 	Investor investor = new Investor();
 	private Profile profile = new Profile(investor);
 	private Account account = new Account();
-	private Order order = new Order();
+	private Order order = null;
 	
-	public Portfolio(int requestType,Investor investor){
-		this.requestType=requestType;
+	public Portfolio(Investor investor){
 		this.investor=investor;
 	}
 	
-	void processRequestType(){
+	void processRequestType(int requestType){
 		if(requestType==1)profile.testprofile(this.investor);
 		
 		if(requestType==2)account.testaccount();
 		
-		if(requestType==3)order.orderOperation();
+		if(requestType==3) {
+			order = new Order(investor);
+			order.orderOperation();
+		}
 	};
 }
