@@ -7,7 +7,7 @@ public class MutualFundOrder extends  OrderTMAAbstractClass{
 		
 		
 		@Override
-		void processorder(Order order) {
+		void processOrder(Order order) {
 			// TODO Auto-generated method stub
 			
 		}
