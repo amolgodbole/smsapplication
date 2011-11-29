@@ -1,11 +1,19 @@
 
-public class StockOrder {
+public class StockOrder extends OrderTMAAbstractClass{
 
 		int orderID=0;
 		String stockID="";
 		double stockPrice=0;
-	
-		//void processOrder(orderID);
+		
+		
+		
+		@Override
+		void processorder(Order order) 
+		{
+			// TODO Auto-generated method stub
+			
+			
+		}
 
 	
 	
