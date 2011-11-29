@@ -6,7 +6,7 @@ public class Account {
 	int accoundID=0;
 	double balanceAmountlnAccount;
 	//SortMap<Stock,numberOfShares> stock;
-
+	//SortMap<MutualFund,numberOfMf> mutualfund;
 
 	void displayAccountDetails(){};
 	void createAccount(){};
@@ -16,5 +16,11 @@ public class Account {
 	
 	void testaccount(){
 		System.out.println("Inside account");
+	}
+	public double getBalanceAmountlnAccount() {
+		return balanceAmountlnAccount;
+	}
+	public void setBalanceAmountlnAccount(double balanceAmountlnAccount) {
+		this.balanceAmountlnAccount = balanceAmountlnAccount;
 	}
 }

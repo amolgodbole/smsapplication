@@ -1,14 +1,24 @@
 
 public class Investor 
 {
+	String investorID;
 	String 	strFirstName;
 	String 	strLastName;
 	String 	strAddress;
 	String 	strState;
 	String 	strEmail;
-	int		nPhone;
+	long	nPhone;
 	int		nMobile;
 
+	Account account = new Account();
+	
+	public void setAccountBal(int accountBal) {
+		account.setBalanceAmountlnAccount(accountBal);
+	}
+	
+	public double getAccountBal(){
+		return account.getBalanceAmountlnAccount();
+	}
 	public String getStrFirstName() {
 		return strFirstName;
 	}
@@ -39,10 +49,10 @@ public class Investor
 	public void setStrEmail(String strEmail) {
 		this.strEmail = strEmail;
 	}
-	public int getnPhone() {
+	public long getnPhone() {
 		return nPhone;
 	}
-	public void setnPhone(int nPhone) {
+	public void setnPhone(long nPhone) {
 		this.nPhone = nPhone;
 	}
 	public int getnMobile() {
@@ -50,6 +60,12 @@ public class Investor
 	}
 	public void setnMobile(int nMobile) {
 		this.nMobile = nMobile;
+	}
+	public String getInvestorID() {
+		return investorID;
+	}
+	public void setInvestorID(String investorID) {
+		this.investorID = investorID;
 	}
 	
 	
