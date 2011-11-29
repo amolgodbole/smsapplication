@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class Investor 
 {
@@ -11,6 +14,8 @@ public class Investor
 	int		nMobile;
 
 	Account account = new Account();
+	List<OrderBean> orderList = new ArrayList<OrderBean>();
+	
 	
 	public void setAccountBal(int accountBal) {
 		account.setBalanceAmountlnAccount(accountBal);
@@ -67,6 +72,8 @@ public class Investor
 	public void setInvestorID(String investorID) {
 		this.investorID = investorID;
 	}
+
+
 	
 	
 }

@@ -20,6 +20,6 @@ public class Portfolio {
 		
 		if(requestType==2)account.testaccount();
 		
-		if(requestType==3)order.testorder();
+		if(requestType==3)order.orderOperation();
 	};
 }
