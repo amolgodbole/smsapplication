@@ -19,7 +19,13 @@ public class StockSplit extends StockDecorator{
 	
 	public void display()
 	{
-		super.display();
+		//super.display();
+	}
+
+	@Override
+	public void getStockListing() {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	

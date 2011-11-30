@@ -5,8 +5,6 @@ public interface DeleteStrategy {
 	boolean orderCompletionStateType=false;
 	boolean customerDeleteType=false;
 
-	
-	public Order DeleteStrategyMethod();
-	
-	
+	public String deleteOrder(Investor investor, String OrderID);
+
 }
