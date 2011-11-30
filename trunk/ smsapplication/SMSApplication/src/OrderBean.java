@@ -7,7 +7,8 @@ public class OrderBean {
 	String 		strOrderID;
 	boolean 	partialOrderFlag;
 	String 		orderType;//should be set to MutualFund or Should be set to Stocks
-	String investorID;
+	String 		investorID;
+	String 	    orderProcessType;
 	
 	/*Account account;
 	*/
@@ -82,5 +83,17 @@ public class OrderBean {
 	public void setInvestorID(String investorID) {
 		this.investorID = investorID;
 	
+	}
+
+
+
+	public String getOrderProcessType() {
+		return orderProcessType;
+	}
+
+
+
+	public void setOrderProcessType(String orderProcessType) {
+		this.orderProcessType = orderProcessType;
 	}
 }

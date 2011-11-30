@@ -27,6 +27,7 @@ public class Order
 		order.setStrOrderID("ORD-01-STK");
 		order.setOrderType("STOCK");
 		order.setPartialOrderFlag(true);
+		order.setOrderProcessType("Buy_Orders");
 		order.setInvestorID(this.investor.getInvestorID());
 		
 		investor.orderList.add(order);
