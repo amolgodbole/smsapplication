@@ -5,5 +5,5 @@ public interface DeleteStrategy {
 	boolean orderCompletionStateType=false;
 	boolean customerDeleteType=false;
 
-	void DeleteStrategyMethod();
+	public Order DeleteStrategyMethod();
 }

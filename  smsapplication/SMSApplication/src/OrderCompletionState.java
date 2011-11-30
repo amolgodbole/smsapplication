@@ -1,5 +1,5 @@
 
-public class OrderCompletionState {
+public class OrderCompletionState implements DeleteStrategy{
 
 	int OrderCompletionStateID=0;
 	boolean OrderCompletionStateType=false;
@@ -7,7 +7,20 @@ public class OrderCompletionState {
 	
 	
 	void deleteStrategyMethod() {};
-	void deleteStrategyCompletionStateDetails(){};
+	void deleteStrategyCompletionStateDetails(){}
+	
+	
+	
+	@Override
+	public Order DeleteStrategyMethod() 
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
+		// TODO Auto-generated method stub
+	
+	
+	
 
 }
 
