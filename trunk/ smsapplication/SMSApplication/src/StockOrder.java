@@ -1,3 +1,5 @@
+import java.sql.Time;
+
 
 public class StockOrder extends OrderTMAAbstractClass implements StockOrderInterface{
 
@@ -10,25 +12,19 @@ public class StockOrder extends OrderTMAAbstractClass implements StockOrderInter
 		OrderStateInterface active;
 		OrderStateInterface deleted;
 		OrderStateInterface completed;
-		OrderStateInterface state;
+		OrderStateInterface orderStateInterface;
 		
 		public StockOrder()
 		{
-			active=new ActiveState(this);
-			deleted=new DeletedState(this);
-			completed=new CompletedState(this);
-			state=active;
+			initialized = 	new InitializedState(this);
+			active		=	new ActiveState(this);
+			deleted		=	new DeletedState(this);
+			completed	=	new CompletedState(this);
+			orderStateInterface		=	initialized;
 		}
 		
-		public void receiveOrder()
-		{
-			System.out.println("Receive Order");
-		}
 		
-		public void processOrder()
-		{
-			System.out.println("Process Order");
-		}
+		
 		
 		public void updateResult()
 		{
@@ -80,16 +76,50 @@ public class StockOrder extends OrderTMAAbstractClass implements StockOrderInter
 		}
 
 		@Override
-		public void setState(OrderStateInterface state) {
-			// TODO Auto-generated method stub
+		public void setState(OrderStateInterface state) 
+		{
+			orderStateInterface = state;
+		}
+
+		@SuppressWarnings("deprecation")
+		@Override
+		public String processOrder(OrderBean order) 
+		{
+			String strReturn="false";
+			/*Time time = new Time(System.currentTimeMillis());
+			time.getHours();*/
+			//NEED TO IMPLEMENT DYNAMIC TIME USING FORMAT
+			
+			/*
+			 * DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		   //get current date time with Date()
+		   Date date = new Date();
+		   System.out.println(dateFormat.format(date));
+	 
+		   //get current date time with Calendar()
+		   Calendar cal = Calendar.getInstance();
+		   System.out.println(dateFormat.format(cal.getTime()));
+			 */
+			
+			if(ClockInstance1.checkTimevalidity())
+			{
+				orderStateInterface.processActiveOrder(order);
+				
+			}
+			
+			else if(! ClockInstance1.checkTimevalidity())
+			{
+				strReturn = orderStateInterface.processInitializedOrder(order);
+			}
+			return stockID;
+			
+			
 			
 		}
 
-		@Override
-		void processOrder(OrderBean order) {
-			// TODO Auto-generated method stub
-			
-		}
+
+
+
 
 
 		

@@ -81,6 +81,6 @@ public abstract class OrderTMAAbstractClass
 		return strReturn;
 	}
 	
-	abstract void processOrder(OrderBean order);
+	abstract String processOrder(OrderBean order);
 	
 }

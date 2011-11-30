@@ -6,7 +6,8 @@ public class MutualFundOrder extends  OrderTMAAbstractClass{
 		double mutualFundPrice;
 		
 		@Override
-		void processOrder(OrderBean order) {
+		String processOrder(OrderBean order) {
+			return mutualFundID;
 			// TODO Auto-generated method stub
 			
 		}

@@ -28,5 +28,25 @@ public class DeletedState implements OrderStateInterface{
 	public void updateResult() {
 		// TODO Auto-generated method stub
 	System.out.println("Update Result");
+	}
+	@Override
+	public String processInitializedOrder(OrderBean order) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public String processActiveOrder(OrderBean order) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public String processDeletedOrder(OrderBean order) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public String processCompletedOrder(OrderBean order) {
+		// TODO Auto-generated method stub
+		return null;
 	};
 }

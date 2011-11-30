@@ -1,8 +1,7 @@
 
 public interface StockOrderInterface {
 	
-	public void processOrder();
-	public void receiveOrder();
+	public String processOrder(OrderBean order);
 	public void updateResult();
 	
 	public OrderStateInterface getActiveState();
