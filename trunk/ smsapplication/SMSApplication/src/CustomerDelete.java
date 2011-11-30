@@ -46,7 +46,7 @@ public class CustomerDelete implements DeleteStrategy{
 				}
 			}
 		}
-		return null;
+		return "deleted";
 	}
 	
 
