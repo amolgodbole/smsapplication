@@ -1,6 +1,7 @@
 public class ActiveState implements OrderStateInterface,ActiveOrderStateInterface{
 
-	private StockOrderInterface st;
+	private StockOrderInterface stockOrderInterface;
+	private ActiveOrderStateInterface activeOrderStateInterface;
 	ActiveStates matching; 
 	ActiveStates matched;
 	ActiveStates waiting;
@@ -8,7 +9,7 @@ public class ActiveState implements OrderStateInterface,ActiveOrderStateInterfac
 	
 	public ActiveState(StockOrderInterface s)
 	{
-		st=s;
+		stockOrderInterface=s;
 	}
 	
 	public ActiveState()
@@ -17,10 +18,6 @@ public class ActiveState implements OrderStateInterface,ActiveOrderStateInterfac
 		matched=new Matched(this);
 		waiting=new Waiting(this);
 		state=waiting;
-	}
-	public void receiveOrder() {
-		// TODO Auto-generated method stub
-		System.out.println("Receiving the order");
 	}
 
 	public void processOrder() {
@@ -66,6 +63,36 @@ public class ActiveState implements OrderStateInterface,ActiveOrderStateInterfac
 
 	@Override
 	public void setState(ActiveState state) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public String processInitializedOrder(OrderBean order) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String processActiveOrder(OrderBean order) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String processDeletedOrder(OrderBean order) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String processCompletedOrder(OrderBean order) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void receiveOrder() {
 		// TODO Auto-generated method stub
 		
 	}

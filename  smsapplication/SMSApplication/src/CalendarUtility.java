@@ -4,6 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Timer;
 
 /**
  * @author   Amol Godbole
@@ -60,6 +61,8 @@ public class CalendarUtility
            * date in text format */
 
           date=calendar.getTime();
+          
+          
           String textDate=simpleDate.format(date);
 
 
@@ -69,26 +72,7 @@ public class CalendarUtility
     }
 
 
-    /* To check the module */
-    public static void main(String args[]){
-          CalendarUtility calendarUtility=new CalendarUtility();
-          Calendar calendar = null;
-          try {
-        	  String date1="15-May-2009";
-                calendar = calendarUtility.getCalendarFromString(date1);
-                String date=calendarUtility.getStringFromCalendar(calendar);
-                System.out.println(date);
-          }
 
-          catch (Exception e)
-          {
-
-                e.printStackTrace();
-          }
-
-
-
-    }
 }
 
 
