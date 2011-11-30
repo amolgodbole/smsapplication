@@ -28,6 +28,7 @@ public class Order
 		order.setOrderType("STOCK");
 		order.setPartialOrderFlag(true);
 		order.setOrderProcessType("Buy_Orders");
+		order.setBidAmount(450.22);
 		order.setInvestorID(this.investor.getInvestorID());
 		
 		investor.orderList.add(order);
