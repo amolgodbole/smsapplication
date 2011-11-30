@@ -33,6 +33,7 @@ public class TestFacadeClient {
 					if(option.equals("1")){
 						choice=1;
 						portfolio.processRequestType(choice);
+						
 					}
 					if(option.equals("2")){
 						choice=2;
@@ -64,7 +65,6 @@ public class TestFacadeClient {
 		investor.setStrAddress("37 S ,8th Street");
 		investor.setStrState("CA");
 		investor.setStrEmail("kmp@gmail.com");	
-		investor.setAccountBal(9856); 
 		investor.setnPhone(4089899898L);
 		TestFacadeClient tc = new TestFacadeClient(investor);
 		tc.callOperation();

@@ -19,7 +19,6 @@ public class Profile {
 	private void createProfile(Investor investor) {
 		// TODO Auto-generated method stub	
 		// investorRecord[0]=investor;
-		investor.setAccountBal(10000);
 		investorList.add(investor);
 		System.out.println("Profile created : " +investor.getInvestorID());
 		System.out.println("-----------------------------------------------");
@@ -27,11 +26,22 @@ public class Profile {
 		System.out.println("Address : "+investor.getStrAddress()+","+investor.getStrState());
 		System.out.println("Contact : "+investor.getnMobile()+","+investor.getnPhone());
 		System.out.println("E-mail : "+investor.getStrEmail());
-		System.out.println("Balance amount : "+investor.getAccountBal());
-	
-	}
+		//System.out.println("Balance amount : "+investor.getAccountBal());
+		
+		
+	}	
+		/*public void viewList(List<Investor> investorList){
+			Iterator<Investor> itr = investorList.iterator();
+			
+			while(itr.hasNext()) {
+				Investor investor1 = (Investor) itr.next();
+				System.out.println("Investor id: "+investor1.getInvestorID());
+				System.out.println("Investor name: "+investor1.getStrFirstName());	
+			}
+		}*/
 
 	private void updateProfile(Investor investor) {
+		//viewList(investorList);
 		System.out.println("Enter update for : ");
 		System.out.println("1.E-mail");
 		System.out.println("2.Contact number");
@@ -56,7 +66,7 @@ public class Profile {
 						System.out.println("Address : "+investor.getStrAddress()+","+investor.getStrState());
 						System.out.println("Contact : "+investor.getnMobile()+","+investor.getnPhone());
 						System.out.println("E-mail : "+investor.getStrEmail());
-						System.out.println("Balance amount : "+investor.getAccountBal());
+						//System.out.println("Balance amount : "+investor.getAccountBal());
 					}
 				}
 			}else if(option.equals("2")){
@@ -75,7 +85,7 @@ public class Profile {
 						System.out.println("Address : "+investor.getStrAddress()+","+investor.getStrState());
 						System.out.println("Contact : "+investor.getnMobile()+","+investor.getnPhone());
 						System.out.println("E-mail : "+investor.getStrEmail());
-						System.out.println("Balance amount : "+investor.getAccountBal());
+						//System.out.println("Balance amount : "+investor.getAccountBal());
 					}
 				}
 			}

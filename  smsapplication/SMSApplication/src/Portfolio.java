@@ -17,7 +17,7 @@ public class Portfolio {
 	void processRequestType(int requestType){
 		if(requestType==1)profile.testprofile(this.investor);
 		
-		if(requestType==2)account.testaccount();
+		if(requestType==2)account.accountOperations(this.investor);
 		
 		if(requestType==3) {
 			order = new Order(investor);
