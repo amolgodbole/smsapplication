@@ -7,7 +7,5 @@ public interface ActiveStatesInterface
 	
 	String processWaitingOrder(OrderBean order, StockOrderInterface stockOrderInterface);
 	String processMatchedOrder(OrderBean order, StockOrderInterface stockOrder);
-	String processMatchingOrder(OrderBean order,StockOrderInterface stockOrderInterface);
-
-	
+	String processMatchingOrder(OrderBean order,StockOrderInterface stockOrderInterface);	
 }
