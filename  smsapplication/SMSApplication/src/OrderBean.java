@@ -1,3 +1,5 @@
+import java.security.Timestamp;
+import java.sql.Time;
 import java.util.Iterator;
 import java.util.List;
 
@@ -9,6 +11,8 @@ public class OrderBean {
 	String 		orderType;//should be set to MutualFund or Should be set to Stocks
 	String 		investorID;
 	String 	    orderProcessType;
+	double 	    bidAmount;
+	double      askAmount;
 	
 	/*Account account;
 	*/
@@ -95,5 +99,29 @@ public class OrderBean {
 
 	public void setOrderProcessType(String orderProcessType) {
 		this.orderProcessType = orderProcessType;
+	}
+
+
+
+	public double getBidAmount() {
+		return bidAmount;
+	}
+
+
+
+	public void setBidAmount(double bidAmount) {
+		this.bidAmount = bidAmount;
+	}
+
+
+
+	public double getAskAmount() {
+		return askAmount;
+	}
+
+
+
+	public void setAskAmount(double askAmount) {
+		this.askAmount = askAmount;
 	}
 }
