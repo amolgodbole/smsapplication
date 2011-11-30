@@ -4,10 +4,10 @@ public interface ActiveOrderStateInterface {
 	void receiveOrder();
 	void processMatching();
 	void updateResult();
-	public ActiveStates getMatched();
-	public ActiveStates getMatching();
-	public ActiveStates getWaiting();
+	public ActiveStatesInterface getMatched(StockOrderInterface stockOrder);
+	public ActiveStatesInterface getMatching();
+	public ActiveStatesInterface getWaiting();
 
-	public void setState(ActiveState state);
-	void setStates(ActiveStates state);
+	
+	void setStates(ActiveStatesInterface state);
 }
