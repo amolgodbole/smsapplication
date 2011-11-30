@@ -103,6 +103,7 @@ public class StockOrder extends OrderTMAAbstractClass implements StockOrderInter
 			
 			if(ClockInstance1.checkTimevalidity())
 			{
+				orderStateInterface = active;
 				orderStateInterface.processActiveOrder(order);
 				
 			}
