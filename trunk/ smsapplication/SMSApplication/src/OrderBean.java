@@ -7,7 +7,7 @@ public class OrderBean {
 	String 		strOrderID;
 	boolean 	partialOrderFlag;
 	String 		orderType;//should be set to MutualFund or Should be set to Stocks
-	String 		investorID;
+	String investorID;
 	
 	/*Account account;
 	*/
@@ -81,16 +81,6 @@ public class OrderBean {
 
 	public void setInvestorID(String investorID) {
 		this.investorID = investorID;
-	}
 	
-	public void viewOrders(List<OrderBean> orderList) {
-		Iterator<OrderBean> itr = orderList.iterator();
-		
-		while(itr.hasNext()) {
-			OrderBean orderBean = (OrderBean) itr.next();
-			System.out.println("Investor id: "+orderBean.getInvestorID());
-			System.out.println("Order id: "+orderBean.getStrOrderID());
-			System.out.println("Order Type: "+orderBean.getOrderType());
-		}
 	}
 }
