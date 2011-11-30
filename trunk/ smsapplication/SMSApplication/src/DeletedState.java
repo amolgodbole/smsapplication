@@ -1,5 +1,9 @@
+import java.util.Iterator;
+import java.util.List;
 
-public class DeletedState implements OrderStateInterface{
+
+public class DeletedState implements OrderStateInterface
+{
 
 	int deleted=0;
 	private StockOrderInterface st;
@@ -8,6 +12,10 @@ public class DeletedState implements OrderStateInterface{
 	void deleteOrderCompletionState(){};
 	void deleteCustomerDelete(){};
 	void displayDeletedDetails(){}
+	
+	private Profile profile; 
+	private List<Investor> allInvestors = profile.investorList;
+	private DeleteContext deleteContext; 
 	
 	public DeletedState(StockOrderInterface s)
 	{
@@ -40,8 +48,29 @@ public class DeletedState implements OrderStateInterface{
 		return null;
 	}
 	@Override
-	public String processDeletedOrder(OrderBean order) {
-		// TODO Auto-generated method stub
+	public String processDeletedOrder(OrderBean order) 
+	{
+		System.out.println("In Deleted Order State");
+		String investorID = order.getInvestorID();
+		Iterator<Investor> investorIterator = allInvestors.iterator();
+		while (investorIterator.hasNext())
+		{
+			Investor matchInvestor = investorIterator.next();
+			String matchInvestorID = matchInvestor.getInvestorID();
+			
+			if(matchInvestorID.equalsIgnoreCase(investorID))
+			{
+				System.out.println("Sending order to be deleted to strategy pattern");
+				deleteContext.delete(matchInvestor, order.getStrOrderID(), "completed");
+			}
+			else
+			{
+				System.out.println("Order is already Deleted!");
+			}
+		}
+		
+		
+		System.out.println("Order has been deleted... and waiting for processing new order!");
 		return null;
 	}
 	@Override
