@@ -8,29 +8,32 @@ public class DeleteContext
 		// TODO Auto-generated constructor stub
 	}
 
-	public String delete(OrderBean order)
+	public String delete(Investor investor, String OrderID, String OrderTypeDelete)
 	{
-		deleteStrategy = setDeleteStrategy(order);
-		return null;
+		deleteStrategy = setDeleteStrategy(investor, OrderID,  OrderTypeDelete);
+		
+		return deleteStrategy.deleteOrder(investor, OrderID);
 	}
 
-	private DeleteStrategy setDeleteStrategy(OrderBean order) 
+	private DeleteStrategy setDeleteStrategy(Investor investor, String OrderID,String OrderTypeDelete) 
 	{
 		// TODO Auto-generated method stub
-		return null;
+		
 
-		if(order.deleteMethod.equalsIgnoreCase("investor_delete"))
+		if(OrderTypeDelete.equalsIgnoreCase("investor_delete"))
 		{
 			deleteStrategy =  new CustomerDelete();
 		}
-		else if(order.deleteMethod.equalsIgnoreCase("expired") )
+		else if(OrderTypeDelete.equalsIgnoreCase("expired") )
 		{
 			deleteStrategy = new Expired();
 		}
-		else if(order.deleteMethod.equalsIgnoreCase("completed"))
+		else if(OrderTypeDelete.equalsIgnoreCase("completed"))
 		{
 			deleteStrategy = new OrderCompletionState();
 		}
+		
+		return deleteStrategy;
 	}
 
 }

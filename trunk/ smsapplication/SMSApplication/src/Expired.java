@@ -1,20 +1,31 @@
 
-public class Expired implements DeleteStrategy{
+public class Expired implements DeleteStrategy {
 
 	
 	int expiredID=0;
 	boolean expiredType=false;
+	private Investor investor;
+	String orderID ="";
 	
-	void displayExpiredDetails(){}
-	
-	
-	
-	@Override
-	
-	public Order DeleteStrategyMethod() {
-		// TODO Auto-generated method stub
-		Order order=new Order();
+	public Expired(Investor investor, String orderID) 
+	{
 		
-		return order;
-	};
+		this.investor =  investor;
+		this.orderID = orderID;
+	}
+	public Expired() 
+	{
+
+
+	}
+	void deleteStrategyMethod(){};
+	void displayExpiredDetails(){}
+	@Override
+	public String deleteOrder(Investor investor, String OrderID) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	
+
 }

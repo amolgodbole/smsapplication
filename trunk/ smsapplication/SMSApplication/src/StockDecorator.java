@@ -8,8 +8,13 @@ public abstract class StockDecorator {
 		stock=s;
 	}
 
-	public void display() {
-	stock.display();
-	}
+	/*public void display() {
+	//stock.display();
+	}*/
+	
+	public abstract void getStockListing();
+	
+	
+	public abstract void display();
 
 }
