@@ -1,10 +1,13 @@
+import java.util.Iterator;
+import java.util.List;
+
 
 public class OrderCompletionState implements DeleteStrategy{
 
 	int OrderCompletionStateID=0;
 	boolean OrderCompletionStateType=false;
 	private Investor investor;
-	String orderID ="";
+	String strOrderID ="";
 	
 	
 	
@@ -12,7 +15,7 @@ public class OrderCompletionState implements DeleteStrategy{
 	{
 
 		this.investor =  investor;
-		this.orderID = orderID;
+		this.strOrderID = orderID;
 	}
 	public OrderCompletionState() 
 	{
@@ -23,9 +26,24 @@ public class OrderCompletionState implements DeleteStrategy{
 	
 	
 	@Override
-	public String deleteOrder(Investor investor, String OrderID) {
-		// TODO Auto-generated method stub
-		return null;
+	public String deleteOrder(Investor investor, String orderID)
+	{
+		List<OrderBean> orders = investor.getOrderList();
+		Iterator<OrderBean> orderIterator = orders.iterator();
+		while(!orders.isEmpty())
+		{
+			while(orderIterator.hasNext())
+			{
+				OrderBean order = orderIterator.next();
+				strOrderID = order.getStrOrderID();
+				
+				if(strOrderID.equalsIgnoreCase(orderID))
+				{
+					
+				}
+			}
+		}
+		return "deleted";
 	}
 	
 	
