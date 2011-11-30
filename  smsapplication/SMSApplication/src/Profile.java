@@ -28,10 +28,7 @@ public class Profile {
 		System.out.println("Contact : "+investor.getnMobile()+","+investor.getnPhone());
 		System.out.println("E-mail : "+investor.getStrEmail());
 		System.out.println("Balance amount : "+investor.getAccountBal());
-		TestFacadeClient tc = new TestFacadeClient(investor);
-		//Investor investor1 = new Investor();
-		//investor1.setInvestorID(investor.getInvestorID());
-		tc.callOperation();
+	
 	}
 
 	private void updateProfile(Investor investor) {
@@ -51,7 +48,7 @@ public class Profile {
 						BufferedReader br1 = new BufferedReader(new InputStreamReader(System.in));
 						System.out.println("Enter new email id : ");
 						option=br1.readLine();
-						investorFromList.setStrFirstName(option);
+						investorFromList.setStrEmail(option);
 						System.out.println("Name updated is : "+investor.getStrFirstName());
 						System.out.println("Profile" +investor.getInvestorID()+ " updated :");
 						System.out.println("-----------------------------------------------");

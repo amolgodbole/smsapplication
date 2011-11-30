@@ -30,9 +30,18 @@ public class TestFacadeClient {
 				
 				try {
 					option = br.readLine();
-					if(option.equals("1")) choice=1;
-					if(option.equals("2")) choice=2;
-					if(option.equals("3")) choice=3;
+					if(option.equals("1")){
+						choice=1;
+						portfolio.processRequestType(choice);
+					}
+					if(option.equals("2")){
+						choice=2;
+						portfolio.processRequestType(choice);
+					}
+					if(option.equals("3")){
+						choice=3;
+						portfolio.processRequestType(choice);
+					}
 					if(option.equals("4")) break;
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
@@ -40,7 +49,7 @@ public class TestFacadeClient {
 					
 				}
 				
-				portfolio.processRequestType(choice);
+				
 			}
 	}
 	
