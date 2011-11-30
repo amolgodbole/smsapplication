@@ -2,6 +2,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 
@@ -20,7 +21,42 @@ public class Order
 	}
 	
 	OrderBean order = new OrderBean();
+		
+		public void createOrder(){
+		
+		order.setStrOrderID("ORD-01-STK");
+		order.setOrderType("STOCK");
+		order.setPartialOrderFlag(true);
+		order.setInvestorID(this.investor.getInvestorID());
+		
+		investor.orderList.add(order);
+		System.out.println("*************" +investor.getInvestorID());
+		
+		System.out.println("Order places is : " +order.getStrOrderID());
+		}
+		
 	
+	
+		public void updateOrder(){
+			
+		}
+		
+		public void deleteOrder(){
+			
+		}
+		
+		public void viewOrders(List<OrderBean> orderList) {
+			Iterator<OrderBean> itr = orderList.iterator();
+			
+			while(itr.hasNext()) {
+				OrderBean orderBean = (OrderBean) itr.next();
+				System.out.println("Investor id: "+orderBean.getInvestorID());
+				System.out.println("Order id: "+orderBean.getStrOrderID());
+				System.out.println("Order Type: "+orderBean.getOrderType());
+			}
+		}
+		
+		
 	void orderOperation(){
 		while(true) {
 			
@@ -34,19 +70,12 @@ public class Order
 				try {
 					String option = br.readLine();
 					if(option.equals("1")){
-						order.setStrOrderID("ORD-01-STK");
-						order.setOrderType("STOCK");
-						order.setPartialOrderFlag(true);
-						order.setInvestorID(this.investor.getInvestorID());
-						
-						investor.orderList.add(order);
-						System.out.println("*************" +investor.getInvestorID());
-						
-						System.out.println("Order places is : " +order.getStrOrderID());
+						createOrder();
 					}
-					if(option.equals("2")) order.updateOrder();
-					if(option.equals("3")) order.deleteOrder();
-					if(option.equals("4")) order.viewOrders(investor.orderList);
+					if(option.equals("2")) updateOrder();
+					if(option.equals("3")) deleteOrder();
+					//if(option.equals("4")) order.viewOrders(investor.orderList);
+					if(option.equals("4")) viewOrders(investor.orderList);
 					if(option.equals("5")) break;
 					
 				} catch (IOException e) {
