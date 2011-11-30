@@ -1,11 +1,11 @@
 
 public class CompletedState implements OrderStateInterface
 {
-	private StockOrderInterface st;
+	private StockOrderInterface stockOrderInterface;
 	
 	public CompletedState(StockOrderInterface s)
 	{
-		s=st;
+		stockOrderInterface = s;
 	}
 	public void receiveOrder() {
 		// TODO Auto-generated method stub
@@ -38,7 +38,9 @@ public class CompletedState implements OrderStateInterface
 	}
 	@Override
 	public String processCompletedOrder(OrderBean order) {
-		// TODO Auto-generated method stub
+
+		System.out.println("Order Completed Sending it to delete");
+		stockOrderInterface.setState(stockOrderInterface.getActiveState());
 		return null;
 	}
 
