@@ -13,17 +13,11 @@ public class Investor
 	long	nPhone;
 	int		nMobile;
 
-	Account account = new Account();
+
+	List<AccountBean> accountList = new ArrayList<AccountBean>();
 	List<OrderBean> orderList = new ArrayList<OrderBean>();
 	
 	
-	public void setAccountBal(int accountBal) {
-		account.setBalanceAmountlnAccount(accountBal);
-	}
-	
-	public double getAccountBal(){
-		return account.getBalanceAmountlnAccount();
-	}
 	public String getStrFirstName() {
 		return strFirstName;
 	}
