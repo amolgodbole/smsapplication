@@ -18,6 +18,18 @@ public class Investor
 	List<OrderBean> orderList = new ArrayList<OrderBean>();
 	
 	
+	public List<AccountBean> getAccountList() {
+		return accountList;
+	}
+	public void setAccountList(List<AccountBean> accountList) {
+		this.accountList = accountList;
+	}
+	public List<OrderBean> getOrderList() {
+		return orderList;
+	}
+	public void setOrderList(List<OrderBean> orderList) {
+		this.orderList = orderList;
+	}
 	public String getStrFirstName() {
 		return strFirstName;
 	}
