@@ -6,7 +6,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 /**
- * @author   Author name
+ * @author   Amol Godbole
  *
  */
 public class CalendarUtility
