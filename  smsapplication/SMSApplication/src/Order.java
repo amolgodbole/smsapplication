@@ -7,7 +7,7 @@ import java.util.List;
 
 
 
-public class Order 
+public class Order
 {
 	String investerId;
 	Investor investor = new Investor();
@@ -31,8 +31,15 @@ public class Order
 		
 		investor.orderList.add(order);
 		System.out.println("*************" +investor.getInvestorID());
-		
 		System.out.println("Order places is : " +order.getStrOrderID());
+		
+		if(order.getOrderType().equalsIgnoreCase("STOCK")){
+			StockOrder stockOrder = new StockOrder();
+			stockOrder.implementOrder(order);
+		}else{
+			StockOrder stockOrder = new StockOrder();
+			stockOrder.implementOrder(order);
+		}
 		}
 		
 	
@@ -41,8 +48,9 @@ public class Order
 			
 		}
 		
-		public void deleteOrder(){
-			
+		public void deleteOrder(Investor investor){
+			DeleteContext dc = new DeleteContext();
+			dc.delete(investor, order.getStrOrderID(), "investor_delete");
 		}
 		
 		public void viewOrders(List<OrderBean> orderList) {
@@ -73,7 +81,7 @@ public class Order
 						createOrder();
 					}
 					if(option.equals("2")) updateOrder();
-					if(option.equals("3")) deleteOrder();
+					if(option.equals("3")) deleteOrder(investor);
 					//if(option.equals("4")) order.viewOrders(investor.orderList);
 					if(option.equals("4")) viewOrders(investor.orderList);
 					if(option.equals("5")) break;
