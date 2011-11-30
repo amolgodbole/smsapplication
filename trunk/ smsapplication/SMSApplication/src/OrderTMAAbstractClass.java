@@ -2,15 +2,15 @@
 public abstract class OrderTMAAbstractClass 
 {
 	
-	Order 	orderInTM 					= new Order();
+	OrderBean 	orderInTM 					= new OrderBean();
 	int 	nAccoiuntID 				= 0;
 	double	dBalanceAmountInAccount		= 0;
 	
 	
 	
-	void implementOrder(Order order)
+	void implementOrder(OrderBean order)
 	{
-		checkBalance(order.account);
+		//checkBalance(order.account);
 		appendBrokerId(order);
 		appendExchangeId(order);
 		appendOrderHistoryId(order);
@@ -39,20 +39,20 @@ public abstract class OrderTMAAbstractClass
 		
 	}
 	
-	protected String appendBrokerId(Order order)
+	protected String appendBrokerId(OrderBean order)
 	{
 		orderInTM.setStrOrderID("B001-"+order.getStrOrderID());
 		return orderInTM.getStrOrderID();
 	}
 	
 	
-	protected String appendExchangeId(Order order)
+	protected String appendExchangeId(OrderBean order)
 	{
 		orderInTM.setStrOrderID("E001-"+order.getStrOrderID());
 		return orderInTM.getStrOrderID();
 	}
 	
-	protected void appendOrderHistoryId(Order order)
+	protected void appendOrderHistoryId(OrderBean order)
 	{
 		 //if(!order.isPartialOrderFlag())
 		orderInTM.setStrOrderID(order.getStrOrderID()+"-0001");
@@ -64,7 +64,7 @@ public abstract class OrderTMAAbstractClass
 		
 	}
 	
-	protected String checkOrderType(Order order)
+	protected String checkOrderType(OrderBean order)
 	{	
 		String strReturn = "false";
 		if (order.getOrderType().equalsIgnoreCase("mutualfund"))
@@ -81,6 +81,6 @@ public abstract class OrderTMAAbstractClass
 		return strReturn;
 	}
 	
-	abstract void processOrder(Order order);
+	abstract void processOrder(OrderBean order);
 	
 }

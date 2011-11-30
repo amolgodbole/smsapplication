@@ -8,7 +8,7 @@ public class StockOrder extends OrderTMAAbstractClass{
 		
 		
 		@Override
-		void processOrder(Order order) 
+		void processOrder(OrderBean order) 
 		{
 			// TODO Auto-generated method stub
 			
