@@ -5,9 +5,11 @@ public class MutualFundOrder extends  OrderTMAAbstractClass{
 		String mutualFundID="";
 		double mutualFundPrice;
 		
-		
+
+
+
 		@Override
-		void processOrder(Order order) {
+		void processOrder(OrderBean order) {
 			// TODO Auto-generated method stub
 			
 		}

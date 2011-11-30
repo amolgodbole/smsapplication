@@ -7,7 +7,7 @@ public class OrderBean {
 	String 		strOrderID;
 	boolean 	partialOrderFlag;
 	String 		orderType;//should be set to MutualFund or Should be set to Stocks
-	String investorID;
+	String 		investorID;
 	
 	/*Account account;
 	*/
