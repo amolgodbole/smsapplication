@@ -85,24 +85,13 @@ public class StockOrder extends OrderTMAAbstractClass implements StockOrderInter
 		@Override
 		public String processOrder(OrderBean order) 
 		{
+			System.out.println("In stock order");
 			String strReturn="false";
-			/*Time time = new Time(System.currentTimeMillis());
-			time.getHours();*/
-			//NEED TO IMPLEMENT DYNAMIC TIME USING FORMAT
 			
-			/*
-			 * DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-		   //get current date time with Date()
-		   Date date = new Date();
-		   System.out.println(dateFormat.format(date));
-	 
-		   //get current date time with Calendar()
-		   Calendar cal = Calendar.getInstance();
-		   System.out.println(dateFormat.format(cal.getTime()));
-			 */
 			
 			if(ClockInstance1.checkTimevalidity())
 			{
+				System.out.println("Checking time validity of order");
 				orderStateInterface = active;
 				orderStateInterface.processActiveOrder(order);
 				
@@ -115,7 +104,7 @@ public class StockOrder extends OrderTMAAbstractClass implements StockOrderInter
 			return stockID;
 			
 			
-			
+
 		}
 
 

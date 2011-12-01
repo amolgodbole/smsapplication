@@ -53,7 +53,7 @@ public class ActiveState implements OrderStateInterface,ActiveOrderStateInterfac
 
 	@Override
 	public void setStates(ActiveStatesInterface state) {
-		
+		this.state=state;
 	}
 
 	public void setState(ActiveState state) {
@@ -74,7 +74,8 @@ public class ActiveState implements OrderStateInterface,ActiveOrderStateInterfac
 		if(order.getOrderProcessType().equalsIgnoreCase("Buy_Orders"))
 		{
 			buyQueue.insertOrderinQueue(order);
-			activeOrderStateInterface.setStates(activeOrderStateInterface.getWaiting());
+			//activeOrderStateInterface.setStates(waiting);
+			//activeOrderStateInterface.getWaiting()
 			//stockOrderInterface.setState(stockOrderInterface.getActiveState());
 		}
 		else if(order.getOrderProcessType().equalsIgnoreCase("Sell_Orders"))
