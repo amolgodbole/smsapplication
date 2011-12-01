@@ -7,14 +7,16 @@ public class DeletedState implements OrderStateInterface
 
 	int deleted=0;
 	private StockOrderInterface st;
+	private Investor investor;
 	
 	void deleteExpired(){};
 	void deleteOrderCompletionState(){};
 	void deleteCustomerDelete(){};
 	void displayDeletedDetails(){}
 	
-	private Profile profile; 
+	private Profile profile = new Profile(investor); 
 	private List<Investor> allInvestors = profile.investorList;
+	
 	private DeleteContext deleteContext; 
 	
 	public DeletedState(StockOrderInterface s)

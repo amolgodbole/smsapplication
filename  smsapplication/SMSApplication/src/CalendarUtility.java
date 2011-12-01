@@ -1,5 +1,6 @@
 
 
+import java.sql.Time;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -72,6 +73,24 @@ public class CalendarUtility
     }
 
 
+/*<<<<<<< .mine
+     To check the module 
+    public static void main(String args[]){
+          CalendarUtility calendarUtility=new CalendarUtility();
+          Calendar calendar = null;
+          try {
+        	  String date1="15-May-2009";
+                calendar = calendarUtility.getCalendarFromString(date1);
+                String date=calendarUtility.getStringFromCalendar(calendar);
+                System.out.println(date);
+                
+                Time tm = new Time(System.currentTimeMillis());
+    			tm.getTime();
+    			System.out.println(""+tm.getHours());
+    			
+          }
+=======
+>>>>>>> .r60*/
 
 }
 

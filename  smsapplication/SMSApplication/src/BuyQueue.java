@@ -17,9 +17,9 @@ public class BuyQueue
 	}
 	
 	
-	  Iterator iterator = map.keySet().iterator();
+	  /*Iterator iterator = map.keySet().iterator();
 	  while (iterator.hasNext()) {
 	  Object key = iterator.next();
 	  System.out.println("key : " + key + " value :" + map.get(key));
-	  }
+	  }*/
 }
