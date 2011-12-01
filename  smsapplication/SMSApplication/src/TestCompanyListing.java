@@ -5,10 +5,8 @@ import java.io.InputStreamReader;
 
 public class TestCompanyListing 
 {
+	Stock stock = new Stock();
 	
-	
-	Company company = new Company();
-
 	public TestCompanyListing() {
 		// TODO Auto-generated constructor stub
 	}
@@ -19,14 +17,10 @@ public class TestCompanyListing
 	
 	public void callOperation(){
 		int choice = 0;
-		
-		Stock stock = new Stock(company);
-		Listing listing = new Listing ();
-		
 			while(true) {
 				System.out.println("Enter your choice : ");
 				System.out.println("1. List Stock");
-				System.out.println("2. Delete Stock");
+				System.out.println("2. Split Stock");
 				System.out.println("3. Exit");
 				
 				BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -34,16 +28,20 @@ public class TestCompanyListing
 				
 				try {
 					option = br.readLine();
-					if(option.equals("1")) choice=1;
-					if(option.equals("2")) choice=2;
+					if(option.equals("1")) {
+						choice=1;
+						stock.processRequestType(choice);
+					}
+					if(option.equals("2")){
+						choice=2;
+						stock.processRequestType(choice);
+					}
 					if(option.equals("3")) break;
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 					
 				}
-				
-				listing.processRequestType(choice);
 			}
 	}
 
@@ -53,7 +51,8 @@ public class TestCompanyListing
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
+		TestCompanyListing tc = new TestCompanyListing();
+		tc.callOperation();
 	}
 
 }
