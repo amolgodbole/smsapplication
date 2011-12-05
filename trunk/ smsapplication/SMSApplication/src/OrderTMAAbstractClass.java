@@ -44,26 +44,26 @@ public abstract class OrderTMAAbstractClass
 	protected String appendBrokerId(OrderBean order)
 	{
 		System.out.println("Appending broker id");
-		orderInTM.setStrOrderID("B001-"+order.getStrOrderID());
-		System.out.println("Appending broker id" +orderInTM.getStrOrderID());
-		return orderInTM.getStrOrderID();
+		order.setStrOrderID("B001-"+order.getStrOrderID());
+		System.out.println("Appending broker id" +order.getStrOrderID());
+		return order.getStrOrderID();
 	}
 	
 	
 	protected String appendExchangeId(OrderBean order)
 	{
 		System.out.println("Appending exchange id");
-		orderInTM.setStrOrderID("E001-"+order.getStrOrderID());
-		System.out.println("Appending exchange id" +orderInTM.getStrOrderID());
-		return orderInTM.getStrOrderID();
+		order.setStrOrderID("E001-"+order.getStrOrderID());
+		System.out.println("Appending exchange id" +order.getStrOrderID());
+		return order.getStrOrderID();
 	}
 	
 	protected String appendOrderHistoryId(OrderBean order)
 	{
 		 //if(!order.isPartialOrderFlag())
 		System.out.println("Appending order history id");
-		orderInTM.setStrOrderID(order.getStrOrderID()+"-0001");
-		System.out.println("Appending order history id" +orderInTM.getStrOrderID());
+		order.setStrOrderID(order.getStrOrderID()+"-0001");
+		System.out.println("Appending order history id" +order.getStrOrderID());
 		
 		 return orderInTM.getStrOrderID();
 		 //if(partialOrderFlag)
