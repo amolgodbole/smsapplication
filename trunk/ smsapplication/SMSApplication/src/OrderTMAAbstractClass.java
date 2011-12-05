@@ -2,7 +2,7 @@
 public abstract class OrderTMAAbstractClass 
 {
 	
-	OrderBean 	orderInTM 					= new OrderBean();
+	OrderBean 	orderInTM 				= new OrderBean();
 	int 	nAccoiuntID 				= 0;
 	double	dBalanceAmountInAccount		= 0;
 	
