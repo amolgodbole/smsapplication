@@ -14,6 +14,9 @@ public class OrderBean {
 	double 	    bidAmount;
 	double      askAmount;
 	int			noOfStocks;
+	String 		stockID;
+	String		mutualFundID;
+	Stock		stock = new Stock();
 	
 	/*Account account;
 	*/
@@ -21,6 +24,42 @@ public class OrderBean {
 	
 	public String getStrOrderID() {
 		return strOrderID;
+	}
+
+
+
+	public String getStockID() {
+		return stockID;
+	}
+
+
+
+	public void setStockID(String stockID) {
+		this.stockID = stockID;
+	}
+
+
+
+	public String getMutualFundID() {
+		return mutualFundID;
+	}
+
+
+
+	public void setMutualFundID(String mutualFundID) {
+		this.mutualFundID = mutualFundID;
+	}
+
+
+
+	public Stock getStock() {
+		return stock;
+	}
+
+
+
+	public void setStock(Stock stock) {
+		this.stock = stock;
 	}
 
 
