@@ -32,7 +32,7 @@ public class Matching implements ActiveStatesInterface, Runnable
 
 
 
-	@SuppressWarnings("static-access")
+	//@SuppressWarnings("static-access")
 	@Override
 	public String processMatchingOrder(OrderBean order, StockOrderInterface stockOrderInterface) {
 		System.out.println("In Matching");
@@ -43,6 +43,8 @@ public class Matching implements ActiveStatesInterface, Runnable
 		
 		Listing stockListing = new Listing();
 		List<Stock> allListedStocks = stockListing.getAllStocks();
+		Investor buyer = null;
+		Investor seller  = null;
 		
 		int noOfStocks = allListedStocks.size();
 		
@@ -86,8 +88,56 @@ public class Matching implements ActiveStatesInterface, Runnable
 						  String buyOrderInvestorId = buyStockOrder.getInvestorID();
 						  String sellOrderInvestorId = sellStockOrder.getInvestorID();
 						  
+						  InvestorListing allInvestorList = new InvestorListing();
+						  List<Investor> investorList = allInvestorList.getAllInvestors();
+						  
+						  Iterator<Investor> investorIterator = investorList.iterator();
+						  
+						  // GET BUYER
+						  while(investorIterator.hasNext())
+						  {
+							  Investor buyerCheck = investorIterator.next();
+							  if(buyerCheck.getInvestorID().equalsIgnoreCase(buyOrderInvestorId))
+							  {
+								  buyer = buyerCheck;
+							  }
+							   
+							  
+						  }
+						  
+						  // GET SELLER
+						  
+						  while(investorIterator.hasNext())
+						  {
+							  Investor sellerCheck = investorIterator.next();
+							  if(sellerCheck.getInvestorID().equalsIgnoreCase(sellOrderInvestorId))
+							  {
+								   seller = sellerCheck;
+							  }
+							  
+						  }
+						  
+						 //ECHANGE STOCKS
+						  //getting the stock from the seller and setting it in buyer's account
+						  Stock buyerStock = sellStockOrder.getStock();
+						  // adding the matched stock to the List of all stocks by the buyer
+						  buyer.getStocks().add(buyerStock);
+						  
+						  Stock sellerStock = sellStockOrder.getStock();
+						  seller.getStocks().remove(sellerStock);
+						  
+						  //EXCHANGE AMOUNT : Setting the value of amount from the order and not from Stock as we take the stock order value: ASK/BID amount
+						  
+						  buyer.amountInAccount = buyer.amountInAccount - (sellerStock.getdStockPrice() * sellStockOrder.noOfStocks);
+						  seller.amountInAccount = seller.amountInAccount + (sellerStock.getdStockPrice() * sellStockOrder.noOfStocks);
+						  
+						  
 						  
 					  }
+					  
+					  
+					  
+					  
 					  
 					  if(noOfStocksInBuyQueue < noOfStocksInSellQueue)
 					  {
@@ -105,8 +155,9 @@ public class Matching implements ActiveStatesInterface, Runnable
 						  String sellOrderInvestorId = sellStockOrder.getInvestorID();
 						  
 						  String buyOrderId = buyStockOrder.getStrOrderID(); 
-						  
 						  noOfStocksInBuyQueue = noOfStocksInBuyQueue - noOfStocksInSellQueue;
+						  
+						  
 						  
 					  }
 				  }
