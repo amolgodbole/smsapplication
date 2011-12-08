@@ -13,11 +13,26 @@ public class OrderBean {
 	String 	    orderProcessType;
 	double 	    bidAmount;
 	double      askAmount;
+	int			noOfStocks;
 	
 	/*Account account;
 	*/
+	
+	
 	public String getStrOrderID() {
 		return strOrderID;
+	}
+
+
+
+	public int getNoOfStocks() {
+		return noOfStocks;
+	}
+
+
+
+	public void setNoOfStocks(int noOfStocks) {
+		this.noOfStocks = noOfStocks;
 	}
 
 
