@@ -15,9 +15,32 @@ public class Investor
 
 
 	List<AccountBean> accountList = new ArrayList<AccountBean>();
+	List<Stock> stocks = new ArrayList<Stock>();
+	List<MutualFund> mutualFunds = new ArrayList<MutualFund>();
+	double amountInAccount = new Account().getBalanceAmountlnAccount();
 	List<OrderBean> orderList = new ArrayList<OrderBean>();
 	
 	
+	
+	
+	public List<Stock> getStocks() {
+		return stocks;
+	}
+	public void setStocks(List<Stock> stocks) {
+		this.stocks = stocks;
+	}
+	public List<MutualFund> getMutualFunds() {
+		return mutualFunds;
+	}
+	public void setMutualFunds(List<MutualFund> mutualFunds) {
+		this.mutualFunds = mutualFunds;
+	}
+	public double getAmountInAccount() {
+		return amountInAccount;
+	}
+	public void setAmountInAccount(double amountInAccount) {
+		this.amountInAccount = amountInAccount;
+	}
 	public List<AccountBean> getAccountList() {
 		return accountList;
 	}
