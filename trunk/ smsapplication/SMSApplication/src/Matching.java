@@ -199,13 +199,13 @@ public class Matching implements ActiveStatesInterface, Runnable
 						  // adding the matched stock to the List of all stocks by the buyer
 						  buyer.getStocks().add(buyerStock);
 						  
-						  Stock sellerStock = sellStockOrder.getStock();
-						  seller.getStocks().remove(sellerStock);
+						  //Stock sellerStock = sellStockOrder.getStock();
+						  //seller.getStocks().remove(sellerStock);
 						  
 						  //EXCHANGE AMOUNT : Setting the value of amount from the order and not from Stock as we take the stock order value: ASK/BID amount
 						  
 						  buyer.amountInAccount = buyer.amountInAccount - (buyerStock.getdStockPrice() * buyStockOrder.noOfStocks);
-						  seller.amountInAccount = seller.amountInAccount + (sellerStock.getdStockPrice() * sellStockOrder.noOfStocks);
+						  seller.amountInAccount = seller.amountInAccount + (buyerStock.getdStockPrice() * buyStockOrder.noOfStocks);
 						  
 						  
 						  
