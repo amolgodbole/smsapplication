@@ -1,58 +1,164 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.SortedMap;
+import java.util.TreeMap;
 
-public  class Stock
+
+public  class Stock extends Listing
 {
-	void processRequestType(int requestType){
-		
-		
-		if(requestType==1){
-			
-			System.out.println("Creating stock listings ");
-			
-			Listing ls = new Listing();
-			
-			StockBean sb1 = new StockBean();
-			sb1.setStrCompanyID("App");
-			sb1.setStrCompanyName("Apple");
-			sb1.setStockname("Buyer&sellers");
-			sb1.setStockid("App-01");
-			sb1.setdStockPrice(400);
-			sb1.setTotalNoStocks(100);
-			ls.addToList(sb1);
-			
-			StockBean sb = new StockBean();
-			sb.setStrCompanyID("Ora");
-			sb.setStrCompanyName("Oracle");
-			sb.setStockname("B&s");
-			sb.setStockid("Ora-01");
-			sb.setdStockPrice(40);
-			sb.setTotalNoStocks(1000);			
-			ls.addToList(sb);
-			
-			StockBean sb2 = new StockBean();
-			sb2.setStrCompanyID("TCS");
-			sb2.setStrCompanyName("TCS");
-			sb2.setStockname("TCS");
-			sb2.setStockid("Tcs-01");
-			sb2.setdStockPrice(140);
-			sb2.setTotalNoStocks(1006);			
-			ls.addToList(sb2);
-			
-			
-
-			
-			
-		}
-			
-		if(requestType==2){
-			
-			System.out.println("Creating split stock listings ");
-		
-			System.out.println("Split details:");
-			
-			System.out.println("Split price : 20");
-			System.out.println("Split stock count  : 2000");
-			
-			
-		}
+	String stockid="";
+	String stockname="";
+	public double dStockPrice = 0.0d;
+	String strCompanyName;
+	String strCompanyID;
+	private Company company;
+	//List<Stock> allStocks = new ArrayList<Stock>();
+	public SortedMap<Double, OrderBean> buyQueue = new TreeMap<Double, OrderBean>();
+	public SortedMap<Double, OrderBean> sellQueue = new TreeMap<Double, OrderBean>();
+	public int numberOfStocks = 0;
+	
+	
+	
+	
+	public int getNumberOfStocks() {
+		return numberOfStocks;
 	}
+
+
+	public void setNumberOfStocks(int numberOfStocks) {
+		this.numberOfStocks = numberOfStocks;
+	}
+
+
+	public Stock(Company company)
+	{
+		this.company=company;
+	}
+
+
+	public Stock() {
+		// TODO Auto-generated constructor stub
+		super();
+	}
+
+	/*
+	 * This method is used to list a stock in the stock exchange.
+	 */
+/*	public void listStock(Stock stock) {
+		
+		allStocks.add(stock);
+		
+		
+	}*/
+	
+	
+	
+	
+	
+
+	public String getStockid() {
+		return stockid;
+	}
+
+
+	public SortedMap<Double, OrderBean> getBuyQueue() {
+		return buyQueue;
+	}
+
+
+	public void setBuyQueue(SortedMap<Double, OrderBean> buyQueue) {
+		this.buyQueue = buyQueue;
+	}
+
+
+	public SortedMap<Double, OrderBean> getSellQueue() {
+		return sellQueue;
+	}
+
+
+	public void setSellQueue(SortedMap<Double, OrderBean> sellQueue) {
+		this.sellQueue = sellQueue;
+	}
+
+
+	public void setStockid(String stockid) {
+		this.stockid = stockid;
+	}
+
+
+	public String getStockname() {
+		return stockname;
+	}
+
+
+	public void setStockname(String stockname) {
+		this.stockname = stockname;
+	}
+
+
+	public double getdStockPrice() {
+		return dStockPrice;
+	}
+
+
+	public void setdStockPrice(double dStockPrice) {
+		this.dStockPrice = dStockPrice;
+	}
+
+
+	public String getStrCompanyName() {
+		return strCompanyName;
+	}
+
+
+	public void setStrCompanyName(String strCompanyName) {
+		this.strCompanyName = strCompanyName;
+	}
+
+
+	public String getStrCompanyID() {
+		return strCompanyID;
+	}
+
+
+	public void setStrCompanyID(String strCompanyID) {
+		this.strCompanyID = strCompanyID;
+	}
+
+
+	public Company getCompany() {
+		return company;
+	}
+
+
+	public void setCompany(Company company) {
+		this.company = company;
+	}
+
+
+	/*public List<Stock> getAllStocks() {
+		return allStocks;
+	}*/
+
+
+	public void setAllStocks(List<Stock> allStocks) {
+		this.allStocks = allStocks;
+	}
+
+
+	
+
+	public List<Stock> getListOfAllStocks()
+	{
+		
+		return allStocks ;
+		
+	}
+
+	public void deleteStock(Stock stock) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
 }
