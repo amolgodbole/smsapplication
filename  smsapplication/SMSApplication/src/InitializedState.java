@@ -7,7 +7,7 @@ public class InitializedState implements OrderStateInterface
 {
 	private StockOrderInterface stockOrderInterface;
 	List<OrderBean> initializedOrders = new ArrayList<OrderBean>();
-	
+	ClockInstance1 clock=new ClockInstance1();
 	 InitializedState(StockOrderInterface stockOrder)
 	{
 		stockOrderInterface = stockOrder;
@@ -38,7 +38,7 @@ public class InitializedState implements OrderStateInterface
 
 			System.out.println("Order Initialized !!");
 			
-			if(ClockInstance1.checkTimevalidity())
+			if(clock.checkTimevalidity())
 			{
 			stockOrderInterface.setState(stockOrderInterface.getActiveState());
 			//st.setState(st.getActiveState());
