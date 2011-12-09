@@ -12,11 +12,27 @@ import java.util.List;
 
 	public class Listing {
 		
+		public List<MutualFund> getAllMutualFunds() {
+			return allMutualFunds;
+		}
+
+		public void setAllMutualFunds(List<MutualFund> allMutualFunds) {
+			this.allMutualFunds = allMutualFunds;
+		}
+
+		public List<StockBean> getStockList() {
+			return stockList;
+		}
+
+		public void setStockList(List<StockBean> stockList) {
+			this.stockList = stockList;
+		}
+
 		Company company = new Company();
 		Stock stock = new Stock();
 		List<Stock> allStocks = new ArrayList<Stock>();
 		
-		
+		List<MutualFund> allMutualFunds=new ArrayList<MutualFund>();
 		
 		List<StockBean> stockList = new ArrayList<StockBean>(); 
 		public Listing(){
