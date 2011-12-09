@@ -1,4 +1,5 @@
 
+import java.sql.Time;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
@@ -26,6 +27,7 @@ public class ClockInstance1
 	   int year = cal1.get(Calendar.YEAR); 
 	   int week = cal1.get(Calendar.WEEK_OF_YEAR);
 	   int dayOfMonth = cal1.get(Calendar.DAY_OF_MONTH);
+	   static int time=4;
 	   
 	   
 
@@ -43,10 +45,17 @@ public class ClockInstance1
 	 * processChangeStateAtValidTime(true)
 	 */
 	
-	public static boolean checkTimevalidity()
+	public boolean checkTimevalidity()
 	{
-		return true;
-		//LOGIC
+		if (time==9)
+		return false;
+		else if(time==4)
+			
+			return true;
+		return validity;
+		
+		//LOGIC 
+		//am currently hard coding but thread will be monitoring the time
 		
 	}
 	boolean validity = true;
