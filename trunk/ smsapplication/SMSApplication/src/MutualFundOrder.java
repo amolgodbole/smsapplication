@@ -14,6 +14,8 @@ public class MutualFundOrder extends  OrderTMAAbstractClass
 		Investor mfCompany = null;
 		MutualFund mf = null;
 		
+		
+		
 		@Override
 		public String processOrder(OrderBean order) 
 		
@@ -67,5 +69,24 @@ public class MutualFundOrder extends  OrderTMAAbstractClass
 			return "MF Orders Processed!";
 		}
 		
-	
+
+		public double calculate_NAV(MutualFund mf)
+		{
+			List<Stock> listofstocks=mf.getStocks();
+			int length=listofstocks.size();
+			int stock_count=0;
+			double mf_nav=0;
+			double stock_price=0;
+			
+			for (int i=0;i<length;i++)
+			{
+				//get the particular stock and get the price
+				
+				Stock stock=listofstocks.get(i);
+				stock_price=stock_price+stock.dStockPrice;
+				stock_count++;
+			}
+			mf_nav=stock_price/stock_count;
+			return mf_nav;
+		}
 }
