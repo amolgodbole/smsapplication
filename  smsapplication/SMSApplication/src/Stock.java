@@ -30,17 +30,22 @@ public  class Stock extends Listing
 	}
 
 
-	public Stock(Company company)
+	public Stock(Company company,double price)
 	{
 		this.company=company;
+		this.dStockPrice=price;
+		this.strCompanyName=company.strCompanyName;
+		this.numberOfStocks=100;
+		this.stockid=company.strCompanyID;
+		this.stockname="Apple";
 	}
 
 
-	public Stock() {
+	/*public Stock() {
 		// TODO Auto-generated constructor stub
 		super();
 	}
-
+*/
 	/*
 	 * This method is used to list a stock in the stock exchange.
 	 */
@@ -50,6 +55,7 @@ public  class Stock extends Listing
 		
 		
 	}*/
+//	Company apple=new Company();
 	
 	
 	
@@ -160,5 +166,6 @@ public  class Stock extends Listing
 		
 	}
 
+	
 	
 }
