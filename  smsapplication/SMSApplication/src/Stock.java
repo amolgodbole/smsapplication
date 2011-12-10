@@ -41,11 +41,11 @@ public  class Stock extends Listing
 	}
 
 
-	/*public Stock() {
+	public Stock() {
 		// TODO Auto-generated constructor stub
 		super();
 	}
-*/
+
 	/*
 	 * This method is used to list a stock in the stock exchange.
 	 */
