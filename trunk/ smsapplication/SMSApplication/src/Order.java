@@ -32,6 +32,14 @@ public class Order
 		order.setBidAmount(450.22);
 		order.setNoOfStocks(10);
 		order.setStockID("C01");
+		
+		Stock stock = new Stock();
+		stock.setdStockPrice(400);
+		stock.setNumberOfStocks(10);
+		stock.setStockid("C01");
+		stock.setStockname("Apple");
+		
+		order.setStock(stock);
 
 		
 		
