@@ -53,7 +53,7 @@ public class Portfolio {
 	{
 		
 		Investor investor = new Investor();
-		investor.setInvestorID("INV01STK01");
+		investor.setInvestorID("INV000001");
 		investor.setStrFirstName("Kaustubh");
 		investor.setStrLastName("Phadnis");
 		investor.setStrAddress("37 S ,8th Street");
@@ -61,9 +61,29 @@ public class Portfolio {
 		investor.setStrEmail("kmp@gmail.com");	
 		investor.setnPhone(4089899898L);
 		
+		Investor investor1 = new Investor();
+		investor1.setInvestorID("INV000002");
+		investor1.setStrFirstName("Amol");
+		investor1.setStrLastName("Godbole");
+		investor1.setStrAddress("201, S 4th Street, San Jose");
+		investor1.setStrState("CA");
+		investor1.setStrEmail("amol.godbole@hotmail.com");	
+		investor1.setnPhone(408123456L);
+		
+		Investor investor2 = new Investor();
+		investor2.setInvestorID("INV000003");
+		investor2.setStrFirstName("Akshay");
+		investor2.setStrLastName("Kumar");
+		investor2.setStrAddress("201, S 4th Street, San Jose");
+		investor2.setStrState("CA");
+		investor2.setStrEmail("ak@hotmail.com");	
+		investor2.setnPhone(408123456L);
+		
 		InvestorListing allinvestors = new InvestorListing();
 		List<Investor> thisInvestor = allinvestors.getAllInvestors();
 		thisInvestor.add(investor);
+		thisInvestor.add(investor1);
+		thisInvestor.add(investor2);
 		
 		
 		new InvestorListing().setAllInvestors(thisInvestor);

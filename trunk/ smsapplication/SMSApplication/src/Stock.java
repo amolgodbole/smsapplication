@@ -20,14 +20,7 @@ public  class Stock //extends Listing
 	
 	
 	
-	public int getNumberOfStocks() {
-		return numberOfStocks;
-	}
-
-
-	public void setNumberOfStocks(int numberOfStocks) {
-		this.numberOfStocks = numberOfStocks;
-	}
+	
 
 
 	/*public Stock(Company company,double price)
@@ -41,9 +34,27 @@ public  class Stock //extends Listing
 	}*/
 
 
-	public Stock() {
-		// TODO Auto-generated constructor stub
-		//super();
+	public Stock() 
+	{
+		OrderBean order = new OrderBean();
+		order.setStrOrderID("O0000002");
+		order.setPartialOrderFlag(true);
+		order.setOrderType("STOCK");
+		order.setInvestorID("");
+		order.setOrderProcessType("Sell_Orders");
+		order.setAskAmount(450.22);
+		order.setNoOfStocks(10);
+		order.setStockID("C01");
+		
+		Stock stock = new Stock();
+		stock.setdStockPrice(400);
+		stock.setNumberOfStocks(10);
+		stock.setStockid("C01");
+		stock.setStockname("Apple");
+		
+		order.setStock(stock);
+
+		sellQueue.put(450.22, order);
 	}
 
 	/*
@@ -59,7 +70,14 @@ public  class Stock //extends Listing
 	
 	
 	
-	
+	public int getNumberOfStocks() {
+		return numberOfStocks;
+	}
+
+
+	public void setNumberOfStocks(int numberOfStocks) {
+		this.numberOfStocks = numberOfStocks;
+	}
 	
 
 	public String getStockid() {
