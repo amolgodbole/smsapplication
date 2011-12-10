@@ -74,6 +74,7 @@ public class InitializedState implements OrderStateInterface
 				}
 			
 			stockOrderInterface.setState(stockOrderInterface.getActiveState());
+			
 			stockOrderInterface.processActiveOrder(orderInInitializedState);
 			//st.setState(st.getActiveState());
 			System.out.println("Changed State Call method InitializedOrder to ActiveOrder !");
