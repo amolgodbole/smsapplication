@@ -24,14 +24,20 @@ public class Order
 		
 		public void createOrder(){
 		
-		order.setStrOrderID("ORD-01-STK");
-		order.setOrderType("STOCK");
+		order.setStrOrderID("O0000001");
 		order.setPartialOrderFlag(true);
+		order.setOrderType("STOCK");
+		order.setInvestorID(this.investor.getInvestorID());
 		order.setOrderProcessType("Buy_Orders");
 		order.setBidAmount(450.22);
-		order.setInvestorID(this.investor.getInvestorID());
+		order.setNoOfStocks(10);
+		order.setStockID("C01");
+
+		
 		
 		investor.orderList.add(order);
+		
+		
 		System.out.println("*************" +investor.getInvestorID());
 		System.out.println("Order places is : " +order.getStrOrderID());
 		System.out.println("Checking order type");
