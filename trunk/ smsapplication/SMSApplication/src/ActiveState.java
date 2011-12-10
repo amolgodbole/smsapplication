@@ -2,6 +2,8 @@ public class ActiveState implements OrderStateInterface,ActiveOrderStateInterfac
 
 	private StockOrderInterface stockOrderInterface;
 	private ActiveOrderStateInterface activeOrderStateInterface;
+	
+	
 	ActiveStatesInterface matching; 
 	ActiveStatesInterface matched;
 	ActiveStatesInterface waiting;
@@ -15,6 +17,10 @@ public class ActiveState implements OrderStateInterface,ActiveOrderStateInterfac
 	public ActiveState(StockOrderInterface s)
 	{
 		stockOrderInterface=s;
+		matching 	=	new Matching(this);
+		matched		=	new Matched(this);
+		waiting		=	new Waiting(this);
+		state		=	waiting;
 	}
 	
 	public ActiveState()
@@ -83,6 +89,7 @@ public class ActiveState implements OrderStateInterface,ActiveOrderStateInterfac
 			sellQueue.insertOrderinQueue(order);
 		}
 		
+		
 		return null;
 	}
 
@@ -106,9 +113,12 @@ public class ActiveState implements OrderStateInterface,ActiveOrderStateInterfac
 
 	@Override
 	public ActiveStatesInterface getMatched(StockOrderInterface stockOrder) {
+		return matched;
 		// TODO Auto-generated method stub
-		return null;
+		
 	}
+
+
 
 
 
