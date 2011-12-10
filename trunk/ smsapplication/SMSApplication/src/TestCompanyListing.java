@@ -30,11 +30,11 @@ public class TestCompanyListing
 					option = br.readLine();
 					if(option.equals("1")) {
 						choice=1;
-						stock.processRequestType(choice);
+						//stock.processRequestType(choice);
 					}
 					if(option.equals("2")){
 						choice=2;
-						stock.processRequestType(choice);
+						//stock.processRequestType(choice);
 					}
 					if(option.equals("3")) break;
 				} catch (IOException e) {
