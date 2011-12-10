@@ -3,7 +3,7 @@ public class StockType extends Stock{
 
 	
 	public StockType(Company Company) {
-		super(Company);
+		super(Company, 500.29d);
 		// TODO Auto-generated constructor stub
 	}
 
