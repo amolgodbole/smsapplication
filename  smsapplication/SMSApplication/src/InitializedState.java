@@ -33,7 +33,10 @@ public class InitializedState implements OrderStateInterface
 		{
 
 			System.out.println("Order Initialized !!");
-			
+			if(order.equals(null))
+			{
+				System.out.println("Order is Null");
+			}
 			if(clock.checkTimevalidity())
 			{
 				
@@ -44,7 +47,7 @@ public class InitializedState implements OrderStateInterface
 				 while(allStockIterator.hasNext())
 				 {
 					 Stock stockInIter = allStockIterator.next();
-					if( stock.getStockid().equals(stockIdInOrder))
+					if( stockInIter.getStockid().equals(stockIdInOrder))
 					{
 						this.stock = stockInIter;
 					}
@@ -54,6 +57,7 @@ public class InitializedState implements OrderStateInterface
 				{
 					
 					Double bidAmount = (Double) order.getBidAmount();
+					System.out.println("Bid Amount: "+bidAmount);
 					this.stock.buyQueue.put(bidAmount, order); 
 					System.out.println("order placed in Buy Queue of Stock with Stock id: "+ this.stock.getStockid());
 					stockOrderInterface.processOrder(order);
