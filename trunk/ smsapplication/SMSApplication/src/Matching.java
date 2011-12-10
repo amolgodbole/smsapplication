@@ -11,7 +11,7 @@ public class Matching implements ActiveStatesInterface, Runnable
 	
 	public Matching(ActiveOrderStateInterface a)
 	{
-		activeOrderStateInterface=a;
+		activeOrderStateInterface = a;
 	}
 	
 
