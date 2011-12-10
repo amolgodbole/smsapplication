@@ -1,9 +1,12 @@
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class MutualFund extends Investor
 {
 	String mutualFundID=""; // some investor ID
 	double mutualFundPrice;
-	
+	List<Stock> stocks=new ArrayList<Stock>();
 	
 	public String getMutualFundID() {
 		return mutualFundID;
