@@ -7,6 +7,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Iterator;
+import java.util.List;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
@@ -78,8 +79,11 @@ public class TestFacadeClient {
 		TestFacadeClient tc = new TestFacadeClient(investor);
 		tc.callOperation();
 		
-			
+		InvestorListing allinvestors = new InvestorListing();
+		List<Investor> thisInvestor = allinvestors.getAllInvestors();
+		thisInvestor.add(investor);
 		
+		new InvestorListing().setAllInvestors(thisInvestor);
 				
 	}
 

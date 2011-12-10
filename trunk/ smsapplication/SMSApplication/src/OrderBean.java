@@ -10,7 +10,7 @@ public class OrderBean {
 	boolean 	partialOrderFlag;
 	String 		orderType;//should be set to MutualFund or Should be set to Stocks
 	String 		investorID;
-	String 	    orderProcessType;
+	String 	    orderProcessType; // Buy order or sell order
 	double 	    bidAmount;
 	double      askAmount;
 	int			noOfStocks;
@@ -20,6 +20,8 @@ public class OrderBean {
 	
 	/*Account account;
 	*/
+	
+	
 	
 	
 	public String getStrOrderID() {
