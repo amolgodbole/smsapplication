@@ -7,12 +7,12 @@ import java.util.TreeMap;
 
 public class Matching implements ActiveStatesInterface, Runnable	
 { 
-    private ActiveOrderStateInterface activeOrderStateInterface;
+    //private ActiveOrderStateInterface activeOrderStateInterface;
 	
-	public Matching(ActiveOrderStateInterface a)
+	/*public Matching(ActiveOrderStateInterface a)
 	{
 		activeOrderStateInterface = a;
-	}
+	}*/
 	
 
 
