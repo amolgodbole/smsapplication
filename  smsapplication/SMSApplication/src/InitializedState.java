@@ -7,7 +7,13 @@ public class InitializedState implements OrderStateInterface
 {
 	private StockOrderInterface stockOrderInterface;
 	List<OrderBean> initializedOrders = new ArrayList<OrderBean>();
+	List<Stock> allStocks = new Listing().getAllStocks();
+	Stock stock = null;
+	
+	BuyQueue buyQueue = new BuyQueue();
+	SellQueue sellQueue = new SellQueue();
 	ClockInstance1 clock=new ClockInstance1();
+	
 	 InitializedState(StockOrderInterface stockOrder)
 	{
 		stockOrderInterface = stockOrder;
@@ -40,6 +46,39 @@ public class InitializedState implements OrderStateInterface
 			
 			if(clock.checkTimevalidity())
 			{
+				
+				OrderBean orderInInitializedState = order;
+				String stockIdInOrder = orderInInitializedState.getStockID();
+				Iterator<Stock> allStockIterator = allStocks.iterator();
+				
+				 while(allStockIterator.hasNext())
+				 {
+					 Stock stockInIter = allStockIterator.next();
+					if( stock.getStockid().equals(stockIdInOrder))
+					{
+						this.stock = stockInIter;
+					}
+				 }
+				
+				if(order.getOrderProcessType().equalsIgnoreCase("Buy_Orders"))
+				{
+					
+					Double bidAmount = (Double) order.getBidAmount();
+					this.stock.buyQueue.put(bidAmount, order); 
+					System.out.println("order placed in Buy Queue of Stock with Stock id: "+ this.stock.getStockid());
+					stockOrderInterface.processOrder(order);
+					//activeOrderStateInterface.setStates(waiting);
+					//activeOrderStateInterface.getWaiting()
+					//stockOrderInterface.setState(stockOrderInterface.getActiveState());
+				}
+				else if(order.getOrderProcessType().equalsIgnoreCase("Sell_Orders"))
+				{
+					Double askAmount = (Double) order.getAskAmount();
+					this.stock.sellQueue.put(askAmount, order);
+					System.out.println("order placed in Sell Queue of Stock with Stock id: "+ this.stock.getStockid());
+					stockOrderInterface.processOrder(order);
+				}
+			
 			stockOrderInterface.setState(stockOrderInterface.getActiveState());
 			//st.setState(st.getActiveState());
 			System.out.println("Changed State Call method InitializedOrder to ActiveOrder !");
