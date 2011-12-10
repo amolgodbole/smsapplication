@@ -60,7 +60,7 @@ public class InitializedState implements OrderStateInterface
 					System.out.println("Bid Amount: "+bidAmount);
 					this.stock.buyQueue.put(bidAmount, order); 
 					System.out.println("order placed in Buy Queue of Stock with Stock id: "+ this.stock.getStockid());
-					stockOrderInterface.processOrder(order);
+					//stockOrderInterface.processActiveOrder(order);
 					//activeOrderStateInterface.setStates(waiting);
 					//activeOrderStateInterface.getWaiting()
 					//stockOrderInterface.setState(stockOrderInterface.getActiveState());
@@ -70,10 +70,11 @@ public class InitializedState implements OrderStateInterface
 					Double askAmount = (Double) order.getAskAmount();
 					this.stock.sellQueue.put(askAmount, order);
 					System.out.println("order placed in Sell Queue of Stock with Stock id: "+ this.stock.getStockid());
-					stockOrderInterface.processOrder(order);
+					//stockOrderInterface.processOrder(order);
 				}
 			
 			stockOrderInterface.setState(stockOrderInterface.getActiveState());
+			processActiveOrder(orderInInitializedState);
 			//st.setState(st.getActiveState());
 			System.out.println("Changed State Call method InitializedOrder to ActiveOrder !");
 			return "true: Changed State Call method InitializedOrder to ActiveOrder ";
