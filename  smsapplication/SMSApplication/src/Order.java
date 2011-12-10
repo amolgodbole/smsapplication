@@ -45,7 +45,9 @@ public class Order
 			
 			StockOrder stockOrder = new StockOrder();
 			stockOrder.implementOrder(order);
-		}else{
+		}
+		
+		else{
 			StockOrder stockOrder = new StockOrder();
 			stockOrder.implementOrder(order);
 		}
