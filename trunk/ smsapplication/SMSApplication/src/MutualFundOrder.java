@@ -12,6 +12,9 @@ public class MutualFundOrder extends  OrderTMAAbstractClass
 		List<OrderBean> allMFOrders = new ArrayList<OrderBean>();
 		Investor buyer = null;
 		Investor mfCompany = null;
+		//Db for mutual funds
+		List<MutualFund> allmutualfunds=new ArrayList<MutualFund>();
+		
 		MutualFund mf = null;
 		
 		
