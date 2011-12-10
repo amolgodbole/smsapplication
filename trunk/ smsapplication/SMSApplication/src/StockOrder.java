@@ -17,10 +17,10 @@ public class StockOrder extends OrderTMAAbstractClass implements StockOrderInter
 
 	public StockOrder()
 	{
-		initialized = new InitializedState(this);
-		active = new ActiveState(this);
-		deleted = new DeletedState(this);
-		completed = new CompletedState(this);
+		initialized 	= 	new InitializedState(this);
+		active 			= 	new ActiveState(this);
+		deleted 		= 	new DeletedState(this);
+		completed 		= 	new CompletedState(this);
 		orderStateInterface = initialized;
 	}
 
