@@ -17,13 +17,13 @@ public class ClockInstance1
 	 Date date = new Date();
 	 dateFormat.
 	 System.out.println(.f);*/
-	 MutualFundOrder mutualfundlist=new MutualFundOrder();
+	/* MutualFundOrder mutualfundlist=new MutualFundOrder();
 	 
 	 DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 	   //get current date time with Date()
 	   Date date = new Date();
 	   //System.out.println(dateFormat.format(date));
-	   GregorianCalendar cal1;
+	   GregorianCalendar cal1;*/
 	   
 	  /* int year = cal1.get(Calendar.YEAR); 
 	   int week = cal1.get(Calendar.WEEK_OF_YEAR);
@@ -68,7 +68,7 @@ public class ClockInstance1
 	}
 	boolean validity = true;
 	
-	InitializedState initializedState = new InitializedState();
+	//InitializedState initializedState = new InitializedState();
 	
 	
 
