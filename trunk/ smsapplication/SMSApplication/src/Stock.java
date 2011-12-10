@@ -4,14 +4,14 @@ import java.util.SortedMap;
 import java.util.TreeMap;
 
 
-public  class Stock extends Listing
+public  class Stock //extends Listing
 {
 	String stockid="";
 	String stockname="";
 	public double dStockPrice = 0.0d;
 	String strCompanyName;
 	String strCompanyID;
-	private Company company;
+	//private Company company;
 	//List<Stock> allStocks = new ArrayList<Stock>();
 	public SortedMap<Double, OrderBean> buyQueue = new TreeMap<Double, OrderBean>();
 	public SortedMap<Double, OrderBean> sellQueue = new TreeMap<Double, OrderBean>();
@@ -30,7 +30,7 @@ public  class Stock extends Listing
 	}
 
 
-	public Stock(Company company,double price)
+	/*public Stock(Company company,double price)
 	{
 		this.company=company;
 		this.dStockPrice=price;
@@ -38,12 +38,12 @@ public  class Stock extends Listing
 		this.numberOfStocks=100;
 		this.stockid=company.strCompanyID;
 		this.stockname="Apple";
-	}
+	}*/
 
 
 	public Stock() {
 		// TODO Auto-generated constructor stub
-		super();
+		//super();
 	}
 
 	/*
@@ -132,14 +132,14 @@ public  class Stock extends Listing
 	}
 
 
-	public Company getCompany() {
+/*	public Company getCompany() {
 		return company;
 	}
 
 
 	public void setCompany(Company company) {
 		this.company = company;
-	}
+	}*/
 
 
 	/*public List<Stock> getAllStocks() {
@@ -147,7 +147,7 @@ public  class Stock extends Listing
 	}*/
 
 
-	public void setAllStocks(List<Stock> allStocks) {
+/*	public void setAllStocks(List<Stock> allStocks) {
 		this.allStocks = allStocks;
 	}
 
@@ -165,7 +165,7 @@ public  class Stock extends Listing
 		// TODO Auto-generated method stub
 		
 	}
-
+*/
 	
 	
 }
