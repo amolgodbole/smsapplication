@@ -12,7 +12,7 @@ import java.util.List;
 
 	public class Listing {
 		
-		Company company = new Company();
+		//Company company = new Company();
 		Stock stock = new Stock();
 		List<Stock> allStocks = new ArrayList<Stock>();
 		List<MutualFund> allMutualFunds=new ArrayList<MutualFund>();
@@ -35,12 +35,12 @@ import java.util.List;
 		public void setAllMutualFunds(List<MutualFund> allMutualFunds) {
 			this.allMutualFunds = allMutualFunds;
 		}
-		public Company getCompany() {
+		/*public Company getCompany() {
 			return company;
 		}
 		public void setCompany(Company company) {
 			this.company = company;
-		}
+		}*/
 		public Stock getStock() {
 			return stock;
 		}
@@ -53,10 +53,10 @@ import java.util.List;
 		public void setAllStocks(List<Stock> allStocks) {
 			this.allStocks = allStocks;
 		}
-		public Listing(Company company)
+	/*	public Listing(Company company)
 		{
 			this.company = company;
-		}
+		}*/
 		
 		
 		

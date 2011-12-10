@@ -83,7 +83,7 @@ public abstract class OrderTMAAbstractClass
 			strReturn = "MutualFund";
 			return strReturn;
 		}
-		
+		System.out.println("Checked Type");
 		if(order.getOrderType().equalsIgnoreCase("stock"))
 		{
 			strReturn = "Stock";

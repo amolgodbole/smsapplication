@@ -23,6 +23,11 @@ public class TestFacadeClient {
 	{
 		this.investor = investor;
 	}
+	public TestFacadeClient()
+	{
+		
+	}
+	
 	public void callOperation(){
 		int choice = 0;
 		Portfolio portfolio = new Portfolio(investor);
@@ -66,24 +71,25 @@ public class TestFacadeClient {
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
 		
-		
+		Portfolio portfolio = new Portfolio();
 		  
-		Investor investor = new Investor();
+		/*Investor investor = new Investor();
 		investor.setInvestorID("INV01STK01");
 		investor.setStrFirstName("Kaustubh");
 		investor.setStrLastName("Phadnis");
 		investor.setStrAddress("37 S ,8th Street");
 		investor.setStrState("CA");
 		investor.setStrEmail("kmp@gmail.com");	
-		investor.setnPhone(4089899898L);
-		TestFacadeClient tc = new TestFacadeClient(investor);
+		investor.setnPhone(4089899898L);*/
+		
+		TestFacadeClient tc = new TestFacadeClient();
 		tc.callOperation();
 		
-		InvestorListing allinvestors = new InvestorListing();
+		/*InvestorListing allinvestors = new InvestorListing();
 		List<Investor> thisInvestor = allinvestors.getAllInvestors();
-		thisInvestor.add(investor);
+		thisInvestor.add(investor);*/
 		
-		new InvestorListing().setAllInvestors(thisInvestor);
+		//new InvestorListing().setAllInvestors(thisInvestor);
 				
 	}
 

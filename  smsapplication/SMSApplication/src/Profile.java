@@ -11,8 +11,13 @@ public class Profile {
 	List<Investor> investorList = new ArrayList<Investor>();
 	Investor investor = null;
 	
-	public Profile(Investor investor){
-		this.investor=investor;
+	public Profile(Investor investor)
+	{
+		this.investor = investor;
+	}
+	
+	public Profile()
+	{
 		
 	}
 	

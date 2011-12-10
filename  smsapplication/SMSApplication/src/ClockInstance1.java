@@ -25,7 +25,7 @@ public class ClockInstance1
 	   //System.out.println(dateFormat.format(date));
 	   GregorianCalendar cal1;
 	   
-	   int year = cal1.get(Calendar.YEAR); 
+	  /* int year = cal1.get(Calendar.YEAR); 
 	   int week = cal1.get(Calendar.WEEK_OF_YEAR);
 	   int dayOfMonth = cal1.get(Calendar.DAY_OF_MONTH);
 	   static int time=4;
@@ -35,7 +35,7 @@ public class ClockInstance1
 	   //get current date time with Calendar()
 	   Calendar cal = Calendar.getInstance();
 	   //System.out.println(dateFormat.format(cal.getTime()));
-	
+*/	
 	public ClockInstance1() {
 		// TODO Auto-generated constructor stub
 	}
@@ -48,7 +48,7 @@ public class ClockInstance1
 	
 	public boolean checkTimevalidity()
 	{
-		if (time==9)
+		/*if (time==9)
 		return false;
 		else if(time==4)
 			for (int i=0;i<mutualfundlist1.size();i++)
@@ -56,11 +56,11 @@ public class ClockInstance1
 				MutualFund mf=mutualfundlist1.get(i);
 				mutualfundlist.calculate_NAV(mf);
 				 
-			}
+			}*/
 		
 			
-			//return true;
-		return validity;
+			return true;
+		//return validity;
 		
 		//LOGIC 
 		//am currently hard coding but thread will be monitoring the time

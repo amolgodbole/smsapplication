@@ -11,9 +11,9 @@ public class TestCompanyListing
 		// TODO Auto-generated constructor stub
 	}
 	
-	public TestCompanyListing(Company company) {
+/*	public TestCompanyListing(Company company) {
 		// TODO Auto-generated constructor stub
-	}
+	}*/
 	
 	public void callOperation(){
 		int choice = 0;

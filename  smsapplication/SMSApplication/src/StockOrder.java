@@ -7,7 +7,7 @@ public class StockOrder extends OrderTMAAbstractClass implements StockOrderInter
 	String stockID="";
 	double stockPrice=0;
 	private DeleteStrategy ds;
-	ClockInstance1 clock=new ClockInstance1();
+	//ClockInstance1 clock=new ClockInstance1();
 
 	OrderStateInterface initialized;
 	OrderStateInterface active;
@@ -130,17 +130,9 @@ Calendar cal = Calendar.getInstance();
 System.out.println(dateFormat.format(cal.getTime()));
 		 */
 
-		if(clock.checkTimevalidity())
-		{
-			orderStateInterface = active;
-			orderStateInterface.processActiveOrder(order);
 
-		}
-
-		else if(!clock.checkTimevalidity())
-		{
 			strReturn = orderStateInterface.processInitializedOrder(order);
-		}
+		
 		return stockID;
 
 
