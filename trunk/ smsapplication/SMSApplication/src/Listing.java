@@ -7,7 +7,7 @@ import java.util.List;
 	
 	
 	import java.util.ArrayList;
-	import java.util.List;
+import java.util.List;
 
 
 	public class Listing {
@@ -23,6 +23,13 @@ import java.util.List;
 		//Default Constructor
 		public Listing()
 		{
+			Stock stock1 = new Stock();
+			
+			stock1.setdStockPrice(400.67d);
+			stock1.setNumberOfStocks(10);
+			stock1.setStockid("C01");
+			stock1.setStockname("Apple");
+			allStocks.add(stock1);
 		}
 		
 
