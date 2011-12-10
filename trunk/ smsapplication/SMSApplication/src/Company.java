@@ -17,10 +17,10 @@ public class Company
 	}
 	
 	
-	public static void main(String args[])
+/*	public static void main(String args[])
 	{
 		Company apple=new Company();
 		System.out.println(""+apple.strCompanyID + ":" + apple.strCompanyName +":" +apple.strAddress + ":" +apple.strState +":" +apple.strStockID);
-	}
+	}*/
 	
 }
