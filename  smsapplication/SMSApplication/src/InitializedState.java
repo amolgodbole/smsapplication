@@ -6,29 +6,19 @@ import java.util.List;
 public class InitializedState implements OrderStateInterface
 {
 	private StockOrderInterface stockOrderInterface;
+	
 	List<OrderBean> initializedOrders = new ArrayList<OrderBean>();
 	List<Stock> allStocks = new Listing().getAllStocks();
 	Stock stock = null;
 	
-	BuyQueue buyQueue = new BuyQueue();
-	SellQueue sellQueue = new SellQueue();
 	ClockInstance1 clock=new ClockInstance1();
 	
-	 InitializedState(StockOrderInterface stockOrder)
+	 InitializedState(StockOrderInterface stockOrderInterface)
 	{
-		stockOrderInterface = stockOrder;
+		this.stockOrderInterface = stockOrderInterface;
 	}
 		
-		/*public String processOrder(OrderBean order) {
-			// TODO Auto-generated method stub
-			System.out.println("Order Initialized !!");
-			stockOrderInterface.setState(stockOrderInterface.getActiveState());
-			//st.setState(st.getActiveState());
-			System.out.println("Process Order ");
-			return "Order Initialized";
-		}*/
-	
-	
+
 		public InitializedState() {
 		// TODO Auto-generated constructor stub
 	}
@@ -128,5 +118,14 @@ public class InitializedState implements OrderStateInterface
 			
 		};
 
+		
+		/*public String processOrder(OrderBean order) {
+		// TODO Auto-generated method stub
+		System.out.println("Order Initialized !!");
+		stockOrderInterface.setState(stockOrderInterface.getActiveState());
+		//st.setState(st.getActiveState());
+		System.out.println("Process Order ");
+		return "Order Initialized";
+	}*/
 	
 }
