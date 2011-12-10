@@ -17,6 +17,7 @@ public class ClockInstance1
 	 Date date = new Date();
 	 dateFormat.
 	 System.out.println(.f);*/
+	 MutualFundOrder mutualfundlist=new MutualFundOrder();
 	 
 	 DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 	   //get current date time with Date()
@@ -28,7 +29,7 @@ public class ClockInstance1
 	   int week = cal1.get(Calendar.WEEK_OF_YEAR);
 	   int dayOfMonth = cal1.get(Calendar.DAY_OF_MONTH);
 	   static int time=4;
-	   
+	   List<MutualFund> mutualfundlist1=new ArrayList<MutualFund>();
 	   
 
 	   //get current date time with Calendar()
@@ -50,8 +51,15 @@ public class ClockInstance1
 		if (time==9)
 		return false;
 		else if(time==4)
+			for (int i=0;i<mutualfundlist1.size();i++)
+			{
+				MutualFund mf=mutualfundlist1.get(i);
+				mutualfundlist.calculate_NAV(mf);
+				 
+			}
+		
 			
-			return true;
+			//return true;
 		return validity;
 		
 		//LOGIC 
@@ -61,7 +69,7 @@ public class ClockInstance1
 	boolean validity = true;
 	
 	InitializedState initializedState = new InitializedState();
-	//initializedState.processChangeStateAtValidTime(validity);
+	
 	
 
 }
