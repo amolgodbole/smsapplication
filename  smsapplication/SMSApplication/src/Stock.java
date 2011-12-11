@@ -36,25 +36,7 @@ public  class Stock //extends Listing
 
 	public Stock() 
 	{
-		OrderBean order = new OrderBean();
-		order.setStrOrderID("O0000002");
-		order.setPartialOrderFlag(true);
-		order.setOrderType("STOCK");
-		order.setInvestorID("");
-		order.setOrderProcessType("Sell_Orders");
-		order.setAskAmount(450.22);
-		order.setNoOfStocks(10);
-		order.setStockID("C01");
 		
-		Stock stock = new Stock();
-		stock.setdStockPrice(400);
-		stock.setNumberOfStocks(10);
-		stock.setStockid("C01");
-		stock.setStockname("Apple");
-		
-		order.setStock(stock);
-
-		sellQueue.put(450.22, order);
 	}
 
 	/*

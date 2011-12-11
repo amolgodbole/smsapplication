@@ -2,11 +2,12 @@
 public interface OrderStateInterface {
 
 	
-	String processInitializedOrder(OrderBean order);
-	String processActiveOrder(OrderBean order);
-	String processDeletedOrder(OrderBean order);
-	String processCompletedOrder(OrderBean order);
+	public String processInitializedOrder(OrderBean order);
+	public String processActiveOrder(OrderBean order);
+	public String processDeletedOrder(OrderBean order);
+	public String processCompletedOrder(OrderBean order);
 	void updateResult();
+	public String processOrder(OrderBean order);
 
 
 

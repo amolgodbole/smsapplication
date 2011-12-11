@@ -46,7 +46,7 @@ public class Order
 		investor.orderList.add(order);
 		
 		
-		System.out.println("*************" +investor.getInvestorID());
+		System.out.println("*************" +this.investor.getInvestorID());
 		System.out.println("Order places is : " +order.getStrOrderID());
 		System.out.println("Checking order type");
 		if(order.getOrderType().equalsIgnoreCase("STOCK")){
