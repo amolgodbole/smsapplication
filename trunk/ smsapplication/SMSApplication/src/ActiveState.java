@@ -79,7 +79,9 @@ public class ActiveState extends Thread implements OrderStateInterface
 		
 	}
 	
-	
+	public void run(){
+		processMatching();
+	}
 	public void processMatching()
 	{
 		
@@ -101,10 +103,6 @@ public class ActiveState extends Thread implements OrderStateInterface
 				SortedMap<Double, OrderBean> buyQueue = _stock.getBuyQueue();
 				SortedMap<Double, OrderBean> sellQueue = _stock.getSellQueue();
 
-				//Iterator iterator = map.keySet().iterator();
-
-
-
 				/*
 				 *  Match the stock prices of last Order in Buy Queue and 1st Order in Sell Queue;
 				 *   As the orders are arranged by default in ascending order we need to match the max value from buyer and least value from seller.
@@ -124,7 +122,6 @@ public class ActiveState extends Thread implements OrderStateInterface
 					 * Get the orders in both queues where the price of bid = ask
 					 */
 					OrderBean buyStockOrder = buyQueue.get(buyStockPrice);
-					
 					OrderBean sellStockOrder = sellQueue.get(sellStockPrice);
 
 					/*
@@ -136,55 +133,55 @@ public class ActiveState extends Thread implements OrderStateInterface
 					System.out.println("Number of Stocks in buy queue: "+noOfStocksInBuyQueue);
 					System.out.println("Number of Stocks in sell queue: "+noOfStocksInSellQueue);
 
-					// WHEN STOCKS IN BOTH QUEUES ARE EQUAL
+					String buyOrderInvestorId = buyStockOrder.getInvestorID();
+					String sellOrderInvestorId = sellStockOrder.getInvestorID();		
+					System.out.println("Buy Order Investor ID: "+buyOrderInvestorId);
+					System.out.println("Sell Order Investor ID: "+sellOrderInvestorId);
 
+					InvestorListing allInvestorList = InvestorListing.getinstance();
+					List<Investor> investorList = allInvestorList.getAllInvestors();
+
+					Iterator<Investor> investorIterator = investorList.iterator();
+
+					// GET BUYER
+					while(investorIterator.hasNext())
+					{
+						Investor buyerCheck = investorIterator.next();
+						System.out.println("BuyerCheck Investor ID: "+buyerCheck.getInvestorID());
+						System.out.println("Buy order Investor Id: "+buyOrderInvestorId);
+						if(buyerCheck.getInvestorID().equalsIgnoreCase(buyOrderInvestorId))
+						{
+							buyer = buyerCheck;
+							System.out.println("BuyerSet! :"+buyer.getInvestorID());
+						}
+						
+
+					}
+
+					// GET SELLER
+					System.out.println("Get the seller ..");
+					InvestorListing allInvestorList1 = InvestorListing.getinstance();
+					List<Investor> investorList1 = allInvestorList1.getAllInvestors();
+					Iterator<Investor> investorIterator1 = investorList1.iterator();
+					while(investorIterator1.hasNext())
+					{
+						Investor sellerCheck = investorIterator1.next();
+						System.out.println("SellerCheck Investor ID: "+sellerCheck.getInvestorID());
+						System.out.println("Sell order Investor Id: "+sellOrderInvestorId);
+						if(sellerCheck.getInvestorID().equalsIgnoreCase(sellOrderInvestorId))
+						{
+							seller = sellerCheck;
+							System.out.println("Seller Set! : "+seller.getInvestorID());
+						}
+
+					}
+
+					
+					// WHEN STOCKS IN BOTH QUEUES ARE EQUAL
 					if(noOfStocksInBuyQueue == noOfStocksInSellQueue)
 					{
 						System.out.println("Enterred Complete Order match !!");
-						String buyOrderInvestorId = buyStockOrder.getInvestorID();
-						String sellOrderInvestorId = sellStockOrder.getInvestorID();
 						
-						System.out.println("Buy Order Investor ID: "+buyOrderInvestorId);
-						System.out.println("Sell Order Investor ID: "+sellOrderInvestorId);
-
-						InvestorListing allInvestorList = InvestorListing.getinstance();
-						List<Investor> investorList = allInvestorList.getAllInvestors();
-
-						Iterator<Investor> investorIterator = investorList.iterator();
-
-						// GET BUYER
-						while(investorIterator.hasNext())
-						{
-							Investor buyerCheck = investorIterator.next();
-							System.out.println("BuyerCheck Investor ID: "+buyerCheck.getInvestorID());
-							System.out.println("Buy order Investor Id: "+buyOrderInvestorId);
-							if(buyerCheck.getInvestorID().equalsIgnoreCase(buyOrderInvestorId))
-							{
-								buyer = buyerCheck;
-								System.out.println("BuyerSet! :"+buyer.getInvestorID());
-							}
-							
-
-						}
-
-						// GET SELLER
-						System.out.println("Get the seller ..");
-						InvestorListing allInvestorList1 = InvestorListing.getinstance();
-						List<Investor> investorList1 = allInvestorList1.getAllInvestors();
-						Iterator<Investor> investorIterator1 = investorList1.iterator();
-						while(investorIterator1.hasNext())
-						{
-							Investor sellerCheck = investorIterator1.next();
-							System.out.println("SellerCheck Investor ID: "+sellerCheck.getInvestorID());
-							System.out.println("Sell order Investor Id: "+sellOrderInvestorId);
-							if(sellerCheck.getInvestorID().equalsIgnoreCase(sellOrderInvestorId))
-							{
-								seller = sellerCheck;
-								System.out.println("Seller Set! : "+seller.getInvestorID());
-							}
-
-						}
-
 						//ECHANGE STOCKS
 						//getting the stock from the seller and setting it in buyer's account
 						Stock buyerStock = sellStockOrder.getStock();
@@ -220,53 +217,7 @@ public class ActiveState extends Thread implements OrderStateInterface
 
 					if(noOfStocksInBuyQueue < noOfStocksInSellQueue)
 					{
-						String buyOrderInvestorId = buyStockOrder.getInvestorID();
-						String sellOrderInvestorId = sellStockOrder.getInvestorID();
-
-						InvestorListing allInvestorList = InvestorListing.getinstance();
-						List<Investor> investorList = allInvestorList.getAllInvestors(); 
-
-						Iterator<Investor> investorIterator = investorList.iterator();
-						//Change the no of stocks in seller Queue
-
-						noOfStocksInSellQueue = noOfStocksInSellQueue - noOfStocksInBuyQueue;
-
-						// GET BUYER
-						while(investorIterator.hasNext())
-						{
-							Investor buyerCheck = investorIterator.next();
-							if(buyerCheck.getInvestorID().equalsIgnoreCase(buyOrderInvestorId))
-							{
-								buyer = buyerCheck;
-							}
-
-
-						}
-
-						// GET SELLER
-
-						while(investorIterator.hasNext())
-						{
-							Investor sellerCheck = investorIterator.next();
-							if(sellerCheck.getInvestorID().equalsIgnoreCase(sellOrderInvestorId))
-							{
-								seller = sellerCheck;
-							}
-
-						}
-						List<Stock> stocksInInvestorAccount = seller.getStocks();
-						Iterator<Stock> sellerStockIterator = stocksInInvestorAccount.iterator();
-
-						while(sellerStockIterator.hasNext())
-						{
-							Stock getStock = sellerStockIterator.next();
-							if(_stock.equals(getStock))
-							{
-								getStock.setNumberOfStocks(noOfStocksInSellQueue);
-							}
-
-
-						}
+						
 						//ECHANGE STOCKS
 						//getting the stock from the seller and setting it in buyer's account
 						Stock buyerStock = buyStockOrder.getStock();
@@ -303,52 +254,7 @@ public class ActiveState extends Thread implements OrderStateInterface
 
 					if(noOfStocksInBuyQueue > noOfStocksInSellQueue)
 					{
-						String sellOrderInvestorId = sellStockOrder.getInvestorID();
-						String buyOrderInvestorId = buyStockOrder.getInvestorID();
-
-						InvestorListing allInvestorList = InvestorListing.getinstance();
-						List<Investor> investorList = allInvestorList.getAllInvestors(); 
-
-						Iterator<Investor> investorIterator = investorList.iterator();
-
-						noOfStocksInBuyQueue = noOfStocksInBuyQueue - noOfStocksInSellQueue;
-
-						// GET BUYER
-						while(investorIterator.hasNext())
-						{
-							Investor buyerCheck = investorIterator.next();
-							if(buyerCheck.getInvestorID().equalsIgnoreCase(buyOrderInvestorId))
-							{
-								buyer = buyerCheck;
-							}
-
-
-						}
-
-						// GET SELLER
-
-						while(investorIterator.hasNext())
-						{
-							Investor sellerCheck = investorIterator.next();
-							if(sellerCheck.getInvestorID().equalsIgnoreCase(sellOrderInvestorId))
-							{
-								seller = sellerCheck;
-							}
-
-						}
-						List<Stock> stocksInInvestorAccount = buyer.getStocks();
-						Iterator<Stock> buyerStockIterator = stocksInInvestorAccount.iterator();
-
-						while(buyerStockIterator.hasNext())
-						{
-							Stock getStock = buyerStockIterator.next();
-							if(_stock.equals(getStock))
-							{
-								getStock.setNumberOfStocks(noOfStocksInBuyQueue);
-							}
-
-
-						}
+						
 						//ECHANGE STOCKS
 						//getting the stock from the seller and setting it in buyer's account
 						Stock sellerStock = sellStockOrder.getStock();
