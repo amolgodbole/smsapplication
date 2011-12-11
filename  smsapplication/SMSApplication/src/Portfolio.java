@@ -90,6 +90,7 @@ public class Portfolio {
 		investor.setStrState("CA");
 		investor.setStrEmail("kmp@gmail.com");	
 		investor.setnPhone(4089899898L);
+		investor.setAmountInAccount(10000.00d);
 		
 		Investor investor1 = new Investor();
 		investor1.setInvestorID("INV000002");
@@ -99,6 +100,7 @@ public class Portfolio {
 		investor1.setStrState("CA");
 		investor1.setStrEmail("amol.godbole@hotmail.com");	
 		investor1.setnPhone(408123456L);
+		investor1.setAmountInAccount(10000.00d);
 		
 		Investor investor2 = new Investor();
 		investor2.setInvestorID("INV000003");
@@ -108,6 +110,7 @@ public class Portfolio {
 		investor2.setStrState("CA");
 		investor2.setStrEmail("ak@hotmail.com");	
 		investor2.setnPhone(408123456L);
+		investor2.setAmountInAccount(10000.00d);
 		
 		InvestorListing allinvestors = InvestorListing.getinstance();
 		List<Investor> thisInvestor = allinvestors.getAllInvestors();
