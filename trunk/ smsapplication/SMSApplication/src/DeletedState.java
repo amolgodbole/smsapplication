@@ -79,5 +79,10 @@ public class DeletedState implements OrderStateInterface
 	public String processCompletedOrder(OrderBean order) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	@Override
+	public String processOrder(OrderBean order) {
+		// TODO Auto-generated method stub
+		return null;
 	};
 }

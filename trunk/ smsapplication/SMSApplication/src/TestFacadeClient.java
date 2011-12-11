@@ -58,8 +58,8 @@ public class TestFacadeClient {
 						portfolio.processRequestType(choice);
 					}
 					if(option.equals("4")) break;
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
+				} catch (IOException e) 
+				{
 					e.printStackTrace();
 					
 				}
@@ -73,14 +73,27 @@ public class TestFacadeClient {
 		
 		Portfolio portfolio = new Portfolio();
 		  
-		/*Investor investor = new Investor();
-		investor.setInvestorID("INV01STK01");
-		investor.setStrFirstName("Kaustubh");
-		investor.setStrLastName("Phadnis");
-		investor.setStrAddress("37 S ,8th Street");
-		investor.setStrState("CA");
-		investor.setStrEmail("kmp@gmail.com");	
-		investor.setnPhone(4089899898L);*/
+		
+		
+		OrderBean order = new OrderBean();
+		order.setStrOrderID("O0000002");
+		order.setPartialOrderFlag(true);
+		order.setOrderType("STOCK");
+		order.setInvestorID("");
+		order.setOrderProcessType("Sell_Orders");
+		order.setAskAmount(450.22);
+		order.setNoOfStocks(10);
+		order.setStockID("C01");
+		
+		Stock stock = new Stock();
+		stock.setdStockPrice(400);
+		stock.setNumberOfStocks(10);
+		stock.setStockid("C01");
+		stock.setStockname("Apple");
+		
+		order.setStock(stock);
+
+		new Stock().sellQueue.put(450.22, order);
 		
 		TestFacadeClient tc = new TestFacadeClient();
 		tc.callOperation();

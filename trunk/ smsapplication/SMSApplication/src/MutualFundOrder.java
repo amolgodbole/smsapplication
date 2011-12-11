@@ -40,7 +40,7 @@ public class MutualFundOrder extends  OrderTMAAbstractClass
 				
 				String buyOrderInvestorId = mfOrder.getInvestorID();
 				
-				InvestorListing allInvestorList = new InvestorListing();
+				InvestorListing allInvestorList = InvestorListing.getinstance();
 				  List<Investor> investorList = allInvestorList.getAllInvestors();
 				  
 				  Iterator<Investor> investorIterator = investorList.iterator();

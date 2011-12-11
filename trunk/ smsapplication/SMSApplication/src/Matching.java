@@ -1,8 +1,6 @@
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.SortedMap;
-import java.util.TreeMap;
 
 
 public class Matching implements ActiveStatesInterface, Runnable	
@@ -17,16 +15,17 @@ public class Matching implements ActiveStatesInterface, Runnable
 
 
 	@Override
-	public String processMatching() {
+	public String processMatching() 
+	{
 		return null;
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public String updateResult() {
+	public String updateResult() 
+	{
 		return null;
-		// TODO Auto-generated method stub
+
 		
 	}
 
@@ -41,14 +40,10 @@ public class Matching implements ActiveStatesInterface, Runnable
 		boolean timeCheck = false;
 		
 		
-		Listing stockListing = new Listing();
+		Listing stockListing = Listing.getInstance();
 		List<Stock> allListedStocks = stockListing.getAllStocks();
 		Investor buyer = null;
 		Investor seller  = null;
-		
-		int noOfStocks = allListedStocks.size();
-		
-		//SortedMap<Double, OrderBean> map = new TreeMap<Double, OrderBean>();
 		
 		//THREAD
 		if(new ClockInstance1().checkTimevalidity())
@@ -93,7 +88,7 @@ public class Matching implements ActiveStatesInterface, Runnable
 						  String buyOrderInvestorId = buyStockOrder.getInvestorID();
 						  String sellOrderInvestorId = sellStockOrder.getInvestorID();
 						  
-						  InvestorListing allInvestorList = new InvestorListing();
+						  InvestorListing allInvestorList = InvestorListing.getinstance();
 						  List<Investor> investorList = allInvestorList.getAllInvestors();
 						  
 						  Iterator<Investor> investorIterator = investorList.iterator();
@@ -149,7 +144,7 @@ public class Matching implements ActiveStatesInterface, Runnable
 						  String buyOrderInvestorId = buyStockOrder.getInvestorID();
 						  String sellOrderInvestorId = sellStockOrder.getInvestorID();
 						  
-						  InvestorListing allInvestorList = new InvestorListing();
+						  InvestorListing allInvestorList = InvestorListing.getinstance();
 						  List<Investor> investorList = allInvestorList.getAllInvestors(); 
 						  
 						  Iterator<Investor> investorIterator = investorList.iterator();
@@ -231,8 +226,7 @@ public class Matching implements ActiveStatesInterface, Runnable
 						  String sellOrderInvestorId = sellStockOrder.getInvestorID();
 						  String buyOrderInvestorId = buyStockOrder.getInvestorID();
 						  
-						  String buyOrderId = buyStockOrder.getStrOrderID(); 
-						  InvestorListing allInvestorList = new InvestorListing();
+						  InvestorListing allInvestorList = InvestorListing.getinstance();
 						  List<Investor> investorList = allInvestorList.getAllInvestors(); 
 						  
 						  Iterator<Investor> investorIterator = investorList.iterator();
@@ -322,24 +316,24 @@ public class Matching implements ActiveStatesInterface, Runnable
 
 	@Override
 	public String processWaitingOrder(OrderBean order,
-			StockOrderInterface stockOrderInterface) {
-		// TODO Auto-generated method stub
+			StockOrderInterface stockOrderInterface) 
+	{
 		return null;
 	}
 
 
 
 	@Override
-	public String processMatchedOrder(OrderBean order,StockOrderInterface stockOrder) {
-		// TODO Auto-generated method stub
+	public String processMatchedOrder(OrderBean order,StockOrderInterface stockOrder) 
+	{
 		return null;
 	}
 
 
 
 	@Override
-	public void run() {
-		// TODO Auto-generated method stub
+	public void run() 
+	{
 		
 	}
 

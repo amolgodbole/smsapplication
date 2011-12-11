@@ -82,57 +82,13 @@ public class StockOrder extends OrderTMAAbstractClass implements StockOrderInter
 		orderStateInterface = state;
 	}
 
-	@SuppressWarnings("deprecation")
 	@Override
 	public String processOrder(OrderBean order)
 	{
 		String strReturn="false";
-		/*Time time = new Time(System.currentTimeMillis());
-time.getHours();*/
-		//NEED TO IMPLEMENT DYNAMIC TIME USING FORMAT
 
+		orderStateInterface.processOrder(order);
 
-		/*
-		 * DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-//get current date time with Date()
-Date date = new Date();
-System.out.println(dateFormat.format(date));
-=======
-		@SuppressWarnings("deprecation")
-		@Override
-		public String processOrder(OrderBean order) 
-		{
-			System.out.println("In stock order");
-			String strReturn="false";
-
-
-			if(ClockInstance1.checkTimevalidity())
-			{
-				System.out.println("Checking time validity of order");
-				orderStateInterface = active;
-				orderStateInterface.processActiveOrder(order);
-
-			}
-
-			else if(! ClockInstance1.checkTimevalidity())
-			{
-				strReturn = orderStateInterface.processInitializedOrder(order);
-			}
-			return stockID;
-
-
-
-		}
->>>>>>> .r68
-
-//get current date time with Calendar()
-Calendar cal = Calendar.getInstance();
-System.out.println(dateFormat.format(cal.getTime()));
-		 */
-
-
-			strReturn = orderStateInterface.processInitializedOrder(order);
-		
 		return stockID;
 
 
@@ -142,10 +98,9 @@ System.out.println(dateFormat.format(cal.getTime()));
 
 
 
-	@Override
 	public void processActiveOrder(OrderBean order) {
 		orderStateInterface.processActiveOrder(order);
-		
+
 	}
 
 

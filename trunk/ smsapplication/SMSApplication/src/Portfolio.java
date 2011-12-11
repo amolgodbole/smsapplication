@@ -46,25 +46,25 @@ public class Portfolio {
 		investor2.setStrEmail("ak@hotmail.com");	
 		investor2.setnPhone(408123456L);
 		
-		InvestorListing allinvestors = new InvestorListing();
+		InvestorListing allinvestors = InvestorListing.getinstance();;
 		List<Investor> thisInvestor = allinvestors.getAllInvestors();
 		thisInvestor.add(investor);
 		thisInvestor.add(investor1);
 		thisInvestor.add(investor2);
 		
 		
-		new InvestorListing().setAllInvestors(thisInvestor);
+		InvestorListing.getinstance().setAllInvestors(thisInvestor);
 		
 		
-		if(requestType==1)profile.testprofile(investor);
+		if(requestType==1)profile.testprofile(investor1);
 		
-		if(requestType==2)account.accountOperations(investor);
+		if(requestType==2)account.accountOperations(investor1);
 		
 		if(requestType==3) {
 			System.out.println("In Portfolio");
 			//this.order = new Order(investor);
 			//order.orderOperation();
-			new Order().orderOperation();
+			new Order(investor1).orderOperation();
 		}
 	}
 	
@@ -99,23 +99,24 @@ public class Portfolio {
 		investor2.setStrEmail("ak@hotmail.com");	
 		investor2.setnPhone(408123456L);
 		
-		InvestorListing allinvestors = new InvestorListing();
+		InvestorListing allinvestors = InvestorListing.getinstance();
 		List<Investor> thisInvestor = allinvestors.getAllInvestors();
 		thisInvestor.add(investor);
 		thisInvestor.add(investor1);
 		thisInvestor.add(investor2);
 		
 		
-		new InvestorListing().setAllInvestors(thisInvestor);
-		if(requestType==1)profile.testprofile(investor);
+		InvestorListing.getinstance().setAllInvestors(thisInvestor);
 		
-		if(requestType==2)account.accountOperations(investor);
+		if(requestType==1)profile.testprofile(investor1);
+		
+		if(requestType==2)account.accountOperations(investor1);
 		
 		if(requestType==3) {
 			System.out.println("In Portfolio");
 			//this.order = new Order(investor);
 			//order.orderOperation();
-			new Order().orderOperation();
+			new Order(investor1).orderOperation();
 		}
 	};
 }
