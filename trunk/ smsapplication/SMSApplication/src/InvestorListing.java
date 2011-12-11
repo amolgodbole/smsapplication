@@ -11,7 +11,6 @@ public class InvestorListing
 
 	private InvestorListing() 
 	{
-
 	}
 
 	public List<Investor> getAllInvestors() {
@@ -29,6 +28,11 @@ public class InvestorListing
 			instance = new InvestorListing();
 		}
 		return instance;
+	}
+	
+	public void addInvestor(Investor investor)
+	{
+		allInvestors.add(investor);
 	}
 	
 	

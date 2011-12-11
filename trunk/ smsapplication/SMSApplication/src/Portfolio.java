@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 
@@ -47,13 +49,18 @@ public class Portfolio {
 		investor2.setnPhone(408123456L);
 		
 		InvestorListing allinvestors = InvestorListing.getinstance();;
-		List<Investor> thisInvestor = allinvestors.getAllInvestors();
+		List<Investor> thisInvestor = new ArrayList<Investor>();
 		thisInvestor.add(investor);
 		thisInvestor.add(investor1);
+		//InvestorListing.getinstance().addInvestor(investor1);
 		thisInvestor.add(investor2);
 		
+		int size = thisInvestor.size();
 		
-		InvestorListing.getinstance().setAllInvestors(thisInvestor);
+		System.out.println("Size of Investor Array: "+size);
+		
+		
+		allinvestors.setAllInvestors(thisInvestor);
 		
 		
 		if(requestType==1)profile.testprofile(investor1);
@@ -104,9 +111,19 @@ public class Portfolio {
 		thisInvestor.add(investor);
 		thisInvestor.add(investor1);
 		thisInvestor.add(investor2);
+		int size = thisInvestor.size();
+		
+		System.out.println("Size of Investor Array: "+size);
 		
 		
-		InvestorListing.getinstance().setAllInvestors(thisInvestor);
+		allinvestors.setAllInvestors(thisInvestor);
+		
+		InvestorListing thisInvestorList = InvestorListing.getinstance();
+		List<Investor> adk = thisInvestorList.getAllInvestors();
+		int siz = adk.size();
+		System.out.println("Global List size: "+siz);
+		
+		//allinvestors.setAllInvestors(thisInvestor);
 		
 		if(requestType==1)profile.testprofile(investor1);
 		
