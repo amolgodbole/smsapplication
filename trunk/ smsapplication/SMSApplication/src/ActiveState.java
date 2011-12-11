@@ -418,15 +418,18 @@ public class ActiveState extends Thread implements OrderStateInterface
 							{
 								buyer = buyerCheck;
 							}
-
+							System.out.println("BuyerSet! ");
 
 						}
 
 						// GET SELLER
+						System.out.println("Get the seller ..");
 
 						while(investorIterator.hasNext())
 						{
 							Investor sellerCheck = investorIterator.next();
+							System.out.println("SellerCheck Investor ID: "+sellerCheck.getInvestorID());
+							System.out.println("Sell order Investor Id: "+sellOrderInvestorId);
 							if(sellerCheck.getInvestorID().equalsIgnoreCase(sellOrderInvestorId))
 							{
 								seller = sellerCheck;
@@ -449,7 +452,6 @@ public class ActiveState extends Thread implements OrderStateInterface
 
 						buyer.amountInAccount = buyer.amountInAccount - (sellerStock.getdStockPrice() * sellStockOrder.noOfStocks);
 						seller.amountInAccount = seller.amountInAccount + (buyerStock.getdStockPrice() * buyStockOrder.noOfStocks);
-
 
 
 					}
