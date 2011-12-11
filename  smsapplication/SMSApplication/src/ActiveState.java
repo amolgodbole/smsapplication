@@ -381,6 +381,7 @@ public class ActiveState extends Thread implements OrderStateInterface
 					 * Get the orders in both queues where the price of bid = ask
 					 */
 					OrderBean buyStockOrder = buyQueue.get(buyStockPrice);
+					
 					OrderBean sellStockOrder = sellQueue.get(sellStockPrice);
 
 					/*
@@ -403,7 +404,7 @@ public class ActiveState extends Thread implements OrderStateInterface
 						System.out.println("Buy Order Investor ID: "+buyOrderInvestorId);
 						System.out.println("Sell Order Investor ID: "+sellOrderInvestorId);
 
-						InvestorListing allInvestorList = InvestorListing.getinstance();;
+						InvestorListing allInvestorList = InvestorListing.getinstance();
 						List<Investor> investorList = allInvestorList.getAllInvestors();
 
 						Iterator<Investor> investorIterator = investorList.iterator();
@@ -425,15 +426,18 @@ public class ActiveState extends Thread implements OrderStateInterface
 
 						// GET SELLER
 						System.out.println("Get the seller ..");
-
-						while(investorIterator.hasNext())
+						InvestorListing allInvestorList1 = InvestorListing.getinstance();
+						List<Investor> investorList1 = allInvestorList1.getAllInvestors();
+						Iterator<Investor> investorIterator1 = investorList1.iterator();
+						while(investorIterator1.hasNext())
 						{
-							Investor sellerCheck = investorIterator.next();
+							Investor sellerCheck = investorIterator1.next();
 							System.out.println("SellerCheck Investor ID: "+sellerCheck.getInvestorID());
 							System.out.println("Sell order Investor Id: "+sellOrderInvestorId);
 							if(sellerCheck.getInvestorID().equalsIgnoreCase(sellOrderInvestorId))
 							{
 								seller = sellerCheck;
+								System.out.println("Seller Set! : "+seller.getInvestorID());
 							}
 
 						}
@@ -447,13 +451,20 @@ public class ActiveState extends Thread implements OrderStateInterface
 
 						Stock sellerStock = sellStockOrder.getStock();
 						seller.stocks.remove(sellerStock);
-						System.out.println("Seller stocks removed");
+						System.out.println("Seller stocks sold");
 
 						//EXCHANGE AMOUNT : Setting the value of amount from the order and not from Stock as we take the stock order value: ASK/BID amount
 
 						buyer.amountInAccount = buyer.amountInAccount - (sellerStock.getdStockPrice() * sellStockOrder.noOfStocks);
 						seller.amountInAccount = seller.amountInAccount + (buyerStock.getdStockPrice() * buyStockOrder.noOfStocks);
-
+						
+						System.out.println("Amount in buyer acount " +buyer.amountInAccount);
+						System.out.println("Amount in Sellers acount " +seller.amountInAccount);
+						
+						_stock.buyQueue.remove(buyQueue.lastKey());
+						System.out.println("Stock Removed from Buy Queue !");
+						_stock.sellQueue.remove(sellQueue.firstKey());
+						System.out.println("Stock Removed from Sell Queue !");
 
 					}
 
