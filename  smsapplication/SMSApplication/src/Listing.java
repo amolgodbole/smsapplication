@@ -24,7 +24,8 @@ public class Listing
 		allStocks.add(stock1);*/
 		
 		InvestorListing invList = InvestorListing.getinstance();
-		List<Investor> allInvestors = new ArrayList<Investor>();
+		List<Investor> allInvestors = invList.getAllInvestors();
+		//List<Investor> allInvestors = new ArrayList<Investor>();
 		SortedMap<Double, OrderBean> buyQueue = new TreeMap<Double, OrderBean>();
 		SortedMap<Double, OrderBean> sellQueue = new TreeMap<Double, OrderBean>();
 		Stock stock1 = new Stock();
@@ -87,6 +88,17 @@ public class Listing
 		
 		sellQueue.put(d, order1);
 		stock1.setSellQueue(sellQueue);	
+		
+		/*Investor investor2 = new Investor();
+		investor2.setInvestorID("INV000002");
+		investor2.setStrFirstName("Amol");
+		investor2.setStrLastName("Godbole");
+		investor2.setStrAddress("201, S 4th Street, San Jose");
+		investor2.setStrState("CA");
+		investor2.setStrEmail("amol.godbole@hotmail.com");	
+		investor2.setnPhone(408123456L);
+		
+		allInvestors.add(investor2);*/
 		
 		invList.setAllInvestors(allInvestors);
 		allStocks.add(stock1);
