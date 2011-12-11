@@ -417,8 +417,9 @@ public class ActiveState extends Thread implements OrderStateInterface
 							if(buyerCheck.getInvestorID().equalsIgnoreCase(buyOrderInvestorId))
 							{
 								buyer = buyerCheck;
+								System.out.println("BuyerSet! :"+buyer.getInvestorID());
 							}
-							System.out.println("BuyerSet! ");
+							
 
 						}
 
