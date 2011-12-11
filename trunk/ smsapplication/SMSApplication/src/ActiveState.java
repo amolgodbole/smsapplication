@@ -454,7 +454,8 @@ public class ActiveState extends Thread implements OrderStateInterface
 						System.out.println("Seller stocks sold");
 
 						//EXCHANGE AMOUNT : Setting the value of amount from the order and not from Stock as we take the stock order value: ASK/BID amount
-
+						System.out.println(" Buyer Initial Amount In Account:"+buyer.amountInAccount);
+						System.out.println("Number of Stocks in Seller Order: "+sellStockOrder.noOfStocks);
 						buyer.amountInAccount = buyer.amountInAccount - (sellerStock.getdStockPrice() * sellStockOrder.noOfStocks);
 						seller.amountInAccount = seller.amountInAccount + (buyerStock.getdStockPrice() * buyStockOrder.noOfStocks);
 						
@@ -532,6 +533,7 @@ public class ActiveState extends Thread implements OrderStateInterface
 
 						//EXCHANGE AMOUNT : Setting the value of amount from the order and not from Stock as we take the stock order value: ASK/BID amount
 
+						System.out.println(" Buyer Initial Amount In Account:"+buyer.amountInAccount);
 						buyer.amountInAccount = buyer.amountInAccount - (buyerStock.getdStockPrice() * buyStockOrder.noOfStocks);
 						seller.amountInAccount = seller.amountInAccount + (buyerStock.getdStockPrice() * buyStockOrder.noOfStocks);
 

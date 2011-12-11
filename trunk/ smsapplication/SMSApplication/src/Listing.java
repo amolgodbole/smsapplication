@@ -42,6 +42,7 @@ public class Listing
 		investor.setStrState("CA");
 		investor.setStrEmail("kmp@gmail.com");	
 		investor.setnPhone(4089899898L);
+		investor.setAmountInAccount(10000.00d);
 		
 		OrderBean order = new OrderBean();
 		List<OrderBean> orderList=new ArrayList<OrderBean>();
@@ -69,6 +70,7 @@ public class Listing
 		investor1.setStrState("CA");
 		investor1.setStrEmail("kmp@gmail.com");	
 		investor1.setnPhone(4089899898L);
+		investor1.setAmountInAccount(10000.00d);
 		
 		OrderBean order1 = new OrderBean();
 		List<OrderBean> orderList1=new ArrayList<OrderBean>();
