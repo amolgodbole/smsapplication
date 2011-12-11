@@ -101,6 +101,8 @@ public class ActiveState extends Thread implements OrderStateInterface
 					{
 						String buyOrderInvestorId = buyStockOrder.getInvestorID();
 						String sellOrderInvestorId = sellStockOrder.getInvestorID();
+						
+						
 
 						InvestorListing allInvestorList = InvestorListing.getinstance();;
 						List<Investor> investorList = allInvestorList.getAllInvestors();
@@ -397,6 +399,9 @@ public class ActiveState extends Thread implements OrderStateInterface
 						System.out.println("Enterred Complete Order match !!");
 						String buyOrderInvestorId = buyStockOrder.getInvestorID();
 						String sellOrderInvestorId = sellStockOrder.getInvestorID();
+						
+						System.out.println("Buy Order Investor ID: "+buyOrderInvestorId);
+						System.out.println("Sell Order Investor ID: "+sellOrderInvestorId);
 
 						InvestorListing allInvestorList = InvestorListing.getinstance();;
 						List<Investor> investorList = allInvestorList.getAllInvestors();
