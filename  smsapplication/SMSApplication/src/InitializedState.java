@@ -28,6 +28,7 @@ public class InitializedState implements OrderStateInterface
 		stockOrderInterface.setState(stockOrderInterface.getCompletedState());	
 	}
 
+	
 	@Override
 	public String  processInitializedOrder(OrderBean order) 
 	{
@@ -60,6 +61,16 @@ public class InitializedState implements OrderStateInterface
 				Double bidAmount = (Double) order.getBidAmount();
 				System.out.println("Bid Amount: "+bidAmount);
 				System.out.println("Order Id: " +order.getStrOrderID());
+				
+				ActiveState as = ActiveState.getInstance();
+
+				as.interrupt();
+				
+				if(as.isInterrupted())
+				{
+					System.out.println("Active Order Thread is interrupted");
+				}
+				
 				this.stock.buyQueue.put(bidAmount, order); 
 
 
@@ -75,7 +86,17 @@ public class InitializedState implements OrderStateInterface
 			else if(order.getOrderProcessType().equalsIgnoreCase("Sell_Orders"))
 			{
 				Double askAmount = (Double) order.getAskAmount();
+				ActiveState as = ActiveState.getInstance();
+
+				as.interrupt();
+				
+				if(as.isInterrupted())
+				{
+					System.out.println("Active Order Thread is interrupted");
+				}
+			
 				this.stock.sellQueue.put(askAmount, order);
+				//as.resume();
 				System.out.println("order placed in Sell Queue of Stock with Stock id: "+ this.stock.getStockid());
 				//stockOrderInterface.processOrder(order);
 			}
@@ -132,8 +153,11 @@ public class InitializedState implements OrderStateInterface
 	}
 
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public String processOrder(OrderBean order) {
+		
+		System.out.println("In process order of Initialized state");
 
 
 
@@ -165,7 +189,14 @@ public class InitializedState implements OrderStateInterface
 				Double bidAmount = (Double) order.getBidAmount();
 				System.out.println("Bid Amount: "+bidAmount);
 				System.out.println("Order Id: " +order.getStrOrderID());
-				this.stock.buyQueue.put(bidAmount, order); 
+
+
+				ActiveState as = ActiveState.getInstance();
+				as.setThreadChanger("true");
+				System.out.println("Before Insert!"+System.currentTimeMillis());
+				this.stock.buyQueue.put(bidAmount, order);
+				System.out.println("After Insert!"+System.currentTimeMillis());
+				as.setThreadChanger("false");
 
 
 				Double d = this.stock.buyQueue.lastKey();
@@ -176,6 +207,7 @@ public class InitializedState implements OrderStateInterface
 			else if(order.getOrderProcessType().equalsIgnoreCase("Sell_Orders"))
 			{
 				Double askAmount = (Double) order.getAskAmount();
+
 				this.stock.sellQueue.put(askAmount, order);
 				System.out.println("order placed in Sell Queue of Stock with Stock id: "+ this.stock.getStockid());
 				//stockOrderInterface.processOrder(order);
@@ -183,7 +215,7 @@ public class InitializedState implements OrderStateInterface
 
 			stockOrderInterface.setState(stockOrderInterface.getActiveState());
 			System.out.println("Changed State Call method InitializedOrder to ActiveOrder !");
-			stockOrderInterface.processOrder(orderInInitializedState);
+			stockOrderInterface.processOrder(order);
 			//st.setState(st.getActiveState());
 			System.out.println("Changed State Call method InitializedOrder to ActiveOrder !");
 			return "true: Changed State Call method InitializedOrder to ActiveOrder ";
