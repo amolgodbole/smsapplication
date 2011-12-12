@@ -6,6 +6,13 @@ public class MutualFund extends Investor
 {
 	String mutualFundID=""; // some investor ID
 	double mutualFundPrice;
+	int noofStocks;
+	public int getNoofStocks() {
+		return noofStocks;
+	}
+	public void setNoofStocks(int noofStocks) {
+		this.noofStocks = noofStocks;
+	}
 	List<Stock> stocks=new ArrayList<Stock>();
 	
 	public String getMutualFundID() {
