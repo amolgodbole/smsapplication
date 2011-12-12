@@ -5,6 +5,8 @@ import java.util.SortedMap;
 
 public class ActiveState extends Thread implements OrderStateInterface
 {
+	
+	private static ActiveState instance;
 
 	private StockOrderInterface stockOrderInterface;
 	boolean timeCheck = false;
@@ -12,16 +14,63 @@ public class ActiveState extends Thread implements OrderStateInterface
 	List<Stock> allListedStocks = stockListing.getAllStocks();
 	Investor buyer = null;
 	Investor seller  = null;
+	String threadChanger; 
 
 
-	public ActiveState(StockOrderInterface stockOrderInterface)
+	
+	public String isThreadChanger() {
+		return threadChanger;
+	}
+
+	public void setThreadChanger(String threadChanger) 
+	{
+		
+			this.threadChanger = threadChanger;
+	}
+	
+	
+	public void stopMatching()
+	{
+		synchronized (allListedStocks) 
+		{
+
+				try {
+					allListedStocks.wait();
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				
+			}
+
+		}
+	}
+
+	private ActiveState(StockOrderInterface stockOrderInterface)
 	{
 		this.stockOrderInterface = stockOrderInterface;
 	}
 
-	public ActiveState()
+	private ActiveState()
 	{
 
+	}
+	
+	public static ActiveState getInstance(StockOrderInterface stockOrderInterface)
+	{
+		if(instance == null)
+		{
+			instance = new ActiveState(stockOrderInterface);
+		}
+		return instance;
+		
+	}
+	
+	public static ActiveState getInstance()
+	{
+		if(instance == null)
+		{
+			instance = new ActiveState();
+		}
+		return instance;
 	}
 
 	public void updateResult() 
@@ -60,27 +109,30 @@ public class ActiveState extends Thread implements OrderStateInterface
 		
 		return "false: Incorrect process in Completed Order This order needs to be in active order state";
 	}
+	
+	
 
 	@Override
 	public String processOrder(OrderBean order) {
 		
-		
-		
+
 		System.out.println("Order in Active State !!");
 		System.out.println("Orders will be Matched in this state as long as the Stock exchange is Open");
 		System.out.println("order in process order");
 		
 		processMatching();
 		
+		
 		stockOrderInterface.setState(stockOrderInterface.getCompletedState());
-		System.out.println("Changed State Call method Active State  to Waiting State !");
+		System.out.println("Changed State Call method Active State to Waiting State !");
 		stockOrderInterface.processOrder(order);
 		
 		return "true";
 		
 	}
 	
-	public void run(){
+	public void run()
+	{
 		processMatching();
 	}
 	
@@ -97,6 +149,15 @@ public class ActiveState extends Thread implements OrderStateInterface
 
 		while(timeCheck) // check for time validity and for the synchronized request.
 		{
+			if(this.threadChanger.equals("true")){
+				try {
+					Thread.sleep(2000);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			}
+			
+			System.out.println(" matching Queues !!");
 			Iterator<Stock> stockIterator = allListedStocks.iterator();
 			while(stockIterator.hasNext())
 			{
@@ -106,7 +167,7 @@ public class ActiveState extends Thread implements OrderStateInterface
 				SortedMap<Double, OrderBean> sellQueue = _stock.getSellQueue();
 
 				/*
-				 *  Match the stock prices of last Order in Buy Queue and 1st Order in Sell Queue;
+				 *   Match the stock prices of last Order in Buy Queue and 1st Order in Sell Queue;
 				 *   As the orders are arranged by default in ascending order we need to match the max value from buyer and least value from seller.
 				 *   For POC we will be matching only the values at the indexed last and 1st position of Buy and sell Queue respectively 
 				 */
@@ -119,12 +180,22 @@ public class ActiveState extends Thread implements OrderStateInterface
 					continue;
 				}
 				Double buyStockPrice = buyQueue.lastKey();
-				System.out.println("buy stock price: "+buyStockPrice);
+				System.out.print("buy stock price: "+buyStockPrice);
 				Double sellStockPrice = sellQueue.firstKey();
-				System.out.println("Sell stock price: "+sellStockPrice);
+				System.out.print("Sell stock price: "+sellStockPrice);
 
 				if(buyStockPrice.equals(sellStockPrice))
 				{
+					
+					try {
+						
+						System.out.println("queues Matched for Stock: "+_stock.getStockname());
+						Thread.sleep(5000);
+						
+					} catch (InterruptedException e) {
+						
+						e.printStackTrace();
+					}
 					System.out.println("queues Matched for Stock: "+_stock.getStockname());
 					/*
 					 * Get the orders in both queues where the price of bid = ask
@@ -321,6 +392,10 @@ public class ActiveState extends Thread implements OrderStateInterface
 						_stock.buyQueue.put(buyStockPrice, buyStockOrder);
 						
 						System.out.println("New Stock Order Placed In Queue !");
+						
+						noOfStocksInBuyQueue = 0;
+						noOfStocksInSellQueue =0;
+						
 
 
 					}
@@ -329,7 +404,9 @@ public class ActiveState extends Thread implements OrderStateInterface
 
 			}
 
-		}
+		}//end while
+		
+
 
 		//stockOrderInterface.setState(stockOrderInterface.));
 

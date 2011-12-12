@@ -15,13 +15,13 @@ public class Listing
 	//Default Constructor
 	private Listing()
 	{
-		/*Stock stock1 = new Stock();
-		stock1.setdStockPrice(400.67d);
-		stock1.setNumberOfStocks(11);
-		stock1.setStockid("C01");
-		stock1.setStockname("Apple");
-		//stock1.buyQueue
-		allStocks.add(stock1);*/
+		/*Stock stock0 = new Stock();
+		stock0.setdStockPrice(400.67d);
+		stock0.setNumberOfStocks(11);
+		stock0.setStockid("C01");
+		stock0.setStockname("Apple");
+		stock0.buyQueue
+		allStocks.add(stock0);*/
 		
 		InvestorListing invList = InvestorListing.getinstance();
 		List<Investor> allInvestors = invList.getAllInvestors();
@@ -59,7 +59,7 @@ public class Listing
 		investor.setOrderList(orderList);
 		allInvestors.add(investor);
 		
-		//buyQueue.put(stock1.getdStockPrice(), order);
+		buyQueue.put(stock1.getdStockPrice(), order);
 		stock1.setBuyQueue(buyQueue);
 		
 		Investor investor1 = new Investor();

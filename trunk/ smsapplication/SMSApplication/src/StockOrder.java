@@ -18,7 +18,7 @@ public class StockOrder extends OrderTMAAbstractClass implements StockOrderInter
 	public StockOrder()
 	{
 		initialized 	= 	new InitializedState(this);
-		active 			= 	new ActiveState(this);
+		active 			= 	ActiveState.getInstance(this);
 		deleted 		= 	new DeletedState(this);
 		completed 		= 	new CompletedState(this);
 		orderStateInterface = initialized;
