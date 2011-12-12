@@ -21,20 +21,17 @@ public class Profile {
 		
 	}
 	
-	private void createProfile(Investor investor) {
-		// TODO Auto-generated method stub	
-		// investorRecord[0]=investor;
-		investorList.add(investor);
-		System.out.println("Profile created : " +investor.getInvestorID());
-		System.out.println("-----------------------------------------------");
-		System.out.println("Name : " +investor.getStrFirstName()+investor.getStrLastName());
-		System.out.println("Address : "+investor.getStrAddress()+","+investor.getStrState());
-		System.out.println("Contact : "+investor.getnMobile()+","+investor.getnPhone());
-		System.out.println("E-mail : "+investor.getStrEmail());
-		//System.out.println("Balance amount : "+investor.getAccountBal());
+	private void createProfile(Investor investorNew) {
 		
 		
-	}	
+			investorList.add(investorNew);
+			System.out.println("Profile created : " +investorNew.getInvestorID());
+			System.out.println("-----------------------------------------------");
+			System.out.println("Name : " +investorNew.getStrFirstName()+investorNew.getStrLastName());
+			System.out.println("Address : "+investorNew.getStrAddress()+","+investorNew.getStrState());
+			System.out.println("Contact : "+investorNew.getnMobile()+","+investorNew.getnPhone());
+			System.out.println("E-mail : "+investorNew.getStrEmail());
+				}	
 		/*public void viewList(List<Investor> investorList){
 			Iterator<Investor> itr = investorList.iterator();
 			

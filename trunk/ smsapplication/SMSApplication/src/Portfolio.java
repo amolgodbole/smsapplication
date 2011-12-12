@@ -1,3 +1,6 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -21,7 +24,7 @@ public class Portfolio {
 	public Portfolio()
 	{
 		
-		Investor investor = new Investor();
+		/*Investor investor = new Investor();
 		investor.setInvestorID("INV01STK01");
 		investor.setStrFirstName("Kaustubh");
 		investor.setStrLastName("Phadnis");
@@ -75,7 +78,7 @@ public class Portfolio {
 			//this.order = new Order(investor);
 			//order.orderOperation();
 			new Order(investor1).orderOperation();
-		}
+		}*/
 	}
 	
 	void processRequestType(int requestType)
@@ -131,7 +134,39 @@ public class Portfolio {
 		
 		//allinvestors.setAllInvestors(thisInvestor);
 		
-		if(requestType==1)profile.testprofile(investor1);
+		if(requestType==1){
+			Investor investorNew = new Investor();
+			BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+			try {
+			investorNew.setInvestorID("INV0000010");
+			System.out.println("Enter your first name :");
+			BufferedReader input=new BufferedReader(new InputStreamReader(System.in));
+			investorNew.setStrFirstName(input.readLine());
+			System.out.println("Enter your last name :");
+			BufferedReader lastname=new BufferedReader(new InputStreamReader(System.in));
+			investorNew.setStrLastName(lastname.readLine());
+			System.out.println("Enter your address :");
+			BufferedReader address=new BufferedReader(new InputStreamReader(System.in));
+			investorNew.setStrAddress(address.readLine());
+			System.out.println("Enter your state :");
+			BufferedReader state=new BufferedReader(new InputStreamReader(System.in));
+			investorNew.setStrState(state.readLine());
+			System.out.println("Enter your email id :");
+			BufferedReader email=new BufferedReader(new InputStreamReader(System.in));
+			investorNew.setStrEmail(email.readLine());
+			System.out.println("Enter your contact number :");
+			BufferedReader number=new BufferedReader(new InputStreamReader(System.in));
+			investorNew.setnMobile(Integer.parseInt(number.readLine()));
+			System.out.println("Enter amount :");
+			BufferedReader amount=new BufferedReader(new InputStreamReader(System.in));
+			investorNew.setAmountInAccount(Integer.parseInt(amount.readLine()));
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+			profile.testprofile(investorNew);
+		}
 		
 		if(requestType==2)account.accountOperations(investor1);
 		

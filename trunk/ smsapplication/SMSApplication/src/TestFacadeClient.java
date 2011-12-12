@@ -34,7 +34,7 @@ public class TestFacadeClient {
 		
 			while(true) {
 				System.out.println("Enter your choice : ");
-				System.out.println("1. Access Profile");
+				System.out.println("1. Create Profile");
 				System.out.println("2. Access Account");
 				System.out.println("3. Manage Order");
 				System.out.println("4. Exit");
