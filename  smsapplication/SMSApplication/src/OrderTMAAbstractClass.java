@@ -13,8 +13,11 @@ public abstract class OrderTMAAbstractClass
 		//checkBalance(order.account);
 		System.out.println("In Template method order class");
 		appendBrokerId(order);
+		System.out.println("After Appending broker id: " +order.getStrOrderID());
 		appendExchangeId(order);
+		System.out.println("After Appending exchange id: " +order.getStrOrderID());
 		appendOrderHistoryId(order);
+		System.out.println("Appending order history id: " +order.getStrOrderID());
 		String orderType = checkOrderType(order);
 		
 		if(orderType.equalsIgnoreCase("false"))
@@ -45,7 +48,7 @@ public abstract class OrderTMAAbstractClass
 	{
 		System.out.println("Appending broker id");
 		order.setStrOrderID("B001-"+order.getStrOrderID());
-		System.out.println("Appending broker id" +order.getStrOrderID());
+		System.out.println("Appending broker id: " +order.getStrOrderID());
 		return order.getStrOrderID();
 	}
 	
@@ -54,7 +57,7 @@ public abstract class OrderTMAAbstractClass
 	{
 		System.out.println("Appending exchange id");
 		order.setStrOrderID("E001-"+order.getStrOrderID());
-		System.out.println("Appending exchange id" +order.getStrOrderID());
+		System.out.println("Appending exchange id: " +order.getStrOrderID());
 		return order.getStrOrderID();
 	}
 	
@@ -62,10 +65,10 @@ public abstract class OrderTMAAbstractClass
 	{
 		 //if(!order.isPartialOrderFlag())
 		System.out.println("Appending order history id");
-		order.setStrOrderID(order.getStrOrderID()+"-0001");
-		System.out.println("Appending order history id" +order.getStrOrderID());
+		order.setStrOrderID(order.getStrOrderID()+"-H0001");
+		System.out.println("Appending order history id: " +order.getStrOrderID());
 		
-		 return orderInTM.getStrOrderID();
+		 return order.getStrOrderID();
 		 //if(partialOrderFlag)
 		//int orderHistoryID = Integer.parseInt(order.getStrOrderID());
 		//int orderHistoryID = 01;
