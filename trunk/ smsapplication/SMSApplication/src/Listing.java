@@ -59,7 +59,7 @@ public class Listing
 		investor.setOrderList(orderList);
 		allInvestors.add(investor);
 		
-		buyQueue.put(stock1.getdStockPrice(), order);
+		//buyQueue.put(stock1.getdStockPrice(), order);
 		stock1.setBuyQueue(buyQueue);
 		
 		Investor investor1 = new Investor();
@@ -81,7 +81,7 @@ public class Listing
 		order1.setInvestorID("INV000005");
 		order1.setOrderProcessType("Sell_Orders");
 		order1.setBidAmount(450.22);
-		order1.setNoOfStocks(10);
+		order1.setNoOfStocks(5);
 		order1.setStockID("C01");
 		orderList1.add(order1);
 		investor1.setOrderList(orderList1);

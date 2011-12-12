@@ -1,5 +1,6 @@
 import java.util.Iterator;
 import java.util.List;
+import java.util.Random;
 import java.util.SortedMap;
 
 public class ActiveState extends Thread implements OrderStateInterface
@@ -23,13 +24,10 @@ public class ActiveState extends Thread implements OrderStateInterface
 
 	}
 
-
 	public void updateResult() 
 	{
 		System.out.println("Update the result");
 	}
-
-
 
 	public void setState(ActiveState state) 
 	{
@@ -48,7 +46,10 @@ public class ActiveState extends Thread implements OrderStateInterface
 		
 		return "true";
 	}
+	
 	@Override
+
+	
 	public String processDeletedOrder(OrderBean order) {
 	
 		return "false: Incorrect process in Deleted Order This order needs to be in active order state";
@@ -82,6 +83,7 @@ public class ActiveState extends Thread implements OrderStateInterface
 	public void run(){
 		processMatching();
 	}
+	
 	public void processMatching()
 	{
 		
@@ -109,7 +111,13 @@ public class ActiveState extends Thread implements OrderStateInterface
 				 *   For POC we will be matching only the values at the indexed last and 1st position of Buy and sell Queue respectively 
 				 */
 				System.out.println("Size of _stock: "+buyQueue.size());
-
+				if(buyQueue.isEmpty()||sellQueue.isEmpty())
+				{
+					System.out.println("Buy queue or Sell Queue is Empty !!");
+					this.timeCheck = false;
+					System.out.println("To Display the Matched Results, Time is Invalidated: In Normal Process Next Stock match Will TakePlace ! To Change this just comment timeCheck assignment above this line...");
+					continue;
+				}
 				Double buyStockPrice = buyQueue.lastKey();
 				System.out.println("buy stock price: "+buyStockPrice);
 				Double sellStockPrice = sellQueue.firstKey();
@@ -153,6 +161,7 @@ public class ActiveState extends Thread implements OrderStateInterface
 						{
 							buyer = buyerCheck;
 							System.out.println("BuyerSet! :"+buyer.getInvestorID());
+							break;
 						}
 						
 
@@ -172,6 +181,7 @@ public class ActiveState extends Thread implements OrderStateInterface
 						{
 							seller = sellerCheck;
 							System.out.println("Seller Set! : "+seller.getInvestorID());
+							break;
 						}
 
 					}
@@ -217,6 +227,7 @@ public class ActiveState extends Thread implements OrderStateInterface
 
 					if(noOfStocksInBuyQueue < noOfStocksInSellQueue)
 					{
+						System.out.println("Number of Stocks in Sell Queue is Less Than Number Of Stocks in Buy Queue! ");
 						
 						//ECHANGE STOCKS
 						//getting the stock from the seller and setting it in buyer's account
@@ -230,24 +241,38 @@ public class ActiveState extends Thread implements OrderStateInterface
 						//EXCHANGE AMOUNT : Setting the value of amount from the order and not from Stock as we take the stock order value: ASK/BID amount
 
 						System.out.println(" Buyer Initial Amount In Account:"+buyer.amountInAccount);
-						buyer.amountInAccount = buyer.amountInAccount - (buyerStock.getdStockPrice() * buyStockOrder.noOfStocks);
-						seller.amountInAccount = seller.amountInAccount + (buyerStock.getdStockPrice() * buyStockOrder.noOfStocks);
-
+						System.out.println("Initial Amount In Seller Account: "+seller.amountInAccount);
+						buyer.amountInAccount = buyer.amountInAccount - (buyStockPrice * noOfStocksInBuyQueue);
+						seller.amountInAccount = seller.amountInAccount + (buyStockPrice * noOfStocksInBuyQueue);
+						
+						System.out.println("Amount in buyer acount " +buyer.amountInAccount);
+						System.out.println("Amount in Seller Account "+seller.amountInAccount);
 
 
 
 
 						String sellOrderId = sellStockOrder.getStrOrderID();
-						String newSellOrderHistoryId = sellOrderId.substring(21);
+						System.out.println("Seller Order Id: "+sellOrderId);
+						
+						
+						String newSellOrderHistoryId = sellOrderId.substring(0, 2);
 						System.out.println("Order History ID: " +newSellOrderHistoryId);
+						
 						int historyIdIncrement = Integer.parseInt(newSellOrderHistoryId);
 						historyIdIncrement++;
 						String histId = Integer.toString(historyIdIncrement);
-						sellOrderId = sellOrderId.substring(0, 20);
-
+						System.out.println("History ID: "+histId);
+						
+						sellOrderId = sellOrderId.substring(0,6);
+						System.out.println("UnConcatinated Sell Order Id: "+sellOrderId);
 						sellOrderId = sellOrderId.concat(histId);
+						
+						System.out.println("New Sell Order Id: "+sellOrderId);
 
 						sellStockOrder.setStrOrderID(sellOrderId);
+						
+						_stock.buyQueue.remove(buyQueue.lastKey());
+						System.out.println("Stock Removed from Buy Queue !");
 
 
 					}
@@ -262,24 +287,40 @@ public class ActiveState extends Thread implements OrderStateInterface
 						seller.getStocks().add(sellerStock);
 
 
-
-						buyer.amountInAccount = buyer.amountInAccount - (sellerStock.getdStockPrice() * sellStockOrder.noOfStocks);
-						seller.amountInAccount = seller.amountInAccount + (sellerStock.getdStockPrice() * sellStockOrder.noOfStocks);
-
+						System.out.println(" Buyer Initial Amount In Account:"+buyer.amountInAccount);
+						System.out.println("Initial Amount In Seller Account: "+seller.amountInAccount);
+						buyer.amountInAccount = buyer.amountInAccount - (sellStockPrice * noOfStocksInSellQueue);
+						seller.amountInAccount = seller.amountInAccount + (sellStockPrice * noOfStocksInSellQueue);
+						
+						System.out.println("Amount in buyer acount " +buyer.amountInAccount);
+						System.out.println("Amount in Seller Account "+seller.amountInAccount);
 
 						// Change the order ID
-
-
+						
+						
 						String buyOrderId1 = buyStockOrder.getStrOrderID();
-						String newBuyOrderHistoryId = buyOrderId1.substring(21);
+						String newBuyOrderHistoryId = buyOrderId1.substring(1, 7);
 						System.out.println("Order History ID: " +newBuyOrderHistoryId);
-						int historyIdIncrement = Integer.parseInt(newBuyOrderHistoryId);
-						historyIdIncrement++;
-						String histId = Integer.toString(historyIdIncrement);
-						buyOrderId1 = buyOrderId1.substring(0, 20);
+						int newRandomValue = new Random().nextInt(9999999);
+						String orderAppender = Integer.toString(newRandomValue);
+						
+						String newBuyOrderID = ("O" +orderAppender);
+						System.out.println("New Buy Order Id: "+newBuyOrderID);
+						
+						
+						_stock.sellQueue.remove(buyQueue.firstKey());
+						System.out.println("Stock Removed from Sell Queue !");
 
-						buyOrderId1 = buyOrderId1.concat(histId);
-						buyStockOrder.setStockID(buyOrderId1);
+						int newNoOfStocksInBuyQueue = noOfStocksInBuyQueue - noOfStocksInSellQueue;
+						buyStockOrder.setNoOfStocks(newNoOfStocksInBuyQueue);
+						buyStockOrder.setStrOrderID(newBuyOrderID);
+						
+						_stock.buyQueue.remove(buyQueue.lastKey());
+						System.out.println("Initial Order Removed");
+						
+						_stock.buyQueue.put(buyStockPrice, buyStockOrder);
+						
+						System.out.println("New Stock Order Placed In Queue !");
 
 
 					}
