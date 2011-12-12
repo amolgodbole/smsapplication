@@ -11,9 +11,9 @@ public class MutualFundOrder extends  OrderTMAAbstractClass
 		double mutualFundPrice;
 		List<OrderBean> allMFOrders = new ArrayList<OrderBean>();
 		Investor buyer = null;
-		Investor mfCompany = null;
+		
 		//Db for mutual funds
-		List<MutualFund> allmutualfunds=new ArrayList<MutualFund>();
+		//List<MutualFund> allmutualfunds=new ArrayList<MutualFund>();
 		
 		MutualFund mf = null;
 		
@@ -29,13 +29,11 @@ public class MutualFundOrder extends  OrderTMAAbstractClass
 			
 		}
 		
-		public String processMutualFundOrder()
+		public String processMutualFundOrder(MutualFund mf,Investor investor)
 		{
-			Iterator<OrderBean> mfIterator = allMFOrders.iterator();
-			while(mfIterator.hasNext())
-			{
-				OrderBean mfOrder = mfIterator.next();
-				int totalMF = mfOrder.getNoOfStocks();
+			Investor mfCompany = new Investor();
+				MutualFund mfOrder = mf;
+				int totalMF = mfOrder.getNoofStocks();
 				String mfId = mfOrder.getMutualFundID();
 				
 				String buyOrderInvestorId = mfOrder.getInvestorID();
@@ -43,7 +41,7 @@ public class MutualFundOrder extends  OrderTMAAbstractClass
 				InvestorListing allInvestorList = InvestorListing.getinstance();
 				  List<Investor> investorList = allInvestorList.getAllInvestors();
 				  
-				  Iterator<Investor> investorIterator = investorList.iterator();
+				 Iterator<Investor> investorIterator = investorList.iterator();
 				  while(investorIterator.hasNext())
 				  {
 					  Investor buyerCheck = investorIterator.next();
@@ -53,21 +51,27 @@ public class MutualFundOrder extends  OrderTMAAbstractClass
 					  }
 				  }
 				  
-				  while(investorIterator.hasNext())
+				
+				/*  while(investorIterator.hasNext())
 				  {
 					  Investor sellerCheck = investorIterator.next();
-					  if(sellerCheck.getInvestorID().equalsIgnoreCase(mfId))
+					  if(sellerCheck.getInvestorID().equalsIgnoreCase("MF01"))
 					  {
 						  mfCompany = sellerCheck;
 						  mf = (MutualFund) mfCompany;
 					  }
 					  
-				  }
+				  }*/
 				  
 				  
-				  buyer.amountInAccount = buyer.amountInAccount - (mf.getMutualFundPrice() *  totalMF);
+				  mfCompany.setInvestorID("INV000009");
+				  mfCompany.setAmountInAccount(10000);
+				  
+				  //buyer=mfCompany;
+				  
+				  investor.amountInAccount = investor.amountInAccount - (mf.getMutualFundPrice() *  totalMF);
 				  mfCompany.amountInAccount = mfCompany.amountInAccount + (mf.getMutualFundPrice() *  totalMF);
-			}
+			
 			
 			return "MF Orders Processed!";
 		}
