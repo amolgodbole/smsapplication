@@ -58,8 +58,21 @@ public class ClockInstance1
 				 
 			}*/
 		
-			
-			return true;
+		 Calendar now = Calendar.getInstance();
+	       int hrs = now.get(Calendar.HOUR_OF_DAY);
+	       int min = now.get(Calendar.MINUTE);
+	       int sec = now.get(Calendar.SECOND);
+	       
+	       System.out.println("" +hrs);
+	       if((hrs>8 && min>00 ) && (hrs<23 && min <60)){
+	    	   return true;
+	       }else if(hrs==4 && min==00){
+	    	   
+	    	   return false;
+	       }
+	   	   else{
+	    	   return false;
+	       }
 		//return validity;
 		
 		//LOGIC 
@@ -69,7 +82,23 @@ public class ClockInstance1
 	boolean validity = true;
 	
 	//InitializedState initializedState = new InitializedState();
-	
-	
 
+
+public boolean checkTimevalidityMutualFunds()
+{
+	 Calendar now = Calendar.getInstance();
+       int hrs = now.get(Calendar.HOUR_OF_DAY);
+       int min = now.get(Calendar.MINUTE);
+       int sec = now.get(Calendar.SECOND);
+       
+       
+     if(hrs==4 && min==00){
+    	   
+    	   return true;
+       }
+   	   else{
+    	   return false;
+       }
+
+}
 }
