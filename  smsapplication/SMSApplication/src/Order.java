@@ -176,6 +176,9 @@ public class Order
 		
 	void orderOperation(){
 		while(true) {
+			System.out.println("-------------------------------------------------------------------");
+			System.out.println("Order menu : ");
+			System.out.println("-------------------------------------------------------------------");
 			
 				System.out.println("Enter your choice : ");
 				System.out.println("1. Create Order");

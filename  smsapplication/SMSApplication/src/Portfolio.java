@@ -122,7 +122,7 @@ public class Portfolio {
 		thisInvestor.add(investor2);
 		int size = thisInvestor.size();
 		
-		System.out.println("Size of Investor Array: "+size);
+		//System.out.println("Size of Investor Array: "+size);
 		
 		
 		allinvestors.setAllInvestors(thisInvestor);
@@ -130,7 +130,7 @@ public class Portfolio {
 		InvestorListing thisInvestorList = InvestorListing.getinstance();
 		List<Investor> adk = thisInvestorList.getAllInvestors();
 		int siz = adk.size();
-		System.out.println("Global List size: "+siz);
+		//System.out.println("Global List size: "+siz);
 		
 		//allinvestors.setAllInvestors(thisInvestor);
 		
