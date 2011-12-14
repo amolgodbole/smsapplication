@@ -212,6 +212,7 @@ public class ActiveState extends Thread implements OrderStateInterface
 						/*
 						 * Get the orders in both queues where the price of bid = ask
 						 */
+						
 						OrderBean buyStockOrder = buyQueue.get(buyStockPrice);
 						OrderBean sellStockOrder = sellQueue.get(sellStockPrice);
 
@@ -273,7 +274,7 @@ public class ActiveState extends Thread implements OrderStateInterface
 						// WHEN STOCKS IN BOTH QUEUES ARE EQUAL
 						if(noOfStocksInBuyQueue == noOfStocksInSellQueue)
 						{
-							System.out.println("Enterred Complete Order match !!");
+							System.out.println("Entered Complete Order match !!");
 
 							//ECHANGE STOCKS
 							//getting the stock from the seller and setting it in buyer's account
@@ -300,10 +301,20 @@ public class ActiveState extends Thread implements OrderStateInterface
 							System.out.println("Amount in Sellers acount " +seller.amountInAccount);
 
 							_stock.buyQueue.remove(buyQueue.lastKey());
+							
 							System.out.println("Stock Removed from Buy Queue !");
 							_stock.sellQueue.remove(sellQueue.firstKey());
 							System.out.println("Stock Removed from Sell Queue !");
-
+							
+							System.out.println("Calling The function Delete for completed order!");
+							
+							DeleteContext dc = new DeleteContext();
+							String delStrategyRetValue = dc.delete(buyer, buyStockOrder.getStrOrderID(), "completed");
+							
+							if(delStrategyRetValue.equalsIgnoreCase("deleted"))
+							{
+								System.out.println("Deleted Order in customer");
+							}
 							noOfStocksInBuyQueue  = 0;
 							noOfStocksInSellQueue = 0;
 
@@ -427,8 +438,29 @@ public class ActiveState extends Thread implements OrderStateInterface
 							System.out.println("Initial Order Removed");
 
 							_stock.buyQueue.put(buyStockPrice, buyStockOrder);
-
 							System.out.println("New Stock Order Placed In Queue !");
+							
+							
+							
+							List<OrderBean> orders = buyer.getOrderList();
+							Iterator<OrderBean> orderIterator = orders.iterator();
+							while(!orders.isEmpty())
+							{
+								while(orderIterator.hasNext())
+								{
+									OrderBean order = orderIterator.next();
+									String strOrderID = order.getStrOrderID();
+									
+									if(strOrderID.equalsIgnoreCase(buyOrderId1))
+									{
+										order.setStrOrderID(newBuyOrderID);
+									}
+								}
+							}
+							
+							System.out.println("New Order ID set in order list of customer !");
+
+							
 
 							noOfStocksInBuyQueue = 0;
 							noOfStocksInSellQueue =0;
