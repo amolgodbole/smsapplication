@@ -28,7 +28,91 @@ public class TestFacadeClient {
 	{
 		
 	}
-	
+	public void callOperationMf() throws NumberFormatException, IOException{
+		int choice = 0;
+		Portfolio portfolio = new Portfolio(investor);
+		MutualFund mf =new MutualFund();
+		int i=0;
+		//after input as investor.
+		System.out.println("Enter the stocks you want to choose as a part of your portfolio:");
+		System.out.println(Listing.getInstance().getAllStocks().get(0).stockname+":Select 1 for yes/2 for no");
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		int choice1=Integer.parseInt(br.readLine());
+		int total_stocks=0;
+		
+		
+		if (choice1==1)
+		{
+		System.out.println("Enter number of stocks of" +Listing.getInstance().getAllStocks().get(i).stockname+":");		
+		mf.stocks.add(Listing.getInstance().getAllStocks().get(i));
+		BufferedReader br1 = new BufferedReader(new InputStreamReader(System.in));	
+		int number_apple=Integer.parseInt(br1.readLine());
+		mf.stocks.get(i).numberOfStocks=number_apple;
+		investor.amountInAccount=investor.amountInAccount - ((Listing.getInstance().getAllStocks().get(i).dStockPrice)*number_apple);
+		i++;
+		total_stocks=total_stocks+number_apple;
+		}
+		
+		System.out.println("Enter the stocks you want to choose as a part of your portfolio:");
+		System.out.println(Listing.getInstance().getAllStocks().get(1).stockname+":Select 1 for yes/2 for no");
+		BufferedReader br2 = new BufferedReader(new InputStreamReader(System.in));
+		int choice2=Integer.parseInt(br2.readLine());
+		
+		if (choice2==1)
+		{
+		System.out.println("Enter number of stocks of"+Listing.getInstance().getAllStocks().get(1).stockname);		
+		mf.stocks.add(Listing.getInstance().getAllStocks().get(i));
+		BufferedReader br21 = new BufferedReader(new InputStreamReader(System.in));	
+		int number_ms=Integer.parseInt(br21.readLine());
+		mf.stocks.get(i).numberOfStocks=number_ms;
+		investor.amountInAccount=investor.amountInAccount - ((Listing.getInstance().getAllStocks().get(i).dStockPrice)*number_ms);
+		i++;
+		
+		total_stocks=total_stocks+number_ms;
+		}
+		
+		System.out.println("Enter the stocks you want to choose as a part of your portfolio:");
+		System.out.println(Listing.getInstance().getAllStocks().get(2).stockname+":Select 1 for yes/2 for no");
+		BufferedReader br3 = new BufferedReader(new InputStreamReader(System.in));
+		int choice3=Integer.parseInt(br3.readLine());
+		
+		if (choice3==1)
+		{
+		System.out.println("Enter number of stocks of :"+Listing.getInstance().getAllStocks().get(2).stockname);		
+		mf.stocks.add(Listing.getInstance().getAllStocks().get(i));
+		BufferedReader br31 = new BufferedReader(new InputStreamReader(System.in));	
+		int number_yahoo=Integer.parseInt(br31.readLine());
+		mf.stocks.get(i).numberOfStocks=number_yahoo;
+		investor.amountInAccount=investor.amountInAccount - ((Listing.getInstance().getAllStocks().get(i).dStockPrice)*number_yahoo);
+		i++;
+		total_stocks=total_stocks+number_yahoo;
+		}
+			
+		System.out.println("Enter the stocks you want to choose as a part of your portfolio:");
+		System.out.println(Listing.getInstance().getAllStocks().get(3).stockname+":Select 1 for yes/2 for no");
+		BufferedReader br4 = new BufferedReader(new InputStreamReader(System.in));
+		int choice4=Integer.parseInt(br4.readLine());
+		
+		if (choice4==1)
+		{
+		System.out.println("Enter number of stocks:"+Listing.getInstance().getAllStocks().get(3).stockname);		
+		mf.stocks.add(Listing.getInstance().getAllStocks().get(i));
+		BufferedReader br31 = new BufferedReader(new InputStreamReader(System.in));	
+		int number_google=Integer.parseInt(br31.readLine());
+		mf.stocks.get(i).numberOfStocks=number_google;
+		investor.amountInAccount=investor.amountInAccount - ((Listing.getInstance().getAllStocks().get(i).dStockPrice)*number_google);
+		i++;
+		total_stocks=total_stocks+number_google;
+		}
+		
+		mf.noofStocks=total_stocks;
+		investor.mutualFunds.add(mf);	
+		System.out.println(""+mf.noofStocks);
+		System.out.println(""+investor.amountInAccount);	
+		mf.setMutualFundID("MF001");	
+		Listing.getInstance().getAllMutualFunds().add(mf);
+		
+		}
 	public void callOperation(){
 		int choice = 0;
 		Portfolio portfolio = new Portfolio(investor);
@@ -126,6 +210,7 @@ public class TestFacadeClient {
 				
 				System.out.println("Select : ");
 				System.out.println("1. List stock");
+				/*System.out.println("2. List mutual funds");*/
 				System.out.println("2. Split stock");
 				System.out.println("3. Exit");
 				
@@ -153,6 +238,21 @@ public class TestFacadeClient {
 						
 							
 					}
+					/*if(option1.equals("2")){
+						Investor investor = new Investor();
+						investor.setInvestorID("INV01STK01");
+						investor.setStrFirstName("Akshay");
+						investor.setStrLastName("Kumar");
+						investor.setStrAddress("Colonade");
+						investor.setStrState("CA");
+						investor.setStrEmail("aks@gmail.com");	
+						investor.setAmountInAccount(1000000);
+						investor.setnPhone(4089899898L);
+						
+						TestFacadeClient tc = new TestFacadeClient(investor);
+						tc.callOperationMf();
+					}*/
+					
 					if(option1.equals("2")){
 						// Split stock functionality
 						Stock stockNew = new Stock();
