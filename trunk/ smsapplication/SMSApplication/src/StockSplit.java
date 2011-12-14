@@ -26,14 +26,14 @@ public class StockSplit extends StockDecorator{
 	/*void updateResult()
 	{
 		
-	}
+	}*/
 	
 	public void display()
 	{
-		//super.display();
+		super.display();
 	}
 
-	@Override
+	/*@Override
 	public void getStockListing() {
 		// TODO Auto-generated method stub
 		

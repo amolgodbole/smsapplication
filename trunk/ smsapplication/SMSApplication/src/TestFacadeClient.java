@@ -96,9 +96,11 @@ public class TestFacadeClient {
 
 		new Stock().sellQueue.put(450.22, order);
 		
+		while(true){
 		System.out.println("Enter as a : ");
 		System.out.println("1. Investor");
 		System.out.println("2. Company");
+		System.out.println("3. Exit");
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		String option;
 		
@@ -115,6 +117,8 @@ public class TestFacadeClient {
 				System.out.println("Select : ");
 				System.out.println("1. List stock");
 				System.out.println("2. Split stock");
+				System.out.println("3. Exit");
+				
 				BufferedReader br1 = new BufferedReader(new InputStreamReader(System.in));
 				String option1 = null;
 				try {
@@ -158,7 +162,7 @@ public class TestFacadeClient {
 						}
 						StockSplit stockSplitOrder = new StockSplit(stockNew);
 						stockSplitOrder.processSplitStock(stockNew);
-						
+						stockSplitOrder.display();
 					}
 					if(option1.equals("3")) break;
 					}catch (IOException e) 
@@ -168,12 +172,13 @@ public class TestFacadeClient {
 					}
 				}
 			}
+			if(option.equals("3")) break;
 		} catch (IOException e) 
 		{
 			e.printStackTrace();
 			
 		}
-		
+		}
 		
 		
 		/*InvestorListing allinvestors = new InvestorListing();

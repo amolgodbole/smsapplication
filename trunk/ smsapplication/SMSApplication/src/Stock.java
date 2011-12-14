@@ -50,7 +50,9 @@ public  class Stock extends StockItem
 	}*/
 //	Company apple=new Company();
 	
-
+	public void display(){
+		System.out.println("Stock has been split..");
+	}
 	
 	public int getNumberOfStocks() {
 		return numberOfStocks;
