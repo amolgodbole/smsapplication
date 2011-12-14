@@ -55,9 +55,9 @@ public abstract class OrderTMAAbstractClass
 	
 	protected String appendExchangeId(OrderBean order)
 	{
-		System.out.println("Appending exchange id");
+		//System.out.println("Appending exchange id");
 		order.setStrOrderID("E001-"+order.getStrOrderID());
-		System.out.println("Appending exchange id: " +order.getStrOrderID());
+		//System.out.println("Appending exchange id: " +order.getStrOrderID());
 		return order.getStrOrderID();
 	}
 	
@@ -86,7 +86,7 @@ public abstract class OrderTMAAbstractClass
 			strReturn = "MutualFund";
 			return strReturn;
 		}
-		System.out.println("Checked Type");
+		//System.out.println("Checked Type");
 		if(order.getOrderType().equalsIgnoreCase("stock"))
 		{
 			strReturn = "Stock";
