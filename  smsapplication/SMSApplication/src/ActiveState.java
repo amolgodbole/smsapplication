@@ -1,4 +1,5 @@
-import java.util.Calendar;
+
+
 import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
@@ -158,7 +159,6 @@ public class ActiveState extends Thread implements OrderStateInterface
 				try {
 					Thread.sleep(2000);
 				} catch (InterruptedException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 				if(this.threadChanger.equals("true")){
@@ -293,6 +293,8 @@ public class ActiveState extends Thread implements OrderStateInterface
 							System.out.println("Seller Stock Order Amount "+sellStockPrice);
 							buyer.amountInAccount = buyer.amountInAccount - (sellStockPrice * sellStockOrder.noOfStocks);
 							seller.amountInAccount = seller.amountInAccount + (buyStockPrice * buyStockOrder.noOfStocks);
+							buyer.setAmountInAccount(buyer.amountInAccount);
+							seller.setAmountInAccount(seller.amountInAccount);
 							
 							System.out.println("Amount in buyer acount " +buyer.amountInAccount);
 							System.out.println("Amount in Sellers acount " +seller.amountInAccount);
@@ -301,6 +303,15 @@ public class ActiveState extends Thread implements OrderStateInterface
 							System.out.println("Stock Removed from Buy Queue !");
 							_stock.sellQueue.remove(sellQueue.firstKey());
 							System.out.println("Stock Removed from Sell Queue !");
+							
+							noOfStocksInBuyQueue  = 0;
+							noOfStocksInSellQueue = 0;
+							
+							buyStockOrder = null;
+							sellStockOrder = null;
+							
+							
+							stockOrderInterface.setState(stockOrderInterface.getCompletedState());
 
 						}
 
@@ -327,6 +338,9 @@ public class ActiveState extends Thread implements OrderStateInterface
 							System.out.println("Initial Amount In Seller Account: "+seller.amountInAccount);
 							buyer.amountInAccount = buyer.amountInAccount - (buyStockPrice * noOfStocksInBuyQueue);
 							seller.amountInAccount = seller.amountInAccount + (buyStockPrice * noOfStocksInBuyQueue);
+							
+							buyer.setAmountInAccount(buyer.amountInAccount);
+							seller.setAmountInAccount(seller.amountInAccount);
 							
 							System.out.println("Amount in buyer acount " +buyer.amountInAccount);
 							System.out.println("Amount in Seller Account "+seller.amountInAccount);
@@ -356,6 +370,14 @@ public class ActiveState extends Thread implements OrderStateInterface
 							
 							_stock.buyQueue.remove(buyQueue.lastKey());
 							System.out.println("Stock Removed from Buy Queue !");
+							
+							noOfStocksInBuyQueue = 0;
+							noOfStocksInSellQueue =0;
+							buyer = null;
+							seller = null;
+							
+							
+							stockOrderInterface.setState(stockOrderInterface.getCompletedState());
 
 
 						}
@@ -368,12 +390,17 @@ public class ActiveState extends Thread implements OrderStateInterface
 							Stock sellerStock = sellStockOrder.getStock();
 							// adding the matched stock to the List of all stocks by the buyer
 							seller.getStocks().add(sellerStock);
+							
 
 
 							System.out.println(" Buyer Initial Amount In Account:"+buyer.amountInAccount);
 							System.out.println("Initial Amount In Seller Account: "+seller.amountInAccount);
 							buyer.amountInAccount = buyer.amountInAccount - (sellStockPrice * noOfStocksInSellQueue);
 							seller.amountInAccount = seller.amountInAccount + (sellStockPrice * noOfStocksInSellQueue);
+							
+							buyer.setAmountInAccount(buyer.amountInAccount);
+							seller.setAmountInAccount(seller.amountInAccount);
+							
 							
 							System.out.println("Amount in buyer acount " +buyer.amountInAccount);
 							System.out.println("Amount in Seller Account "+seller.amountInAccount);
@@ -407,7 +434,13 @@ public class ActiveState extends Thread implements OrderStateInterface
 							
 							noOfStocksInBuyQueue = 0;
 							noOfStocksInSellQueue =0;
+							buyer = null;
+							seller = null;
 							
+							
+							
+							
+							stockOrderInterface.setState(stockOrderInterface.getCompletedState());
 
 
 						}
