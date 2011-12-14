@@ -91,8 +91,8 @@ public boolean checkTimevalidityMutualFunds()
        int min = now.get(Calendar.MINUTE);
        int sec = now.get(Calendar.SECOND);
        
-       
-     if(hrs==4 && min==00){
+       //this timing should be 4.00pm
+     if((hrs>8 && min>00 ) && (hrs<23 && min <60)){
     	   
     	   return true;
        }
