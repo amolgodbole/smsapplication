@@ -8,5 +8,7 @@ public abstract class StockDecorator extends StockItem {
 		this.stockItem=stockItem;
 	}
 	
-	
+	public void display(){
+		stockItem.display();
+	}
 }
