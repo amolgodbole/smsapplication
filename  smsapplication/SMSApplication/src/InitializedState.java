@@ -36,90 +36,6 @@ public class InitializedState implements OrderStateInterface
 	{
 		return null;
 
-		/*System.out.println("Order Initialized !!");
-		if(order.equals(null))
-		{
-			System.out.println("Order is Null");
-		}
-		if(clock.checkTimevalidity())
-		{
-
-			OrderBean orderInInitializedState = order;
-			String stockIdInOrder = orderInInitializedState.getStockID();
-			Iterator<Stock> allStockIterator = allStocks.iterator();
-
-			while(allStockIterator.hasNext())
-			{
-				Stock stockInIter = allStockIterator.next();
-				if( stockInIter.getStockid().equals(stockIdInOrder))
-				{
-					this.stock = stockInIter;
-					System.out.println("Stock is : "+this.stock.getStockname());
-				}
-			}
-			
-			
-
-			if(order.getOrderProcessType().equalsIgnoreCase("Buy_Orders"))
-			{
-
-				Double bidAmount = (Double) order.getBidAmount();
-				System.out.println("Bid Amount: "+bidAmount);
-				System.out.println("Order Id: " +order.getStrOrderID());
-				
-				ActiveState as = ActiveState.getInstance();
-
-				as.interrupt();
-				
-				if(as.isInterrupted())
-				{
-					System.out.println("Active Order Thread is interrupted");
-				}
-				
-				this.stock.buyQueue.put(bidAmount, order); 
-
-
-				Double d = this.stock.buyQueue.lastKey();
-				System.out.println("Buy Queue last Key: "+d);
-				//this.stock.buyQueue.get(order);
-				System.out.println("order placed in Buy Queue of Stock with Stock id: "+ this.stock.getStockid());
-				//stockOrderInterface.processActiveOrder(order);
-				//activeOrderStateInterface.setStates(waiting);
-				//activeOrderStateInterface.getWaiting()
-				//stockOrderInterface.setState(stockOrderInterface.getActiveState());
-			}
-			else if(order.getOrderProcessType().equalsIgnoreCase("Sell_Orders"))
-			{
-				Double askAmount = (Double) order.getAskAmount();
-				ActiveState as = ActiveState.getInstance();
-
-				as.interrupt();
-				
-				if(as.isInterrupted())
-				{
-					System.out.println("Active Order Thread is interrupted");
-				}
-			
-				this.stock.sellQueue.put(askAmount, order);
-				//as.resume();
-				System.out.println("order placed in Sell Queue of Stock with Stock id: "+ this.stock.getStockid());
-				//stockOrderInterface.processOrder(order);
-			}
-
-			stockOrderInterface.setState(stockOrderInterface.getActiveState());
-			System.out.println("Changed State Call method InitializedOrder to ActiveOrder !");
-			stockOrderInterface.processOrder(orderInInitializedState);
-			//st.setState(st.getActiveState());
-			System.out.println("Changed State Call method InitializedOrder to ActiveOrder !");
-			return "true: Changed State Call method InitializedOrder to ActiveOrder ";
-		}
-		else
-		{
-			initializedOrders.add(order);
-			return "true: Order Initialized and is waiting for time to be valid";
-		}*/
-
-
 	}
 
 	public void processChangeStateAtValidTime(boolean validity)
@@ -187,8 +103,7 @@ public class InitializedState implements OrderStateInterface
 					System.out.println("Stock is : "+this.stock.getStockname());
 				}
 			}
-			
-			
+	
 			
 			/*if(order.isMarketOrderFlag())
 			{
@@ -487,7 +402,7 @@ public class InitializedState implements OrderStateInterface
 			System.out.println("Changed State Call method InitializedOrder to ActiveOrder !");
 			stockOrderInterface.processOrder(order);
 			//st.setState(st.getActiveState());
-			System.out.println("Changed State Call method InitializedOrder to ActiveOrder !");
+			//System.out.println("Changed State Call method InitializedOrder to ActiveOrder !");
 			return "true: Changed State Call method InitializedOrder to ActiveOrder ";
 		}
 		else
