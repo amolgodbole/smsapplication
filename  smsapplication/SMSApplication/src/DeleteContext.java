@@ -12,7 +12,9 @@ public class DeleteContext
 	{
 		deleteStrategy = setDeleteStrategy(investor, OrderID,  OrderTypeDelete);
 		
-		return deleteStrategy.deleteOrder(investor, OrderID);
+		String retVal =  deleteStrategy.deleteOrder(investor, OrderID);
+		System.out.println("In Delete Context: "+retVal);
+		return retVal;
 	}
 
 	private DeleteStrategy setDeleteStrategy(Investor investor, String OrderID,String OrderTypeDelete) 
