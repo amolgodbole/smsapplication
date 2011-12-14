@@ -44,9 +44,10 @@ public class CompletedState implements OrderStateInterface
 		return null;
 	}
 	@Override
-	public String processOrder(OrderBean order) {
-		// TODO Auto-generated method stub
-		return null;
+	public String processOrder(OrderBean order) 
+	{
+		
+		return "Completed";
 	}
 
 	
