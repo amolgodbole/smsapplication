@@ -47,6 +47,8 @@ public class CompletedState implements OrderStateInterface
 	public String processOrder(OrderBean order) 
 	{
 		
+		System.out.println("");
+		
 		return "Completed";
 	}
 
