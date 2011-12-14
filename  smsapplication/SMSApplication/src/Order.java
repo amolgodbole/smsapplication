@@ -98,8 +98,8 @@ public class Order
 			investor.orderList.add(order);
 			
 			
-			System.out.println("*************" +this.investor.getInvestorID());
-			System.out.println("Order places is : " +order.getStrOrderID());
+			//System.out.println("*************" +this.investor.getInvestorID());
+			//System.out.println("Order places is : " +order.getStrOrderID());
 			System.out.println("Checking order type");
 				
 				StockOrder stockOrder = new StockOrder();
