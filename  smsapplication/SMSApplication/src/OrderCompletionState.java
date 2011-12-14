@@ -39,9 +39,11 @@ public class OrderCompletionState implements DeleteStrategy{
 				
 				if(strOrderID.equalsIgnoreCase(orderID))
 				{
+					System.out.println("In Order Completion State Class !!");
 					System.out.println("Deleteing Order");
 					orders.remove(orderID);
 					System.out.println("Deleted");
+					return"deleted";
 				}
 			}
 		}
