@@ -346,8 +346,6 @@ public class ActiveState extends Thread implements OrderStateInterface
 							System.out.println("Amount in Seller Account "+seller.amountInAccount);
 
 
-
-
 							String sellOrderId = sellStockOrder.getStrOrderID();
 							System.out.println("Seller Order Id: "+sellOrderId);
 
