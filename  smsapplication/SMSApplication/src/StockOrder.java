@@ -7,7 +7,6 @@ public class StockOrder extends OrderTMAAbstractClass implements StockOrderInter
 	String stockID="";
 	double stockPrice=0;
 	private DeleteStrategy ds;
-	//ClockInstance1 clock=new ClockInstance1();
 
 	OrderStateInterface initialized;
 	OrderStateInterface active;
@@ -85,32 +84,20 @@ public class StockOrder extends OrderTMAAbstractClass implements StockOrderInter
 	@Override
 	public String processOrder(OrderBean order)
 	{
-		String strReturn="false";
 
 		orderStateInterface.processOrder(order);
 
-		return stockID;
+		return order.getStrOrderID();
 
 
 
 	}
-
-
 
 
 	public void processActiveOrder(OrderBean order) {
 		orderStateInterface.processActiveOrder(order);
 
 	}
-
-
-
-
-
-
-
-
-	//void processOrder(orderID);
 
 
 
