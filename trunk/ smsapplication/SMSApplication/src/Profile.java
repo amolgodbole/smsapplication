@@ -25,8 +25,10 @@ public class Profile {
 		
 		
 			investorList.add(investorNew);
+			System.out.println("-------------------------------------------------------------------");
 			System.out.println("Profile created : " +investorNew.getInvestorID());
-			System.out.println("-----------------------------------------------");
+			System.out.println("-------------------------------------------------------------------");
+			
 			System.out.println("Name : " +investorNew.getStrFirstName()+investorNew.getStrLastName());
 			System.out.println("Address : "+investorNew.getStrAddress()+","+investorNew.getStrState());
 			System.out.println("Contact : "+investorNew.getnMobile()+","+investorNew.getnPhone());
@@ -107,7 +109,9 @@ public class Profile {
 	
 	void testprofile(Investor investor){
 		createProfile(investor);
+		System.out.println("-------------------------------------------------------------------");
 		System.out.println("Do you want to update the profile ? (y/n)");
+		System.out.println("-------------------------------------------------------------------");
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		try {
 			String option = br.readLine();

@@ -34,7 +34,10 @@ public class TestFacadeClient {
 		Portfolio portfolio = new Portfolio(investor);
 		
 			while(true) {
-				System.out.println("Enter your choice : ");
+			
+				System.out.println("-------------------------------------------------------------------");
+				System.out.println("Main menu : ");
+				System.out.println("-------------------------------------------------------------------");
 				System.out.println("1. Create Profile");
 				System.out.println("2. Access Account");
 				System.out.println("3. Manage Order");
@@ -97,7 +100,10 @@ public class TestFacadeClient {
 		new Stock().sellQueue.put(450.22, order);
 		
 		while(true){
-		System.out.println("Enter as a : ");
+		System.out.println("-------------------------------------------------------------------");
+		System.out.println("Securities Management System");
+		System.out.println("-------------------------------------------------------------------");
+		System.out.println("Enter your role : ");
 		System.out.println("1. Investor");
 		System.out.println("2. Company");
 		System.out.println("3. Exit");
@@ -114,6 +120,10 @@ public class TestFacadeClient {
 			
 			if(option.equals("2")){
 			while(true){
+				System.out.println("-------------------------------------------------------------------");
+				System.out.println("Listing menu");
+				System.out.println("-------------------------------------------------------------------");
+				
 				System.out.println("Select : ");
 				System.out.println("1. List stock");
 				System.out.println("2. Split stock");
