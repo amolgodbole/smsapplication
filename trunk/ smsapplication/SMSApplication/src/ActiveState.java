@@ -307,6 +307,14 @@ public class ActiveState extends Thread implements OrderStateInterface
 							_stock.sellQueue.remove(sellQueue.firstKey());
 							System.out.println("Stock Removed from Sell Queue !");
 
+							// Bridge pattern call 
+							Information information; 
+							DisplayFormat df;
+							df = new EmailFormatDisplay();
+							information = new SystemInformation(df,buyer,seller);
+							information.display();
+							
+							
 							System.out.println("Calling The function Delete for completed order!");
 
 							DeleteContext dc = new DeleteContext();
@@ -333,7 +341,7 @@ public class ActiveState extends Thread implements OrderStateInterface
 
 							stockOrderInterface.setState(stockOrderInterface.getCompletedState());
 							
-
+							
 						}
 
 
@@ -383,6 +391,13 @@ public class ActiveState extends Thread implements OrderStateInterface
 							sellStockOrder.setStrOrderID(newSellOrderId);
 
 							_stock.buyQueue.remove(buyQueue.lastKey());
+							
+							Information information; 
+							DisplayFormat df;
+							df = new EmailFormatDisplay();
+							information = new SystemInformation(df,buyer,seller);
+							information.display();
+							
 							System.out.println("Stock Removed from Buy Queue !");
 							
 							System.out.println("Calling The function Delete for completed order!");
@@ -419,7 +434,8 @@ public class ActiveState extends Thread implements OrderStateInterface
 
 
 							stockOrderInterface.setState(stockOrderInterface.getCompletedState());
-
+							
+							
 
 						}
 
@@ -469,6 +485,13 @@ public class ActiveState extends Thread implements OrderStateInterface
 							_stock.buyQueue.remove(buyQueue.lastKey());
 							System.out.println("Initial Order Removed");
 							
+							Information information; 
+							DisplayFormat df;
+							df = new EmailFormatDisplay();
+							information = new SystemInformation(df,buyer,seller);
+							information.display();
+							
+							
 							DeleteContext dc1 = new DeleteContext();
 							String delStrategyRetValue1 = dc1.delete(seller, sellStockOrder.getStrOrderID(), "completed");
 
@@ -509,6 +532,7 @@ public class ActiveState extends Thread implements OrderStateInterface
 							seller = null;
 
 							stockOrderInterface.setState(stockOrderInterface.getCompletedState());
+							
 							
 						}
 					}
