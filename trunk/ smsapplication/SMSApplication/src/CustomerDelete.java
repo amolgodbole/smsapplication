@@ -42,9 +42,11 @@ public class CustomerDelete implements DeleteStrategy{
 				
 				if(strOrderID.equalsIgnoreCase(orderID))
 				{
-					System.out.println("Deleting order");
+					System.out.println("In customer delete class !!");
+					System.out.println("Deleting Customer Delete order");
 					orders.remove(orderID);
 					System.out.println("Deleted");
+					return "deleted";
 				}
 			}
 		}
