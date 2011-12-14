@@ -78,7 +78,7 @@ public class InitializedState implements OrderStateInterface
 	@Override
 	public String processOrder(OrderBean order) {
 		
-		System.out.println("In process order of Initialized state");
+		//System.out.println("In process order of Initialized state");
 
 
 
@@ -369,19 +369,19 @@ public class InitializedState implements OrderStateInterface
 
 					Double bidAmount = (Double) order.getBidAmount();
 					System.out.println("Bid Amount: "+bidAmount);
-					System.out.println("Order Id: " +order.getStrOrderID());
+					//System.out.println("Order Id: " +order.getStrOrderID());
 
 
 					ActiveState as = ActiveState.getInstance();
 					as.setThreadChanger("true");
-					System.out.println("Before Insert!"+System.currentTimeMillis());
+					//System.out.println("Before Insert!"+System.currentTimeMillis());
 					this.stock.buyQueue.put(bidAmount, order);
-					System.out.println("After Insert!"+System.currentTimeMillis());
+					//System.out.println("After Insert!"+System.currentTimeMillis());
 					as.setThreadChanger("false");
 
 
 					Double d = this.stock.buyQueue.lastKey();
-					System.out.println("Buy Queue last Key: "+d);
+					//System.out.println("Buy Queue last Key: "+d);
 					System.out.println("order placed in Buy Queue of Stock with Stock id: "+ this.stock.getStockid());
 
 				}
