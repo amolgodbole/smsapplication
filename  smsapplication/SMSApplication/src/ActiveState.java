@@ -222,8 +222,8 @@ public class ActiveState extends Thread implements OrderStateInterface
 						int noOfStocksInBuyQueue = buyStockOrder.getNoOfStocks();
 						int noOfStocksInSellQueue = sellStockOrder.getNoOfStocks();
 
-						System.out.println("Number of Stocks in buy queue: "+noOfStocksInBuyQueue);
-						System.out.println("Number of Stocks in sell queue: "+noOfStocksInSellQueue);
+						//System.out.println("Number of Stocks in buy queue: "+noOfStocksInBuyQueue);
+						//System.out.println("Number of Stocks in sell queue: "+noOfStocksInSellQueue);
 
 						String buyOrderInvestorId = buyStockOrder.getInvestorID();
 						String sellOrderInvestorId = sellStockOrder.getInvestorID();		
@@ -303,9 +303,9 @@ public class ActiveState extends Thread implements OrderStateInterface
 
 							_stock.buyQueue.remove(buyQueue.lastKey());
 
-							System.out.println("Stock Removed from Buy Queue !");
+							//System.out.println("Stock Removed from Buy Queue !");
 							_stock.sellQueue.remove(sellQueue.firstKey());
-							System.out.println("Stock Removed from Sell Queue !");
+							//System.out.println("Stock Removed from Sell Queue !");
 
 							// Bridge pattern call 
 							Information information; 
@@ -315,10 +315,12 @@ public class ActiveState extends Thread implements OrderStateInterface
 							information.display();
 							
 							
-							System.out.println("Calling The function Delete for completed order!");
+							//System.out.println("Calling The function Delete for completed order!");
 
 							DeleteContext dc = new DeleteContext();
 							String delStrategyRetValue = dc.delete(buyer, buyStockOrder.getStrOrderID(), "completed");
+							
+							
 
 							if(delStrategyRetValue.equalsIgnoreCase("deleted"))
 							{
@@ -398,9 +400,9 @@ public class ActiveState extends Thread implements OrderStateInterface
 							information = new SystemInformation(df,buyer,seller);
 							information.display();
 							
-							System.out.println("Stock Removed from Buy Queue !");
+							//System.out.println("Stock Removed from Buy Queue !");
 							
-							System.out.println("Calling The function Delete for completed order!");
+							//System.out.println("Calling The function Delete for completed order!");
 
 							DeleteContext dc = new DeleteContext();
 							String delStrategyRetValue = dc.delete(buyer, buyStockOrder.getStrOrderID(), "completed");
@@ -450,8 +452,8 @@ public class ActiveState extends Thread implements OrderStateInterface
 
 
 
-							System.out.println("Buyer Initial Amount In Account:"+buyer.amountInAccount);
-							System.out.println("Initial Amount In Seller Account: "+seller.amountInAccount);
+							//System.out.println("Buyer Initial Amount In Account:"+buyer.amountInAccount);
+							//System.out.println("Initial Amount In Seller Account: "+seller.amountInAccount);
 							buyer.amountInAccount = buyer.amountInAccount - (sellStockPrice * noOfStocksInSellQueue);
 							seller.amountInAccount = seller.amountInAccount + (sellStockPrice * noOfStocksInSellQueue);
 
