@@ -16,6 +16,7 @@ public class OrderBean {
 	int			noOfStocks;
 	String 		stockID;
 	String		mutualFundID;
+	boolean		marketOrderFlag;
 	Stock		stock = new Stock();
 	
 	/*Account account;
@@ -26,6 +27,18 @@ public class OrderBean {
 	
 	public String getStrOrderID() {
 		return strOrderID;
+	}
+
+
+
+	public boolean isMarketOrderFlag() {
+		return marketOrderFlag;
+	}
+
+
+
+	public void setMarketOrderFlag(boolean marketOrderFlag) {
+		this.marketOrderFlag = marketOrderFlag;
 	}
 
 
