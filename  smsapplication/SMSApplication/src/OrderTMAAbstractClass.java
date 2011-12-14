@@ -11,13 +11,13 @@ public abstract class OrderTMAAbstractClass
 	void implementOrder(OrderBean order)
 	{
 		//checkBalance(order.account);
-		System.out.println("In Template method order class");
+		//System.out.println("In Template method order class");
 		appendBrokerId(order);
-		System.out.println("After Appending broker id: " +order.getStrOrderID());
+		//System.out.println("After Appending broker id: " +order.getStrOrderID());
 		appendExchangeId(order);
-		System.out.println("After Appending exchange id: " +order.getStrOrderID());
+		//System.out.println("After Appending exchange id: " +order.getStrOrderID());
 		appendOrderHistoryId(order);
-		System.out.println("Appending order history id: " +order.getStrOrderID());
+		//System.out.println("Appending order history id: " +order.getStrOrderID());
 		String orderType = checkOrderType(order);
 		
 		if(orderType.equalsIgnoreCase("false"))
@@ -46,9 +46,9 @@ public abstract class OrderTMAAbstractClass
 	
 	protected String appendBrokerId(OrderBean order)
 	{
-		System.out.println("Appending broker id");
+		//System.out.println("Appending broker id");
 		order.setStrOrderID("B001-"+order.getStrOrderID());
-		System.out.println("Appending broker id: " +order.getStrOrderID());
+		//System.out.println("Appending broker id: " +order.getStrOrderID());
 		return order.getStrOrderID();
 	}
 	
@@ -64,9 +64,9 @@ public abstract class OrderTMAAbstractClass
 	protected String appendOrderHistoryId(OrderBean order)
 	{
 		 //if(!order.isPartialOrderFlag())
-		System.out.println("Appending order history id");
+		//System.out.println("Appending order history id");
 		order.setStrOrderID(order.getStrOrderID()+"-H0001");
-		System.out.println("Appending order history id: " +order.getStrOrderID());
+		//System.out.println("Appending order history id: " +order.getStrOrderID());
 		
 		 return order.getStrOrderID();
 		 //if(partialOrderFlag)
