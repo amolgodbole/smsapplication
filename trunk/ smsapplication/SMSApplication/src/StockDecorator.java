@@ -1,20 +1,12 @@
 
-public abstract class StockDecorator {
+public abstract class StockDecorator extends StockItem {
 
-	protected Stock stock;
+	protected StockItem stockItem;
 	
-	public StockDecorator(Stock s)
+	public StockDecorator(StockItem stockItem)
 	{
-		stock=s;
+		this.stockItem=stockItem;
 	}
-
-	/*public void display() {
-	//stock.display();
-	}*/
-	
-	public abstract void getStockListing();
 	
 	
-	public abstract void display();
-
 }
