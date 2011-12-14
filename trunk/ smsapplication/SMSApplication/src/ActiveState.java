@@ -7,7 +7,7 @@ import java.util.SortedMap;
 
 public class ActiveState extends Thread implements OrderStateInterface
 {
-	
+
 	private static ActiveState instance;
 
 	private StockOrderInterface stockOrderInterface;
@@ -19,28 +19,28 @@ public class ActiveState extends Thread implements OrderStateInterface
 	String threadChanger; 
 
 
-	
+
 	public String isThreadChanger() {
 		return threadChanger;
 	}
 
 	public void setThreadChanger(String threadChanger) 
 	{
-		
-			this.threadChanger = threadChanger;
+
+		this.threadChanger = threadChanger;
 	}
-	
-	
+
+
 	public void stopMatching()
 	{
 		synchronized (allListedStocks) 
 		{
 
-				try {
-					allListedStocks.wait();
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				
+			try {
+				allListedStocks.wait();
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+
 			}
 
 		}
@@ -55,7 +55,7 @@ public class ActiveState extends Thread implements OrderStateInterface
 	{
 
 	}
-	
+
 	public static ActiveState getInstance(StockOrderInterface stockOrderInterface)
 	{
 		if(instance == null)
@@ -63,9 +63,9 @@ public class ActiveState extends Thread implements OrderStateInterface
 			instance = new ActiveState(stockOrderInterface);
 		}
 		return instance;
-		
+
 	}
-	
+
 	public static ActiveState getInstance()
 	{
 		if(instance == null)
@@ -94,57 +94,57 @@ public class ActiveState extends Thread implements OrderStateInterface
 	@Override
 	public String processActiveOrder(OrderBean order) 
 	{
-		
+
 		return "true";
 	}
-	
+
 	@Override
 
-	
+
 	public String processDeletedOrder(OrderBean order) {
-	
+
 		return "false: Incorrect process in Deleted Order This order needs to be in active order state";
 	}
 
 	@Override
 	public String processCompletedOrder(OrderBean order) {
-		
+
 		return "false: Incorrect process in Completed Order This order needs to be in active order state";
 	}
-	
-	
+
+
 
 	@Override
 	public String processOrder(OrderBean order) {
-		
+
 
 		System.out.println("Order in Active State !!");
 		System.out.println("Orders will be Matched in this state as long as the Stock exchange is Open");
 		System.out.println("order in process order");
-		
+
 		processMatching();
-		
-		
+
+
 		stockOrderInterface.setState(stockOrderInterface.getCompletedState());
 		System.out.println("Changed State Call method Active State to Waiting State !");
 		stockOrderInterface.processOrder(order);
-		
+
 		return "true";
-		
+
 	}
-	
+
 	public void run()
 	{
 		processMatching();
 	}
-	
+
 	public void processMatching()
 	{
-		
+
 		System.out.println("In Process matching State !!");
-		
-		
-		
+
+
+
 		if(new ClockInstance1().checkTimevalidity())
 		{	
 			timeCheck = true;
@@ -168,7 +168,7 @@ public class ActiveState extends Thread implements OrderStateInterface
 						e.printStackTrace();
 					}
 				}
-				
+
 				System.out.println(" matching Queues !!");
 				Iterator<Stock> stockIterator = allListedStocks.iterator();
 				while(stockIterator.hasNext())
@@ -198,14 +198,14 @@ public class ActiveState extends Thread implements OrderStateInterface
 
 					if(buyStockPrice.equals(sellStockPrice))
 					{
-						
+
 						try {
-							
+
 							System.out.println("queues Matched for Stock: "+_stock.getStockname());
 							Thread.sleep(5000);
-							
+
 						} catch (InterruptedException e) {
-							
+
 							e.printStackTrace();
 						}
 						System.out.println("queues Matched for Stock: "+_stock.getStockname());
@@ -246,7 +246,7 @@ public class ActiveState extends Thread implements OrderStateInterface
 								System.out.println("BuyerSet! :"+buyer.getInvestorID());
 								break;
 							}
-							
+
 
 						}
 
@@ -269,12 +269,12 @@ public class ActiveState extends Thread implements OrderStateInterface
 
 						}
 
-						
+
 						// WHEN STOCKS IN BOTH QUEUES ARE EQUAL
 						if(noOfStocksInBuyQueue == noOfStocksInSellQueue)
 						{
 							System.out.println("Enterred Complete Order match !!");
-							
+
 							//ECHANGE STOCKS
 							//getting the stock from the seller and setting it in buyer's account
 							Stock buyerStock = sellStockOrder.getStock();
@@ -295,22 +295,22 @@ public class ActiveState extends Thread implements OrderStateInterface
 							seller.amountInAccount = seller.amountInAccount + (buyStockPrice * buyStockOrder.noOfStocks);
 							buyer.setAmountInAccount(buyer.amountInAccount);
 							seller.setAmountInAccount(seller.amountInAccount);
-							
+
 							System.out.println("Amount in buyer acount " +buyer.amountInAccount);
 							System.out.println("Amount in Sellers acount " +seller.amountInAccount);
-							
+
 							_stock.buyQueue.remove(buyQueue.lastKey());
 							System.out.println("Stock Removed from Buy Queue !");
 							_stock.sellQueue.remove(sellQueue.firstKey());
 							System.out.println("Stock Removed from Sell Queue !");
-							
+
 							noOfStocksInBuyQueue  = 0;
 							noOfStocksInSellQueue = 0;
-							
+
 							buyStockOrder = null;
 							sellStockOrder = null;
-							
-							
+
+
 							stockOrderInterface.setState(stockOrderInterface.getCompletedState());
 
 						}
@@ -322,7 +322,7 @@ public class ActiveState extends Thread implements OrderStateInterface
 						if(noOfStocksInBuyQueue < noOfStocksInSellQueue)
 						{
 							System.out.println("Number of Stocks in Sell Queue is Less Than Number Of Stocks in Buy Queue! ");
-							
+
 							//ECHANGE STOCKS
 							//getting the stock from the seller and setting it in buyer's account
 							Stock buyerStock = buyStockOrder.getStock();
@@ -338,10 +338,10 @@ public class ActiveState extends Thread implements OrderStateInterface
 							System.out.println("Initial Amount In Seller Account: "+seller.amountInAccount);
 							buyer.amountInAccount = buyer.amountInAccount - (buyStockPrice * noOfStocksInBuyQueue);
 							seller.amountInAccount = seller.amountInAccount + (buyStockPrice * noOfStocksInBuyQueue);
-							
+
 							buyer.setAmountInAccount(buyer.amountInAccount);
 							seller.setAmountInAccount(seller.amountInAccount);
-							
+
 							System.out.println("Amount in buyer acount " +buyer.amountInAccount);
 							System.out.println("Amount in Seller Account "+seller.amountInAccount);
 
@@ -350,33 +350,33 @@ public class ActiveState extends Thread implements OrderStateInterface
 
 							String sellOrderId = sellStockOrder.getStrOrderID();
 							System.out.println("Seller Order Id: "+sellOrderId);
-							
-							
+
+
 							String newSellOrderHistoryId = sellOrderId.substring(0, 2);
 							System.out.println("Order History ID: " +newSellOrderHistoryId);
-							
+
 							int historyIdIncrement = Integer.parseInt(newSellOrderHistoryId);
 							historyIdIncrement++;
 							String histId = Integer.toString(historyIdIncrement);
 							System.out.println("History ID: "+histId);
-							
+
 							sellOrderId = sellOrderId.substring(0,6);
 							System.out.println("UnConcatinated Sell Order Id: "+sellOrderId);
 							sellOrderId = sellOrderId.concat(histId);
-							
+
 							System.out.println("New Sell Order Id: "+sellOrderId);
 
 							sellStockOrder.setStrOrderID(sellOrderId);
-							
+
 							_stock.buyQueue.remove(buyQueue.lastKey());
 							System.out.println("Stock Removed from Buy Queue !");
-							
+
 							noOfStocksInBuyQueue = 0;
 							noOfStocksInSellQueue =0;
 							buyer = null;
 							seller = null;
-							
-							
+
+
 							stockOrderInterface.setState(stockOrderInterface.getCompletedState());
 
 
@@ -384,62 +384,59 @@ public class ActiveState extends Thread implements OrderStateInterface
 
 						if(noOfStocksInBuyQueue > noOfStocksInSellQueue)
 						{
-							
+
 							//ECHANGE STOCKS
 							//getting the stock from the seller and setting it in buyer's account
 							Stock sellerStock = sellStockOrder.getStock();
 							// adding the matched stock to the List of all stocks by the buyer
 							seller.getStocks().add(sellerStock);
-							
+
 
 
 							System.out.println(" Buyer Initial Amount In Account:"+buyer.amountInAccount);
 							System.out.println("Initial Amount In Seller Account: "+seller.amountInAccount);
 							buyer.amountInAccount = buyer.amountInAccount - (sellStockPrice * noOfStocksInSellQueue);
 							seller.amountInAccount = seller.amountInAccount + (sellStockPrice * noOfStocksInSellQueue);
-							
+
 							buyer.setAmountInAccount(buyer.amountInAccount);
 							seller.setAmountInAccount(seller.amountInAccount);
-							
-							
+
+
 							System.out.println("Amount in buyer acount " +buyer.amountInAccount);
 							System.out.println("Amount in Seller Account "+seller.amountInAccount);
 
 							// Change the order ID
-							
-							
+
+
 							String buyOrderId1 = buyStockOrder.getStrOrderID();
 							String newBuyOrderHistoryId = buyOrderId1.substring(1, 7);
 							System.out.println("Order History ID: " +newBuyOrderHistoryId);
 							int newRandomValue = new Random().nextInt(9999999);
 							String orderAppender = Integer.toString(newRandomValue);
-							
+
 							String newBuyOrderID = ("O" +orderAppender);
 							System.out.println("New Buy Order Id: "+newBuyOrderID);
-							
-							
+
+
 							_stock.sellQueue.remove(buyQueue.firstKey());
 							System.out.println("Stock Removed from Sell Queue !");
 
 							int newNoOfStocksInBuyQueue = noOfStocksInBuyQueue - noOfStocksInSellQueue;
 							buyStockOrder.setNoOfStocks(newNoOfStocksInBuyQueue);
 							buyStockOrder.setStrOrderID(newBuyOrderID);
-							
+
 							_stock.buyQueue.remove(buyQueue.lastKey());
 							System.out.println("Initial Order Removed");
-							
+
 							_stock.buyQueue.put(buyStockPrice, buyStockOrder);
-							
+
 							System.out.println("New Stock Order Placed In Queue !");
-							
+
 							noOfStocksInBuyQueue = 0;
 							noOfStocksInSellQueue =0;
 							buyer = null;
 							seller = null;
-							
-							
-							
-							
+
 							stockOrderInterface.setState(stockOrderInterface.getCompletedState());
 
 
@@ -450,19 +447,19 @@ public class ActiveState extends Thread implements OrderStateInterface
 				}
 			}//end if loop of clock instance
 			else{
-				
+
 				timeCheck = false;
 			}
-			
+
 
 		}//end while
-		
+
 
 
 		//stockOrderInterface.setState(stockOrderInterface.));
 
-		
-		
+
+
 	}
 
 
