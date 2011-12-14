@@ -117,7 +117,7 @@ public class Order
 			
 			BufferedReader br1=new BufferedReader(new InputStreamReader(System.in));
 			System.out.println("Enter mutual fund price :");
-			mf.setMutualFundPrice(Integer.parseInt(br1.readLine()));	
+			mf.setMutualFundPrice(Double.parseDouble(br1.readLine()));	
 			
 			BufferedReader br2=new BufferedReader(new InputStreamReader(System.in));
 			System.out.println("Enter no of stocks :");
