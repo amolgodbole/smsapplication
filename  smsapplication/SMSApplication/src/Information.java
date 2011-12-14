@@ -1,4 +1,6 @@
 
-public class Information {
+public class Information implements QueueObserver
+{
+	
 
 }
