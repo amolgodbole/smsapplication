@@ -4,7 +4,7 @@ import java.util.SortedMap;
 import java.util.TreeMap;
 
 
-public  class Stock //extends Listing
+public  class Stock extends StockItem
 {
 	String stockid="";
 	String stockname="";
@@ -50,7 +50,7 @@ public  class Stock //extends Listing
 	}*/
 //	Company apple=new Company();
 	
-	
+
 	
 	public int getNumberOfStocks() {
 		return numberOfStocks;
