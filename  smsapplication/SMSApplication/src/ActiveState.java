@@ -126,7 +126,7 @@ public class ActiveState extends Thread implements OrderStateInterface
 
 
 		stockOrderInterface.setState(stockOrderInterface.getCompletedState());
-		System.out.println("Changed State Call method Active State to Waiting State !");
+		//System.out.println("Changed State Call method Active State to Waiting State !");
 		stockOrderInterface.processOrder(order);
 
 		return "true";
@@ -212,7 +212,7 @@ public class ActiveState extends Thread implements OrderStateInterface
 						/*
 						 * Get the orders in both queues where the price of bid = ask
 						 */
-						
+
 						OrderBean buyStockOrder = buyQueue.get(buyStockPrice);
 						OrderBean sellStockOrder = sellQueue.get(sellStockPrice);
 
@@ -301,17 +301,25 @@ public class ActiveState extends Thread implements OrderStateInterface
 							System.out.println("Amount in Sellers acount " +seller.amountInAccount);
 
 							_stock.buyQueue.remove(buyQueue.lastKey());
-							
+
 							System.out.println("Stock Removed from Buy Queue !");
 							_stock.sellQueue.remove(sellQueue.firstKey());
 							System.out.println("Stock Removed from Sell Queue !");
-							
+
 							System.out.println("Calling The function Delete for completed order!");
-							
+
 							DeleteContext dc = new DeleteContext();
 							String delStrategyRetValue = dc.delete(buyer, buyStockOrder.getStrOrderID(), "completed");
-							
+
 							if(delStrategyRetValue.equalsIgnoreCase("deleted"))
+							{
+								System.out.println("Deleted Order in customer");
+							}
+
+							DeleteContext dc1 = new DeleteContext();
+							String delStrategyRetValue1 = dc1.delete(seller, sellStockOrder.getStrOrderID(), "completed");
+
+							if(delStrategyRetValue1.equalsIgnoreCase("deleted"))
 							{
 								System.out.println("Deleted Order in customer");
 							}
@@ -361,24 +369,45 @@ public class ActiveState extends Thread implements OrderStateInterface
 							System.out.println("Seller Order Id: "+sellOrderId);
 
 
-							String newSellOrderHistoryId = sellOrderId.substring(0, 2);
-							System.out.println("Order History ID: " +newSellOrderHistoryId);
+							//String newSellOrderHistoryId = sellOrderId.substring(0, 2);
+							int newRandomValue = new Random().nextInt(9999999);
+							String orderAppender = Integer.toString(newRandomValue);
 
-							int historyIdIncrement = Integer.parseInt(newSellOrderHistoryId);
-							historyIdIncrement++;
-							String histId = Integer.toString(historyIdIncrement);
-							System.out.println("History ID: "+histId);
+							String newSellOrderId = ("O" +orderAppender);
 
-							sellOrderId = sellOrderId.substring(0,6);
-							System.out.println("UnConcatinated Sell Order Id: "+sellOrderId);
-							sellOrderId = sellOrderId.concat(histId);
+							System.out.println("New Sell Order Id: "+newSellOrderId);
 
-							System.out.println("New Sell Order Id: "+sellOrderId);
-
-							sellStockOrder.setStrOrderID(sellOrderId);
+							sellStockOrder.setStrOrderID(newSellOrderId);
 
 							_stock.buyQueue.remove(buyQueue.lastKey());
 							System.out.println("Stock Removed from Buy Queue !");
+							
+							System.out.println("Calling The function Delete for completed order!");
+
+							DeleteContext dc = new DeleteContext();
+							String delStrategyRetValue = dc.delete(buyer, buyStockOrder.getStrOrderID(), "completed");
+
+							if(delStrategyRetValue.equalsIgnoreCase("deleted"))
+							{
+								System.out.println("Deleted Order in customer");
+							}
+
+							List<OrderBean> orders = seller.getOrderList();
+							Iterator<OrderBean> orderIterator = orders.iterator();
+							while(!orders.isEmpty())
+							{
+								while(orderIterator.hasNext())
+								{
+									OrderBean order = orderIterator.next();
+									String strOrderID = order.getStrOrderID();
+
+									if(strOrderID.equalsIgnoreCase(sellOrderId))
+									{
+										order.setStrOrderID(sellOrderId);
+										break;
+									}
+								}
+							}
 
 							noOfStocksInBuyQueue = 0;
 							noOfStocksInSellQueue =0;
@@ -436,12 +465,20 @@ public class ActiveState extends Thread implements OrderStateInterface
 
 							_stock.buyQueue.remove(buyQueue.lastKey());
 							System.out.println("Initial Order Removed");
+							
+							DeleteContext dc1 = new DeleteContext();
+							String delStrategyRetValue1 = dc1.delete(seller, sellStockOrder.getStrOrderID(), "completed");
+
+							if(delStrategyRetValue1.equalsIgnoreCase("deleted"))
+							{
+								System.out.println("Deleted Order in customer");
+							}
 
 							_stock.buyQueue.put(buyStockPrice, buyStockOrder);
 							System.out.println("New Stock Order Placed In Queue !");
-							
-							
-							
+
+
+
 							List<OrderBean> orders = buyer.getOrderList();
 							Iterator<OrderBean> orderIterator = orders.iterator();
 							while(!orders.isEmpty())
@@ -450,17 +487,18 @@ public class ActiveState extends Thread implements OrderStateInterface
 								{
 									OrderBean order = orderIterator.next();
 									String strOrderID = order.getStrOrderID();
-									
+
 									if(strOrderID.equalsIgnoreCase(buyOrderId1))
 									{
 										order.setStrOrderID(newBuyOrderID);
+										break;
 									}
 								}
 							}
-							
+
 							System.out.println("New Order ID set in order list of customer !");
 
-							
+
 
 							noOfStocksInBuyQueue = 0;
 							noOfStocksInSellQueue =0;
