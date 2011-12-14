@@ -17,7 +17,7 @@ public class Investor
 	List<AccountBean> accountList = new ArrayList<AccountBean>();
 	List<Stock> stocks = new ArrayList<Stock>();
 	List<MutualFund> mutualFunds = new ArrayList<MutualFund>();
-	double amountInAccount = new Account().getBalanceAmountlnAccount();
+	double amountInAccount = 25000d;
 	List<OrderBean> orderList = new ArrayList<OrderBean>();
 	
 	
