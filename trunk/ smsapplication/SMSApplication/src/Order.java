@@ -111,36 +111,38 @@ public class Order
 		else 
 		{
 			mf.setInvestorID(order.getInvestorID());
-			mf.setMutualFundID("MF01");
+			mf.setMutualFundID("MF000001");
 			/*mf.setMutualFundPrice(233.1);	
 			mf.setNoofStocks(10)*/;
 			
-			BufferedReader br1=new BufferedReader(new InputStreamReader(System.in));
-			System.out.println("Enter mutual fund price :");
-			mf.setMutualFundPrice(Double.parseDouble(br1.readLine()));	
+			System.out.println("List of units in mutual fund:");
 			
-			BufferedReader br2=new BufferedReader(new InputStreamReader(System.in));
-			System.out.println("Enter no of stocks :");
-			mf.setNoofStocks(Integer.parseInt(br2.readLine()));	
+			System.out.println("Enter no of units :");
+			BufferedReader br1=new BufferedReader(new InputStreamReader(System.in));
+			
+			mf.setNoofStocks(Integer.parseInt(br1.readLine()));	
 			
 			
 			//mf.setMutualFundID(mf.getMutualFundID());
 			//mf.order.setOrderType("MUTUALFUND");
+			double price=Listing.getInstance().getAllMutualFunds().get(0).mutualFundPrice;
+			mf.setMutualFundPrice(price);
 			System.out.println("Details of Mutual fund order are ");
 			System.out.println("Mutual fund price : "+mf.getMutualFundPrice());
 			System.out.println("No of stocks in Mutual fund : "+mf.getNoofStocks());
 			
 			
 			investor.mutualFunds.add(mf);
-			
+			System.out.println("Balance in investor account:"+investor.getAmountInAccount());
 	        MutualFundOrder mfOrder=new MutualFundOrder();
 	        if(new ClockInstance1().checkTimevalidityMutualFunds()){
 	        	mfOrder.processMutualFundOrder(mf,investor);
 	        }
 	        else{
 	        	System.out.println("Mutual fund order is placed... and will be served after 4pm");       	
+	        	mfOrder.processMutualFundOrder(mf, investor);
 	        }
-		//	mforder.processOrder(order);
+	      
 	        
 			
 		}	
