@@ -50,7 +50,6 @@ public class MutualFundOrder extends  OrderTMAAbstractClass
 				price=0;
 				} 
 				double nav=calculate_NAV(mf);
-				System.out.println("Returned NAV:"+nav);
 				
 				  mfCompany.setInvestorID("INV000009");
 				  mfCompany.setAmountInAccount(10000);
