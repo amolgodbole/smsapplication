@@ -17,9 +17,11 @@ public class TestCompanyListing
 	
 	public void callOperation(){
 		int choice = 0;
+		
 			while(true) {
 				System.out.println("Enter your choice : ");
 				System.out.println("1. List Stock");
+				System.out.println("2. List Mutual Fund");
 				System.out.println("2. Split Stock");
 				System.out.println("3. Exit");
 				
@@ -30,12 +32,18 @@ public class TestCompanyListing
 					option = br.readLine();
 					if(option.equals("1")) {
 						choice=1;
-						//stock.processRequestType(choice);
+						
 					}
 					if(option.equals("2")){
 						choice=2;
+						
 						//stock.processRequestType(choice);
 					}
+					if(option.equals("3")){
+						choice=2;
+						//stock.processRequestType(choice);
+					}
+					
 					if(option.equals("3")) break;
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
