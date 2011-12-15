@@ -57,10 +57,9 @@ public class MutualFundOrder extends  OrderTMAAbstractClass
 				  //buyer=mfCompany;
 				  
 				  investor.amountInAccount = investor.amountInAccount - (mf.getMutualFundPrice() *  totalMF);
-				  mfCompany.amountInAccount = mfCompany.amountInAccount + (mf.getMutualFundPrice() *  totalMF);
-			
+				
 				  System.out.println("Balance in investors acocunt:"+investor.amountInAccount);
-				  System.out.println("Balance in MFCompany account:"+investor.amountInAccount);
+			//	  System.out.println("Balance in MFCompany account:"+investor.amountInAccount);
 			return "MF Orders Processed!";
 		}
 		
