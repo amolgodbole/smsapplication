@@ -5,15 +5,18 @@ import java.util.List;
 public class MutualFund extends Investor
 {
 	String mutualFundID=""; // some investor ID
-	double mutualFundPrice;
-	int noofStocks;
+	double mutualFundPrice=0;
+	int noofunits;
+	List<Stock> stocks=new ArrayList<Stock>();
+	
+	
 	public int getNoofStocks() {
-		return noofStocks;
+		return noofunits;
 	}
 	public void setNoofStocks(int noofStocks) {
-		this.noofStocks = noofStocks;
+		this.noofunits = noofStocks;
 	}
-	List<Stock> stocks=new ArrayList<Stock>();
+	
 	
 	public String getMutualFundID() {
 		return mutualFundID;
