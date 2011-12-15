@@ -121,13 +121,13 @@ public class Order
 			
 			double price=Listing.getInstance().getAllMutualFunds().get(0).mutualFundPrice;
 			mf.setMutualFundPrice(price);
-			System.out.println("Details of Mutual fund order are ");
+			System.out.println("Details of Mutual fund order are :");
 			System.out.println("Mutual fund price : "+mf.getMutualFundPrice());
 			System.out.println("No of stocks in Mutual fund : "+mf.getNoofStocks());
 			
 			
 			investor.mutualFunds.add(mf);
-			System.out.println("Balance in investor account:"+investor.getAmountInAccount());
+			System.out.println("Original Balance in investor account:"+investor.getAmountInAccount());
 	        MutualFundOrder mfOrder=new MutualFundOrder();
 	        if(new ClockInstance1().checkTimevalidityMutualFunds()){
 	        	mfOrder.processMutualFundOrder(mf,investor);
