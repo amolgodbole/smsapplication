@@ -114,22 +114,15 @@ public class TestFacadeClient {
 		}
 		MutualFundOrder mforder=new MutualFundOrder();
 		double price=mforder.calculate_NAV(mf);
-		System.out.println("Portfolio summary");
-		System.out.println("MFID:"+mf.mutualFundID);
-		/*
-		if (choice1==1)
-		System.out.println("Stocks:"mf.);
-		*/
+		
 		//calculate NAV
-		System.out.println("nav price:"+price);
+		System.out.println("NAV price:"+price);
 		mf.setMutualFundPrice(price);
 		mf.setNoofStocks(total_stocks);
 		investor.mutualFunds.add(mf);	
-		System.out.println(""+mf.getNoofStocks());
-		System.out.println(""+investor.amountInAccount);	
 		mf.setMutualFundID("MF000001");	
 		Listing.getInstance().getAllMutualFunds().add(mf);
-		System.out.println("Mf 01:"+Listing.getInstance().getAllMutualFunds().size());
+		
 		}
 	public void callOperation(){
 		int choice = 0;
