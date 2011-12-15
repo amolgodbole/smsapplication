@@ -98,9 +98,7 @@ public class Order
 			investor.orderList.add(order);
 			
 			
-			//System.out.println("*************" +this.investor.getInvestorID());
-			//System.out.println("Order places is : " +order.getStrOrderID());
-			System.out.println("Checking order type");
+		System.out.println("Checking order type");
 				
 				StockOrder stockOrder = new StockOrder();
 				stockOrder.implementOrder(order);
@@ -112,9 +110,7 @@ public class Order
 		{
 			mf.setInvestorID(order.getInvestorID());
 			mf.setMutualFundID("MF000001");
-			/*mf.setMutualFundPrice(233.1);	
-			mf.setNoofStocks(10)*/;
-			
+		
 			System.out.println("List of units in mutual fund:");
 			
 			System.out.println("Enter no of units :");
@@ -123,8 +119,6 @@ public class Order
 			mf.setNoofStocks(Integer.parseInt(br1.readLine()));	
 			
 			
-			//mf.setMutualFundID(mf.getMutualFundID());
-			//mf.order.setOrderType("MUTUALFUND");
 			double price=Listing.getInstance().getAllMutualFunds().get(0).mutualFundPrice;
 			mf.setMutualFundPrice(price);
 			System.out.println("Details of Mutual fund order are ");
