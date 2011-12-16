@@ -159,7 +159,7 @@ public class Portfolio {
 			investorNew.setnMobile(Integer.parseInt(number.readLine()));
 			System.out.println("Enter amount :");
 			BufferedReader amount=new BufferedReader(new InputStreamReader(System.in));
-			investorNew.setAmountInAccount(Integer.parseInt(amount.readLine()));
+			investorNew.setAmountInAccount(Double.parseDouble(amount.readLine()));
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
