@@ -21,28 +21,7 @@ public class CompletedState implements OrderStateInterface
 		// TODO Auto-generated method stub
 		
 	}
-	@Override
-	public String processInitializedOrder(OrderBean order) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	@Override
-	public String processActiveOrder(OrderBean order) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	@Override
-	public String processDeletedOrder(OrderBean order) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	@Override
-	public String processCompletedOrder(OrderBean order) {
 
-		System.out.println("Order Completed Sending it to delete");
-		stockOrderInterface.setState(stockOrderInterface.getActiveState());
-		return null;
-	}
 	@Override
 	public String processOrder(OrderBean order) 
 	{

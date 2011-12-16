@@ -85,34 +85,7 @@ public class ActiveState extends Thread implements OrderStateInterface
 
 	}
 
-	@Override
-	public String processInitializedOrder(OrderBean order) {
-
-		return "False: This order needs to be in Active Order State";
-	}
-
-	@Override
-	public String processActiveOrder(OrderBean order) 
-	{
-
-		return "true";
-	}
-
-	@Override
-
-
-	public String processDeletedOrder(OrderBean order) {
-
-		return "false: Incorrect process in Deleted Order This order needs to be in active order state";
-	}
-
-	@Override
-	public String processCompletedOrder(OrderBean order) {
-
-		return "false: Incorrect process in Completed Order This order needs to be in active order state";
-	}
-
-
+	
 
 	@Override
 	public String processOrder(OrderBean order) {
