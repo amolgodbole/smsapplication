@@ -1,0 +1,2 @@
+Hosting our 202 project for Securities Management System application.
+This system studies multiple design patterns that can be implemented in a stock exchange management system to manage orders, stocks, stock prices and regulatory rules.
